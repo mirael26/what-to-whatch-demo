@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Эльмира Ильясова](https://up.htmlacademy.ru/react/5/user/471345).
-* Наставник: `Юлия Корецкая`.
+* Наставник: [Юлия Корецкая](https://htmlacademy.ru/profile/id11886).
 
 ---
 
