@@ -15,7 +15,7 @@ npm i react@16.12 -E
 * + react@16.12
 * + react-dom@16.12
 * react-redux@7.2
-* react-router-dom@5.1
+* + react-router-dom@5.1
 * redux@4
 * redux-thunk@2.3
 * reselect@4
