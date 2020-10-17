@@ -23,19 +23,19 @@ const App = (props) => {
             films={films}
           />
         </Route>
-        <Route exact path="/login">
+        <Route path="/login">
           <SignIn />
         </Route>
-        <Route exact path="/mylist">
+        <Route path="/mylist">
           <MyList films={films}/>
         </Route>
-        <Route exact path="/films/:id">
-          <Film />
+        <Route path="/films/:id">
+          <Film films={films} />
         </Route>
-        <Route exact path="/films/:id/review">
+        <Route path="/films/:id/review">
           <AddReview />
         </Route>
-        <Route exact path="/player/:id">
+        <Route path="/player/:id">
           <Player />
         </Route>
       </Switch>

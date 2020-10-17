@@ -2,7 +2,6 @@ import React from "react";
 
 
 const AddReview = () => {
-
   return (
     <section className="movie-card movie-card--full">
       <div className="movie-card__header">
