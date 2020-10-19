@@ -6,6 +6,7 @@ import SignIn from "../sign-in/sign-in";
 import MyList from "../my-list/my-list";
 import Movie from "../movie/movie";
 import Player from "../player/player";
+import AddReview from "../add-review/add-review";
 
 
 const App = (props) => {
@@ -30,7 +31,7 @@ const App = (props) => {
           <Movie films={films} reviews={reviews} />
         </Route>
         <Route exact path="/films/:id/review">
-          <Movie films={films} reviews={reviews} />
+          <AddReview film={films[1]} />
         </Route>
         <Route exact path="/player/:id">
           <Player />
