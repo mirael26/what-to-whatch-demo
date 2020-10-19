@@ -35,7 +35,7 @@ const MyList = (props) => {
                   <img src={film.picture} alt={film.title} width="280" height="175" />
                 </div>
                 <h3 className="small-movie-card__title">
-                  <a className="small-movie-card__link" href="movie-page.html">{film.title}</a>
+                  <a className="small-movie-card__link" href="#">{film.title}</a>
                 </h3>
               </article>
             );

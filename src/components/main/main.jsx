@@ -4,12 +4,12 @@ import MoviesList from "../movies-list/movies-list";
 
 
 const Main = (props) => {
-  const {promoTitle, promoGenre, promoReleaseDate, films} = props;
+  const {promoFilm, films} = props;
 
   return (<React.Fragment>
     <section className="movie-card">
       <div className="movie-card__bg">
-        <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+        <img src={promoFilm.backgroundPicture} alt="The Grand Budapest Hotel" />
       </div>
 
       <h1 className="visually-hidden">WTW</h1>
@@ -33,14 +33,14 @@ const Main = (props) => {
       <div className="movie-card__wrap">
         <div className="movie-card__info">
           <div className="movie-card__poster">
-            <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+            <img src={promoFilm.poster} alt={promoFilm.title} width="218" height="327" />
           </div>
 
           <div className="movie-card__desc">
-            <h2 className="movie-card__title">{promoTitle}</h2>
+            <h2 className="movie-card__title">{promoFilm.title}</h2>
             <p className="movie-card__meta">
-              <span className="movie-card__genre">{promoGenre}</span>
-              <span className="movie-card__year">{promoReleaseDate}</span>
+              <span className="movie-card__genre">{promoFilm.genre}</span>
+              <span className="movie-card__year">{promoFilm.releaseDate}</span>
             </p>
 
             <div className="movie-card__buttons">
@@ -124,9 +124,13 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  promoTitle: PropTypes.string.isRequired,
-  promoGenre: PropTypes.string.isRequired,
-  promoReleaseDate: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  promoFilm: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    releaseDate: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    poster: PropTypes.string.isRequired,
+    backgroundPicture: PropTypes.string.isRequired,
+  }).isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,

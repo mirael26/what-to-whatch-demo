@@ -6,20 +6,17 @@ import SignIn from "../sign-in/sign-in";
 import MyList from "../my-list/my-list";
 import Movie from "../movie/movie";
 import Player from "../player/player";
-import {MovieViewTypes} from "../../const";
 
 
 const App = (props) => {
-  const {promoTitle, promoGenre, promoReleaseDate, films, reviews} = props;
+  const {promoFilm, films, reviews} = props;
 
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
           <Main
-            promoTitle={promoTitle}
-            promoGenre={promoGenre}
-            promoReleaseDate={promoReleaseDate}
+            promoFilm={promoFilm}
             films={films}
           />
         </Route>
@@ -44,9 +41,14 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  promoTitle: PropTypes.string.isRequired,
-  promoGenre: PropTypes.string.isRequired,
-  promoReleaseDate: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  promoFilm: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    releaseDate: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    poster: PropTypes.string.isRequired,
+    backgroundPicture: PropTypes.string.isRequired,
+    video: PropTypes.string.isRequired,
+  }).isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
