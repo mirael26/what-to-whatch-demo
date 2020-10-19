@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 
 const SmallMovieCard = (props) => {
   const {onMovieCardHover, film} = props;
@@ -11,7 +12,7 @@ const SmallMovieCard = (props) => {
         <img src={picture} alt={title} width="280" height="175" />
       </div>
       <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html">{title}</a>
+        <Link className="small-movie-card__link" to="/films/1">{film.title}</Link>
       </h3>
     </article>
   );

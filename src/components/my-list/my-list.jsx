@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 
 const MyList = (props) => {
@@ -35,7 +36,7 @@ const MyList = (props) => {
                   <img src={film.picture} alt={film.title} width="280" height="175" />
                 </div>
                 <h3 className="small-movie-card__title">
-                  <a className="small-movie-card__link" href="#">{film.title}</a>
+                  <Link className="small-movie-card__link" to="/films/1">{film.title}</Link>
                 </h3>
               </article>
             );
