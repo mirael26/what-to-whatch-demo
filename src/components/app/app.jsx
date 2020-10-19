@@ -4,9 +4,9 @@ import {Switch, Route, BrowserRouter} from "react-router-dom";
 import Main from "../main/main";
 import SignIn from "../sign-in/sign-in";
 import MyList from "../my-list/my-list";
-import Film from "../film/film";
-import AddReview from "../add-review/add-review";
+import Movie from "../movie/movie";
 import Player from "../player/player";
+import {MovieViewTypes} from "../../const";
 
 
 const App = (props) => {
@@ -26,16 +26,16 @@ const App = (props) => {
         <Route path="/login">
           <SignIn />
         </Route>
-        <Route path="/mylist">
+        <Route exact path="/mylist">
           <MyList films={films}/>
         </Route>
-        <Route path="/films/:id">
-          <Film films={films} />
+        <Route exact path="/films/:id">
+          <Movie films={films} reviews={reviews} />
         </Route>
-        <Route path="/films/:id/review">
-          <AddReview />
+        <Route exact path="/films/:id/review">
+          <Movie films={films} reviews={reviews} />
         </Route>
-        <Route path="/player/:id">
+        <Route exact path="/player/:id">
           <Player />
         </Route>
       </Switch>
