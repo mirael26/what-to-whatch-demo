@@ -14,7 +14,7 @@ export default [
     director: `Wes Andreson`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`, `Tony Revoloru`, `Tilda Swinton`, `Tom Wilkinson`, `Owen Wilkinson`, `Adrien Brody`, `Ralph Fiennes`, `Jeff Goldblum`],
     runTime: 99,
-    video: `https://youtu.be/zru-1DbbcsA`
+    videoSrc: `/video/The Grand Budapest Hotel Official Red Band Trailer (2014) HD.mp4`
   },
   {
     title: `Aviator`,
@@ -29,7 +29,7 @@ export default [
     director: `Martin Scorsese`,
     starring: [`Leonardo DiCaprio`, `Cate Blanchett`, `John C. Reilly`, `Kate Beckinsale`, `Alec Baldwin`, `Alan Alda`, `Ian Holm`, `Danny Huston`],
     runTime: 163,
-    video: `https://youtu.be/FebPJlmgldE`
+    videoSrc: `/video/The Grand Budapest Hotel Official Red Band Trailer (2014) HD.mp4`
   },
   {
     title: `Bohemian Rhapsody`,
@@ -44,7 +44,7 @@ export default [
     director: `Bryan Singer`,
     starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`, `Ben Hardy`, `Joe Mazzello`, `Aidan Gillen`, `Allen Leech`],
     runTime: 134,
-    video: `https://youtu.be/e9sz7ZbCmKk`
+    videoSrc: `/video/The Grand Budapest Hotel Official Red Band Trailer (2014) HD.mp4`
   },
   {
     title: `The Darjeeling Limited`,
@@ -59,7 +59,7 @@ export default [
     director: `Wes Anderson`,
     starring: [`Owen Wilson`, `Adrien Brody`, `Jason Schwartzman`, `Amara Karan`, `Wallace Wolodarsky`, `Waris Ahluwalia`],
     runTime: 92,
-    video: `The Darjeeling Limited`
+    videoSrc: `/video/The Grand Budapest Hotel Official Red Band Trailer (2014) HD.mp4`
   },
   {
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
@@ -74,7 +74,7 @@ export default [
     director: `David Yates`,
     starring: [`Eddie Redmayne`, `Katherine Waterston`, `Dan Fogler`, `Alison Sudol`, `Ezra Miller`, `Zoë Kravitz`, `Callum Turner`, `Claudia Kim`, `William Nadylam`, `Jude Law`, `Johnny Depp`],
     runTime: 134,
-    video: `https://youtu.be/97rCeictIJc`
+    videoSrc: `/video/The Grand Budapest Hotel Official Red Band Trailer (2014) HD.mp4`
   },
   {
     title: `Johnny English`,
@@ -89,7 +89,7 @@ export default [
     director: `Peter Howitt`,
     starring: [`Rowan Atkinson`, `Natalie Imbruglia`, `Ben Miller`, `John Malkovich`],
     runTime: 84,
-    video: `https://youtu.be/rTA8D_1LxZQ`
+    videoSrc: `/video/The Grand Budapest Hotel Official Red Band Trailer (2014) HD.mp4`
   },
   {
     title: `Macbeth`,
@@ -104,7 +104,7 @@ export default [
     director: `Justin Kurzel`,
     starring: [`Michael Fassbender`, `Marion Cotillard`, `Paddy Considine`, `Sean Harris`, `Jack Reynor`, `Elizabeth Debicki`, `David Thewlis`],
     runTime: 113,
-    video: `https://youtu.be/YqHhKuCQmoY`
+    videoSrc: `/video/The Grand Budapest Hotel Official Red Band Trailer (2014) HD.mp4`
   },
   {
     title: `Orlando`,
@@ -119,6 +119,6 @@ export default [
     director: `Sally Potter`,
     starring: [`Tilda Swinton`, `Billy Zane`, `Lothaire Bluteau`, `John Wood`, `Charlotte Valandrey`, `Heathcote Williams`, `Quentin Crisp`],
     runTime: 94,
-    video: `https://youtu.be/MorOaD61KUI`
+    videoSrc: `/video/The Grand Budapest Hotel Official Red Band Trailer (2014) HD.mp4`
   },
 ];

@@ -37,7 +37,7 @@ MovieOverview.propTypes = {
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string).isRequired,
     runTime: PropTypes.number.isRequired,
-    video: PropTypes.string.isRequired,
+    videoSrc: PropTypes.string.isRequired,
   }).isRequired,
 };
 
