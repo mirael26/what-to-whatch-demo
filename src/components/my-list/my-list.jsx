@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
+import MoviesList from "../movies-list/movies-list";
 
 const MyList = (props) => {
   const {films} = props;
@@ -28,20 +29,7 @@ const MyList = (props) => {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <div className="catalog__movies-list">
-          {films.map((film, i) => {
-            return (
-              <article className="small-movie-card catalog__movies-card" key={`${i}-${film.title}`}>
-                <div className="small-movie-card__image">
-                  <img src={film.picture} alt={film.title} width="280" height="175" />
-                </div>
-                <h3 className="small-movie-card__title">
-                  <Link className="small-movie-card__link" to="/films/1">{film.title}</Link>
-                </h3>
-              </article>
-            );
-          })}
-        </div>
+        {<MoviesList films={films}/>}
       </section>
 
       <footer className="page-footer">

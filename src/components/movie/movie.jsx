@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {MovieViewTypes} from "../../const";
 import {makeFirstUpperCase} from "../../utils";
+import MoviesList from "../movies-list/movies-list";
 import MovieOverview from "../movie-overview/movie-overview";
 import MovieDetails from "../movie-details/movie-details";
 import MovieReviews from "../movie-reviews/movie-reviews";
@@ -43,6 +44,11 @@ class Movie extends PureComponent {
         movieComponent = <MovieOverview film={currentFilm} />;
         break;
     }
+
+    const similarFilms = films
+      .filter((film) => {
+        return (film.genre === currentFilm.genre) && film !== currentFilm;
+      });
 
     return (<React.Fragment>
       <section className="movie-card movie-card--full">
@@ -123,24 +129,7 @@ class Movie extends PureComponent {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <div className="catalog__movies-list">
-            {films
-              .filter((film) => {
-                return (film.genre === currentFilm.genre) && film !== currentFilm;
-              })
-              .map((film, i) => {
-                return (
-                  <article className="small-movie-card catalog__movies-card" key={`${i}-${film.title}`}>
-                    <div className="small-movie-card__image">
-                      <img src={film.picture} alt={film.title} width="280" height="175" />
-                    </div>
-                    <h3 className="small-movie-card__title">
-                      <a className="small-movie-card__link" href="#">{film.title}</a>
-                    </h3>
-                  </article>
-                );
-              })}
-          </div>
+          {<MoviesList films={similarFilms}/>}
         </section>
 
         <footer className="page-footer">
