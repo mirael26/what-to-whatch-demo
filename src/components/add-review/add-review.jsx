@@ -37,7 +37,7 @@ const AddReview = (props) => {
 
           <div className="user-block">
             <div className="user-block__avatar">
-              <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63" />
+              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
             </div>
           </div>
         </header>
@@ -67,7 +67,7 @@ AddReview.propTypes = {
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string).isRequired,
     runTime: PropTypes.number.isRequired,
-    video: PropTypes.string.isRequired,
+    videoSrc: PropTypes.string.isRequired,
   }).isRequired,
 };
 

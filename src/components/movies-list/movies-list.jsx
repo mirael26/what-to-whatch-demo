@@ -1,22 +1,14 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import SmallMovieCard from "../small-movie-card/small-movie-card";
+import withVideoPlayer from "../../hocs/with-video-player/with-video-player";
+
+const SmallMovieCardWrapped = withVideoPlayer(SmallMovieCard);
 
 class MoviesList extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      activeCard: null
-    };
-    this.onMovieCardHover = this.onMovieCardHover.bind(this);
-  }
-
-  onMovieCardHover(evt) {
-    evt.preventDefault();
-    this.setState({
-      activeCard: evt.target
-    });
   }
 
   render() {
@@ -26,10 +18,9 @@ class MoviesList extends PureComponent {
       <div className="catalog__movies-list">
         {
           films.map((film, i) =>
-            <SmallMovieCard
+            <SmallMovieCardWrapped
               key={`${i}-${film.title}`}
               film={film}
-              onMovieCardHover={this.onMovieCardHover}
             />
           )
         }
@@ -52,7 +43,7 @@ MoviesList.propTypes = {
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string).isRequired,
     runTime: PropTypes.number.isRequired,
-    video: PropTypes.string.isRequired,
+    videoSrc: PropTypes.string.isRequired,
   })).isRequired,
 };
 
