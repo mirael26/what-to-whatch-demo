@@ -9,6 +9,21 @@ const withVideoPlayer = (Component) => {
       this.state = {
         isPlaying: false,
       };
+
+      this._onVideoMouseOver = this._onVideoMouseOver.bind(this);
+      this._onVideoMouseOut = this._onVideoMouseOut.bind(this);
+    }
+
+    _onVideoMouseOver() {
+      this.setState({
+        isPlaying: true
+      });
+    }
+
+    _onVideoMouseOut() {
+      this.setState({
+        isPlaying: false
+      });
     }
 
     render() {
@@ -22,15 +37,8 @@ const withVideoPlayer = (Component) => {
               videoSrc={videoSrc}
               poster={poster}
               isPlaying={isPlaying}
-              onVideoMouseOver={() => {
-                console.log(`play`);
-                this.setState({
-                  isPlaying: true
-                });
-              }}
-              onVideoMouseOut={() => this.setState({
-                isPlaying: false
-              })}
+              onVideoMouseOver={this._onVideoMouseOver}
+              onVideoMouseOut={this._onVideoMouseOut}
             />
           );
         }}
