@@ -1,7 +1,9 @@
+import {GenreTypes} from "../const";
+
 export default [
   {
     title: `The Grand Budapest Hotel`,
-    genre: `Drama`,
+    genre: GenreTypes.DRAMAS,
     releaseDate: `2014`,
     description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.
 
@@ -18,7 +20,7 @@ export default [
   },
   {
     title: `Aviator`,
-    genre: `Drama`,
+    genre: GenreTypes.DRAMAS,
     releaseDate: `2004`,
     description: `A biopic depicting the early years of legendary Director and aviator Howard Hughes' career from the late 1920s to the mid 1940s.`,
     picture: `img/aviator.jpg`,
@@ -33,7 +35,7 @@ export default [
   },
   {
     title: `Bohemian Rhapsody`,
-    genre: `Drama`,
+    genre: GenreTypes.DRAMAS,
     releaseDate: `2018`,
     description: `The story of the legendary British rock band Queen and lead singer Freddie Mercury, leading up to their famous performance at music festival Live Aid (1985).`,
     picture: `img/bohemian-rhapsody.jpg`,
@@ -48,7 +50,7 @@ export default [
   },
   {
     title: `The Darjeeling Limited`,
-    genre: `Comedy`,
+    genre: GenreTypes.COMEDIES,
     releaseDate: `2007`,
     description: `A year after their father's funeral, three brothers travel across India by train in an attempt to bond with each other.`,
     picture: `img/dardjeeling-limited.jpg`,
@@ -63,7 +65,7 @@ export default [
   },
   {
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
-    genre: `Fantasy`,
+    genre: GenreTypes.DRAMAS,
     releaseDate: `2018`,
     description: `The second installment of the "Fantastic Beasts" series featuring the adventures of Magizoologist Newt Scamander.`,
     picture: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -78,7 +80,7 @@ export default [
   },
   {
     title: `Johnny English`,
-    genre: `Comedy`,
+    genre: GenreTypes.COMEDIES,
     releaseDate: `2003`,
     description: `After a sudden attack on MI5, Johnny English, Britain's most confident, yet unintelligent spy, becomes Britain's only spy.`,
     picture: `img/johnny-english.jpg`,
@@ -93,7 +95,7 @@ export default [
   },
   {
     title: `Macbeth`,
-    genre: `Drama`,
+    genre: GenreTypes.DRAMAS,
     releaseDate: `2015`,
     description: `Macbeth, the Thane of Glamis, receives a prophecy from a trio of witches that one day he will become King of Scotland. Consumed by ambition and spurred to action by his wife, Macbeth murders his king and takes the throne for himself.`,
     picture: `img/macbeth.jpg`,
@@ -108,7 +110,7 @@ export default [
   },
   {
     title: `Orlando`,
-    genre: `Fantasy`,
+    genre: GenreTypes.DOCUMENTARY,
     releaseDate: `1992`,
     description: `After Queen Elizabeth I commands him not to grow old, a young nobleman struggles with love and his place in the world.`,
     picture: `img/orlando.jpg`,
