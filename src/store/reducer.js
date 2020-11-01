@@ -1,5 +1,6 @@
 import {extend} from "../utils";
-import {ActionType, GenreTypes} from "../const";
+import {GenreTypes} from "../const";
+import {ActionType} from "../store/action";
 import films from "../mocks/films";
 
 
@@ -11,15 +12,20 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.CHANGE_GENRE:
-      let genre = action.payload;
+      const newGenre = action.payload;
+      if (newGenre === state.genre) {
+        break;
+      }
       return extend(state, {
-        genre
+        genre: newGenre
       });
     case ActionType.GET_FILMS_BY_GENRE:
-      genre = action.payload;
-      let filmsByGenre = initialState.films;
-      if (genre !== GenreTypes.ALL_GENRES) {
-        filmsByGenre = films.filter(films.genre === action.payload);
+      const activeGenre = action.payload;
+      let filmsByGenre;
+      if (activeGenre === GenreTypes.ALL_GENRES) {
+        filmsByGenre = initialState.films;
+      } else {
+        filmsByGenre = films.filter((film) =>film.genre === activeGenre);
       }
       return extend(state, {
         films: filmsByGenre
