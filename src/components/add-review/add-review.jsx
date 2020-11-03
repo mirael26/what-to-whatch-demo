@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import AddReviewForm from "../add-review-form/add-review-form";
+import withUserReview from "../../hocs/with-user-review/with-user-review";
 
+const AddReviewFormWithUserReview = withUserReview(AddReviewForm);
 
 const AddReview = (props) => {
   const {film} = props;
@@ -47,7 +49,7 @@ const AddReview = (props) => {
         </div>
       </div>
 
-      <AddReviewForm />
+      <AddReviewFormWithUserReview />
 
     </section>
   );
