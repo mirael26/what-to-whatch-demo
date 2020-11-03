@@ -5,9 +5,11 @@ import Main from "../main/main";
 import SignIn from "../sign-in/sign-in";
 import MyList from "../my-list/my-list";
 import Movie from "../movie/movie";
+import withViewType from "../../hocs/with-view-type/with-view-type";
 import Player from "../player/player";
 import AddReview from "../add-review/add-review";
 
+const MovieWithViewType = withViewType(Movie);
 
 const App = (props) => {
   const {promoFilm, films, reviews} = props;
@@ -27,7 +29,7 @@ const App = (props) => {
           <MyList films={films}/>
         </Route>
         <Route exact path="/films/:id">
-          <Movie films={films} reviews={reviews} />
+          <MovieWithViewType films={films} reviews={reviews} />
         </Route>
         <Route exact path="/films/:id/review">
           <AddReview film={films[1]} />
