@@ -1,9 +1,9 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import SmallMovieCard from "../small-movie-card/small-movie-card";
-import withVideoPlayer from "../../hocs/with-video-player/with-video-player";
+import withVideoPreview from "../../hocs/with-video-preview/with-video-preview";
 
-const SmallMovieCardWrapped = withVideoPlayer(SmallMovieCard);
+const SmallMovieCardWrapped = withVideoPreview(SmallMovieCard);
 
 class MoviesList extends PureComponent {
   constructor(props) {

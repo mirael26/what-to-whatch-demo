@@ -1,8 +1,11 @@
 import React, {PureComponent} from 'react';
 import VideoPlayer from "../../components/video-player/video-player";
+import withVideo from "../with-video/with-video";
 
-const withVideoPlayer = (Component) => {
-  class WithVideoPlayer extends PureComponent {
+const VideoPlayerWithVideo = withVideo(VideoPlayer);
+
+const withVideoPreview = (Component) => {
+  class WithVideoPreview extends PureComponent {
     constructor(props) {
       super(props);
 
@@ -33,7 +36,7 @@ const withVideoPlayer = (Component) => {
         {...this.props}
         renderPlayer={(videoSrc, poster) => {
           return (
-            <VideoPlayer
+            <VideoPlayerWithVideo
               videoSrc={videoSrc}
               poster={poster}
               isPlaying={isPlaying}
@@ -46,9 +49,9 @@ const withVideoPlayer = (Component) => {
     }
   }
 
-  WithVideoPlayer.propTypes = {};
+  WithVideoPreview.propTypes = {};
 
-  return WithVideoPlayer;
+  return WithVideoPreview;
 };
 
-export default withVideoPlayer;
+export default withVideoPreview;
