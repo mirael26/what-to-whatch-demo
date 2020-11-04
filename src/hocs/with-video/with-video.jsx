@@ -49,9 +49,9 @@ const withVideo = (Component) => {
       );
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps) {
       const video = this._videoRef.current;
-      if (video.autoPlay === this.props.isPlaying) {
+      if (prevProps.isPlaying === this.props.isPlaying) {
         return;
       }
 

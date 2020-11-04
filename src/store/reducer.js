@@ -14,7 +14,7 @@ const reducer = (state = initialState, action) => {
     case ActionType.CHANGE_GENRE:
       const newGenre = action.payload;
       if (newGenre === state.genre) {
-        break;
+        return state;
       }
       return extend(state, {
         genre: newGenre
@@ -30,8 +30,9 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         films: filmsByGenre
       });
+    default:
+      return state;
   }
-  return state;
 };
 
 export {reducer};
