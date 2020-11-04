@@ -1,18 +1,8 @@
 import React from "react";
-import {connect} from "react-redux";
-import {ActionCreator} from "../../store/action";
 import PropTypes from "prop-types";
-import MoviesList from "../movies-list/movies-list";
-import GenreList from "../genre-list/genre-list";
+import Catalog from "../catalog/catalog";
 
-
-const Main = (props) => {
-  const {
-    promoFilm,
-    genre,
-    films,
-    onChangeGenre,
-  } = props;
+const Main = ({promoFilm}) => {
 
   return (<React.Fragment>
     <section className="movie-card">
@@ -71,20 +61,7 @@ const Main = (props) => {
     </section>
 
     <div className="page-content">
-      <section className="catalog">
-        <h2 className="catalog__title visually-hidden">Catalog</h2>
-
-        {<GenreList
-          activeGenre={genre}
-          onChangeGenre={onChangeGenre}
-        />}
-
-        {<MoviesList films={films}/>}
-
-        <div className="catalog__more">
-          <button className="catalog__button" type="button">Show more</button>
-        </div>
-      </section>
+      <Catalog/>
 
       <footer className="page-footer">
         <div className="logo">
@@ -111,36 +88,6 @@ Main.propTypes = {
     poster: PropTypes.string.isRequired,
     backgroundPicture: PropTypes.string.isRequired,
   }).isRequired,
-  films: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    releaseDate: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    description: PropTypes.string.isRequired,
-    picture: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    backgroundPicture: PropTypes.string.isRequired,
-    rate: PropTypes.number.isRequired,
-    voteCount: PropTypes.number.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-    runTime: PropTypes.number.isRequired,
-    videoSrc: PropTypes.string.isRequired,
-  })).isRequired,
-  genre: PropTypes.string.isRequired,
-  onChangeGenre: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  genre: state.genre,
-  films: state.films,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onChangeGenre(genre) {
-    dispatch(ActionCreator.changeGenre(genre));
-    dispatch(ActionCreator.getFilmsByGenre(genre));
-  },
-});
-
-export {Main};
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default Main;
