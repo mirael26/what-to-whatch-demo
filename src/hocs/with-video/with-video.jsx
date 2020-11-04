@@ -35,8 +35,6 @@ const withVideo = (Component) => {
     }
 
     render() {
-      const {isLoading} = this.state;
-
       return (
         <Component
           {...this.props}
