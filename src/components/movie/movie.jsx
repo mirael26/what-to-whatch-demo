@@ -1,37 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
-import {MovieViewTypes} from "../../const";
-import {makeFirstUpperCase} from "../../utils";
 import MoviesList from "../movies-list/movies-list";
-import MovieOverview from "../movie-overview/movie-overview";
-import MovieDetails from "../movie-details/movie-details";
-import MovieReviews from "../movie-reviews/movie-reviews";
+import MovieInfo from "../movie-info/movie-info";
+import withViewType from "../../hocs/with-view-type/with-view-type";
 
+const MovieInfoWithViewType = withViewType(MovieInfo);
 
 const Movie = (props) => {
   const {
     films,
     reviews,
-    viewType,
-    onViewNavClick,
   } = props;
 
   const currentFilm = films[1];
   const currentReviews = reviews[1].reviews;
-
-  let movieComponent;
-  switch (viewType) {
-    case MovieViewTypes.DETAILS:
-      movieComponent = <MovieDetails film={currentFilm} />;
-      break;
-    case MovieViewTypes.REVIEWS:
-      movieComponent = <MovieReviews reviews={currentReviews} />;
-      break;
-    default:
-      movieComponent = <MovieOverview film={currentFilm} />;
-      break;
-  }
 
   const similarFilms = films
     .filter((film) => {
@@ -96,19 +79,10 @@ const Movie = (props) => {
             <img src={currentFilm.poster} alt={currentFilm.title} width="218" height="327" />
           </div>
 
-          <div className="movie-card__desc">
-            <nav className="movie-nav movie-card__nav">
-              <ul className="movie-nav__list" onClick={onViewNavClick}>
-                {Object.values(MovieViewTypes).map((type, i) =>
-                  <li className={`movie-nav__item${viewType === type ? ` movie-nav__item--active` : ``}`} key={`${i}-${type}`}>
-                    <a href="#" className="movie-nav__link" id={type}>{makeFirstUpperCase(type)}</a>
-                  </li>
-                )}
-              </ul>
-            </nav>
-
-            {movieComponent}
-          </div>
+          <MovieInfoWithViewType
+            film={currentFilm}
+            reviews={currentReviews}
+          />
         </div>
       </div>
     </section>
@@ -162,8 +136,6 @@ Movie.propTypes = {
       date: PropTypes.string.isRequired,
     })).isRequired,
   })).isRequired,
-  viewType: PropTypes.string.isRequired,
-  onViewNavClick: PropTypes.func.isRequired,
 };
 
 export default Movie;

@@ -1,33 +1,24 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import SmallMovieCard from "../small-movie-card/small-movie-card";
 import withVideoPreview from "../../hocs/with-video-preview/with-video-preview";
 
 const SmallMovieCardWrapped = withVideoPreview(SmallMovieCard);
 
-class MoviesList extends PureComponent {
-  constructor(props) {
-    super(props);
-
-  }
-
-  render() {
-    const {films} = this.props;
-
-    return (
-      <div className="catalog__movies-list">
-        {
-          films.map((film, i) =>
-            <SmallMovieCardWrapped
-              key={`${i}-${film.title}`}
-              film={film}
-            />
-          )
-        }
-      </div>
-    );
-  }
-}
+const MoviesList = ({films}) => {
+  return (
+    <div className="catalog__movies-list">
+      {
+        films.map((film, i) =>
+          <SmallMovieCardWrapped
+            key={`${i}-${film.title}`}
+            film={film}
+          />
+        )
+      }
+    </div>
+  );
+};
 
 MoviesList.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
