@@ -11,4 +11,9 @@ const makeFirstUpperCase = (string) => {
   return string[0].toUpperCase() + string.slice(1);
 };
 
-export {formatRunTime, makeFirstUpperCase};
+const extend = (a, b) => {
+  return Object.assign({}, a, b);
+};
+
+
+export {formatRunTime, makeFirstUpperCase, extend};

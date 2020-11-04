@@ -42,7 +42,7 @@ export default class VideoPlayer extends PureComponent {
         <div className="small-movie-card__image" onMouseOver={onVideoMouseOver} onMouseOut={onVideoMouseOut}>
           <video width="280" height="175"
             ref={this._videoRef}
-            muted={true}
+            muted
           />
         </div>
       </Fragment>
@@ -51,6 +51,10 @@ export default class VideoPlayer extends PureComponent {
 
   componentDidUpdate() {
     const video = this._videoRef.current;
+    if (video.autoPlay === this.props.isPlaying) {
+      return;
+    }
+
     const playVideo = () => video.play();
 
     if (this.props.isPlaying) {

@@ -18,7 +18,6 @@ const App = (props) => {
         <Route exact path="/">
           <Main
             promoFilm={promoFilm}
-            films={films}
           />
         </Route>
         <Route path="/login">

@@ -1,7 +1,9 @@
+import {GenreTypes} from "../const";
+
 export default [
   {
     title: `The Grand Budapest Hotel`,
-    genre: `Drama`,
+    genre: GenreTypes.DRAMAS,
     releaseDate: `2014`,
     description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.
 
@@ -14,11 +16,11 @@ export default [
     director: `Wes Andreson`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`, `Tony Revoloru`, `Tilda Swinton`, `Tom Wilkinson`, `Owen Wilkinson`, `Adrien Brody`, `Ralph Fiennes`, `Jeff Goldblum`],
     runTime: 99,
-    videoSrc: `video/The Grand Budapest Hotel Official Red Band Trailer (2014) HD.mp4`
+    videoSrc: `video/The_Grand_Budapest_Hotel.mp4`
   },
   {
     title: `Aviator`,
-    genre: `Drama`,
+    genre: GenreTypes.DRAMAS,
     releaseDate: `2004`,
     description: `A biopic depicting the early years of legendary Director and aviator Howard Hughes' career from the late 1920s to the mid 1940s.`,
     picture: `img/aviator.jpg`,
@@ -29,11 +31,11 @@ export default [
     director: `Martin Scorsese`,
     starring: [`Leonardo DiCaprio`, `Cate Blanchett`, `John C. Reilly`, `Kate Beckinsale`, `Alec Baldwin`, `Alan Alda`, `Ian Holm`, `Danny Huston`],
     runTime: 163,
-    videoSrc: `video/The Grand Budapest Hotel Official Red Band Trailer (2014) HD.mp4`
+    videoSrc: `video/The_Grand_Budapest_Hotel.mp4`
   },
   {
     title: `Bohemian Rhapsody`,
-    genre: `Drama`,
+    genre: GenreTypes.DRAMAS,
     releaseDate: `2018`,
     description: `The story of the legendary British rock band Queen and lead singer Freddie Mercury, leading up to their famous performance at music festival Live Aid (1985).`,
     picture: `img/bohemian-rhapsody.jpg`,
@@ -44,11 +46,11 @@ export default [
     director: `Bryan Singer`,
     starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`, `Ben Hardy`, `Joe Mazzello`, `Aidan Gillen`, `Allen Leech`],
     runTime: 134,
-    videoSrc: `video/The Grand Budapest Hotel Official Red Band Trailer (2014) HD.mp4`
+    videoSrc: `video/The_Grand_Budapest_Hotel.mp4`
   },
   {
     title: `The Darjeeling Limited`,
-    genre: `Comedy`,
+    genre: GenreTypes.COMEDIES,
     releaseDate: `2007`,
     description: `A year after their father's funeral, three brothers travel across India by train in an attempt to bond with each other.`,
     picture: `img/dardjeeling-limited.jpg`,
@@ -59,11 +61,11 @@ export default [
     director: `Wes Anderson`,
     starring: [`Owen Wilson`, `Adrien Brody`, `Jason Schwartzman`, `Amara Karan`, `Wallace Wolodarsky`, `Waris Ahluwalia`],
     runTime: 92,
-    videoSrc: `video/The Grand Budapest Hotel Official Red Band Trailer (2014) HD.mp4`
+    videoSrc: `video/The_Grand_Budapest_Hotel.mp4`
   },
   {
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
-    genre: `Fantasy`,
+    genre: GenreTypes.DRAMAS,
     releaseDate: `2018`,
     description: `The second installment of the "Fantastic Beasts" series featuring the adventures of Magizoologist Newt Scamander.`,
     picture: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -74,11 +76,11 @@ export default [
     director: `David Yates`,
     starring: [`Eddie Redmayne`, `Katherine Waterston`, `Dan Fogler`, `Alison Sudol`, `Ezra Miller`, `Zoë Kravitz`, `Callum Turner`, `Claudia Kim`, `William Nadylam`, `Jude Law`, `Johnny Depp`],
     runTime: 134,
-    videoSrc: `video/The Grand Budapest Hotel Official Red Band Trailer (2014) HD.mp4`
+    videoSrc: `video/The_Grand_Budapest_Hotel.mp4`
   },
   {
     title: `Johnny English`,
-    genre: `Comedy`,
+    genre: GenreTypes.COMEDIES,
     releaseDate: `2003`,
     description: `After a sudden attack on MI5, Johnny English, Britain's most confident, yet unintelligent spy, becomes Britain's only spy.`,
     picture: `img/johnny-english.jpg`,
@@ -89,11 +91,11 @@ export default [
     director: `Peter Howitt`,
     starring: [`Rowan Atkinson`, `Natalie Imbruglia`, `Ben Miller`, `John Malkovich`],
     runTime: 84,
-    videoSrc: `video/The Grand Budapest Hotel Official Red Band Trailer (2014) HD.mp4`
+    videoSrc: `video/The_Grand_Budapest_Hotel.mp4`
   },
   {
     title: `Macbeth`,
-    genre: `Drama`,
+    genre: GenreTypes.DRAMAS,
     releaseDate: `2015`,
     description: `Macbeth, the Thane of Glamis, receives a prophecy from a trio of witches that one day he will become King of Scotland. Consumed by ambition and spurred to action by his wife, Macbeth murders his king and takes the throne for himself.`,
     picture: `img/macbeth.jpg`,
@@ -104,11 +106,11 @@ export default [
     director: `Justin Kurzel`,
     starring: [`Michael Fassbender`, `Marion Cotillard`, `Paddy Considine`, `Sean Harris`, `Jack Reynor`, `Elizabeth Debicki`, `David Thewlis`],
     runTime: 113,
-    videoSrc: `video/The Grand Budapest Hotel Official Red Band Trailer (2014) HD.mp4`
+    videoSrc: `video/The_Grand_Budapest_Hotel.mp4`
   },
   {
     title: `Orlando`,
-    genre: `Fantasy`,
+    genre: GenreTypes.DOCUMENTARY,
     releaseDate: `1992`,
     description: `After Queen Elizabeth I commands him not to grow old, a young nobleman struggles with love and his place in the world.`,
     picture: `img/orlando.jpg`,
@@ -119,6 +121,6 @@ export default [
     director: `Sally Potter`,
     starring: [`Tilda Swinton`, `Billy Zane`, `Lothaire Bluteau`, `John Wood`, `Charlotte Valandrey`, `Heathcote Williams`, `Quentin Crisp`],
     runTime: 94,
-    videoSrc: `video/The Grand Budapest Hotel Official Red Band Trailer (2014) HD.mp4`
+    videoSrc: `video/The_Grand_Budapest_Hotel.mp4`
   },
 ];
