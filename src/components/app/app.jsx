@@ -8,7 +8,6 @@ import Movie from "../movie/movie";
 import Player from "../player/player";
 import AddReview from "../add-review/add-review";
 
-
 const App = (props) => {
   const {promoFilm, films, reviews} = props;
 
