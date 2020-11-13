@@ -46,7 +46,7 @@ App.propTypes = {
     releaseDate: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     poster: PropTypes.string.isRequired,
     backgroundPicture: PropTypes.string.isRequired,
-    videoSrc: PropTypes.string.isRequired,
+    previewVideoSrc: PropTypes.string.isRequired,
   }).isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
@@ -61,7 +61,7 @@ App.propTypes = {
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string).isRequired,
     runTime: PropTypes.number.isRequired,
-    videoSrc: PropTypes.string.isRequired,
+    previewVideoSrc: PropTypes.string.isRequired,
   })).isRequired,
   reviews: PropTypes.arrayOf(PropTypes.shape({
     film: PropTypes.string.isRequired,
