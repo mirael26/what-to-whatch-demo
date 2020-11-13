@@ -18,7 +18,7 @@ npm i react@16.12 -E
 * + react-router-dom@5.1
 * + redux@4
 * + redux-thunk@2.3
-* reselect@4
+* + reselect@4
 
 ## devDependencies
 

@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
+import {getFilmsByGenre} from "../../store/selectors";
 import GenreList from "../genre-list/genre-list";
 import MoviesList from "../movies-list/movies-list";
 
@@ -52,13 +53,12 @@ Catalog.propTypes = {
 
 const mapStateToProps = (state) => ({
   genre: state.genre,
-  filmsByGenre: state.filmsByGenre,
+  filmsByGenre: getFilmsByGenre(state.films, state.genre),
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onChangeGenre(genre) {
     dispatch(ActionCreator.changeGenre(genre));
-    dispatch(ActionCreator.getFilmsByGenre(genre));
   },
 });
 
