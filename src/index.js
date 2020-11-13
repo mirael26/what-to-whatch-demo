@@ -9,6 +9,7 @@ import {createAPI} from "./services/api";
 import {ActionCreator} from "./store/action";
 import {fetchFilmsList} from "./store/api-actions";
 import {AuthorizationStatus} from "./const";
+import rootReducer from "./store/reducers/root-reducer";
 import App from "./components/app/app";
 import films from "./mocks/films";
 import reviews from "./mocks/reviews";
@@ -20,7 +21,7 @@ const api = createAPI(
 const promoFilm = films[0];
 
 const store = createStore(
-    reducer,
+    rootReducer,
     composeWithDevTools(
         applyMiddleware(thunk.withExtraArgument(api))
     )
