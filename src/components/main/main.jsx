@@ -1,10 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import MoviesList from "../movies-list/movies-list";
+import Catalog from "../catalog/catalog";
 
-
-const Main = (props) => {
-  const {promoFilm, films} = props;
+const Main = ({promoFilm}) => {
 
   return (<React.Fragment>
     <section className="movie-card">
@@ -63,48 +61,7 @@ const Main = (props) => {
     </section>
 
     <div className="page-content">
-      <section className="catalog">
-        <h2 className="catalog__title visually-hidden">Catalog</h2>
-
-        <ul className="catalog__genres-list">
-          <li className="catalog__genres-item catalog__genres-item--active">
-            <a href="#" className="catalog__genres-link">All genres</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Comedies</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Crime</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Documentary</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Dramas</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Horror</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Kids & Family</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Romance</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Sci-Fi</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Thrillers</a>
-          </li>
-        </ul>
-
-        {<MoviesList films={films}/>}
-
-        <div className="catalog__more">
-          <button className="catalog__button" type="button">Show more</button>
-        </div>
-      </section>
+      <Catalog/>
 
       <footer className="page-footer">
         <div className="logo">
@@ -131,21 +88,6 @@ Main.propTypes = {
     poster: PropTypes.string.isRequired,
     backgroundPicture: PropTypes.string.isRequired,
   }).isRequired,
-  films: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    releaseDate: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    description: PropTypes.string.isRequired,
-    picture: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    backgroundPicture: PropTypes.string.isRequired,
-    rate: PropTypes.number.isRequired,
-    voteCount: PropTypes.number.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-    runTime: PropTypes.number.isRequired,
-    videoSrc: PropTypes.string.isRequired,
-  })).isRequired,
 };
 
 export default Main;
