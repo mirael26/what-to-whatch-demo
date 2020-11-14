@@ -125,7 +125,7 @@ Movie.propTypes = {
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string).isRequired,
     runTime: PropTypes.number.isRequired,
-    videoSrc: PropTypes.string.isRequired,
+    previewVideoSrc: PropTypes.string.isRequired,
   })).isRequired,
   reviews: PropTypes.arrayOf(PropTypes.shape({
     film: PropTypes.string.isRequired,

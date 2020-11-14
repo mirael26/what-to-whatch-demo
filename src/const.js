@@ -17,4 +17,13 @@ const GenreTypes = {
   THRILLERS: `Thrillers`
 };
 
-export {MovieViewTypes, GenreTypes};
+const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
+};
+
+const APIRoute = {
+  FILMS: `/films`,
+};
+
+export {MovieViewTypes, GenreTypes, AuthorizationStatus, APIRoute};

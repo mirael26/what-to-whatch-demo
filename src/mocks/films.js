@@ -16,7 +16,7 @@ export default [
     director: `Wes Andreson`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`, `Tony Revoloru`, `Tilda Swinton`, `Tom Wilkinson`, `Owen Wilkinson`, `Adrien Brody`, `Ralph Fiennes`, `Jeff Goldblum`],
     runTime: 99,
-    videoSrc: `video/The_Grand_Budapest_Hotel.mp4`
+    previewVideoSrc: `video/The_Grand_Budapest_Hotel.mp4`
   },
   {
     title: `Aviator`,
@@ -31,7 +31,7 @@ export default [
     director: `Martin Scorsese`,
     starring: [`Leonardo DiCaprio`, `Cate Blanchett`, `John C. Reilly`, `Kate Beckinsale`, `Alec Baldwin`, `Alan Alda`, `Ian Holm`, `Danny Huston`],
     runTime: 163,
-    videoSrc: `video/The_Grand_Budapest_Hotel.mp4`
+    previewVideoSrc: `video/The_Grand_Budapest_Hotel.mp4`
   },
   {
     title: `Bohemian Rhapsody`,
@@ -46,7 +46,7 @@ export default [
     director: `Bryan Singer`,
     starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`, `Ben Hardy`, `Joe Mazzello`, `Aidan Gillen`, `Allen Leech`],
     runTime: 134,
-    videoSrc: `video/The_Grand_Budapest_Hotel.mp4`
+    previewVideoSrc: `video/The_Grand_Budapest_Hotel.mp4`
   },
   {
     title: `The Darjeeling Limited`,
@@ -61,7 +61,7 @@ export default [
     director: `Wes Anderson`,
     starring: [`Owen Wilson`, `Adrien Brody`, `Jason Schwartzman`, `Amara Karan`, `Wallace Wolodarsky`, `Waris Ahluwalia`],
     runTime: 92,
-    videoSrc: `video/The_Grand_Budapest_Hotel.mp4`
+    previewVideoSrc: `video/The_Grand_Budapest_Hotel.mp4`
   },
   {
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
@@ -76,7 +76,7 @@ export default [
     director: `David Yates`,
     starring: [`Eddie Redmayne`, `Katherine Waterston`, `Dan Fogler`, `Alison Sudol`, `Ezra Miller`, `Zoë Kravitz`, `Callum Turner`, `Claudia Kim`, `William Nadylam`, `Jude Law`, `Johnny Depp`],
     runTime: 134,
-    videoSrc: `video/The_Grand_Budapest_Hotel.mp4`
+    previewVideoSrc: `video/The_Grand_Budapest_Hotel.mp4`
   },
   {
     title: `Johnny English`,
@@ -91,7 +91,7 @@ export default [
     director: `Peter Howitt`,
     starring: [`Rowan Atkinson`, `Natalie Imbruglia`, `Ben Miller`, `John Malkovich`],
     runTime: 84,
-    videoSrc: `video/The_Grand_Budapest_Hotel.mp4`
+    previewVideoSrc: `video/The_Grand_Budapest_Hotel.mp4`
   },
   {
     title: `Macbeth`,
@@ -106,7 +106,7 @@ export default [
     director: `Justin Kurzel`,
     starring: [`Michael Fassbender`, `Marion Cotillard`, `Paddy Considine`, `Sean Harris`, `Jack Reynor`, `Elizabeth Debicki`, `David Thewlis`],
     runTime: 113,
-    videoSrc: `video/The_Grand_Budapest_Hotel.mp4`
+    previewVideoSrc: `video/The_Grand_Budapest_Hotel.mp4`
   },
   {
     title: `Orlando`,
@@ -121,6 +121,6 @@ export default [
     director: `Sally Potter`,
     starring: [`Tilda Swinton`, `Billy Zane`, `Lothaire Bluteau`, `John Wood`, `Charlotte Valandrey`, `Heathcote Williams`, `Quentin Crisp`],
     runTime: 94,
-    videoSrc: `video/The_Grand_Budapest_Hotel.mp4`
+    previewVideoSrc: `video/The_Grand_Budapest_Hotel.mp4`
   },
 ];

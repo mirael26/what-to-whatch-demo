@@ -17,10 +17,10 @@ const withVideo = (Component) => {
     }
 
     componentDidMount() {
-      const {videoSrc, poster} = this.props;
+      const {previewVideoSrc, poster} = this.props;
       const video = this._videoRef.current;
 
-      video.src = videoSrc;
+      video.src = previewVideoSrc;
       video.poster = poster;
 
       video.oncanplaythrough = () => this.setState({
@@ -67,7 +67,7 @@ const withVideo = (Component) => {
   WithVideo.propTypes = {
     isPlaying: PropTypes.bool.isRequired,
     poster: PropTypes.string.isRequired,
-    videoSrc: PropTypes.string.isRequired,
+    previewVideoSrc: PropTypes.string.isRequired,
     onVideoMouseOver: PropTypes.func.isRequired,
     onVideoMouseOut: PropTypes.func.isRequired,
   };

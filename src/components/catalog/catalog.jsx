@@ -2,13 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
+import {getFilmsByGenre} from "../../store/selectors";
 import GenreList from "../genre-list/genre-list";
 import MoviesList from "../movies-list/movies-list";
 
 
 const Catalog = (props) => {
   const {
-    films,
+    filmsByGenre,
     genre,
     onChangeGenre
   } = props;
@@ -16,22 +17,22 @@ const Catalog = (props) => {
     <section className="catalog">
       <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-      {<GenreList
+      <GenreList
         activeGenre={genre}
         onChangeGenre={onChangeGenre}
-      />}
+      />
 
-      {<MoviesList films={films}/>}
+      <MoviesList films={filmsByGenre}/>
 
       <div className="catalog__more">
         <button className="catalog__button" type="button">Show more</button>
       </div>
     </section>
   );
-}
+};
 
 Catalog.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.shape({
+  filmsByGenre: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     releaseDate: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
@@ -44,21 +45,20 @@ Catalog.propTypes = {
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string).isRequired,
     runTime: PropTypes.number.isRequired,
-    videoSrc: PropTypes.string.isRequired,
+    previewVideoSrc: PropTypes.string.isRequired,
   })).isRequired,
   genre: PropTypes.string.isRequired,
   onChangeGenre: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  genre: state.genre,
-  films: state.films,
+const mapStateToProps = ({DATA, STATE}) => ({
+  genre: STATE.genre,
+  filmsByGenre: getFilmsByGenre(DATA.films, STATE.genre),
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onChangeGenre(genre) {
     dispatch(ActionCreator.changeGenre(genre));
-    dispatch(ActionCreator.getFilmsByGenre(genre));
   },
 });
 

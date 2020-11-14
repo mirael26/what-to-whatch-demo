@@ -34,10 +34,10 @@ const withVideoPreview = (Component) => {
 
       return <Component
         {...this.props}
-        renderPlayer={(videoSrc, poster) => {
+        renderPlayer={(previewVideoSrc, poster) => {
           return (
             <VideoPlayerWithVideo
-              videoSrc={videoSrc}
+              previewVideoSrc={previewVideoSrc}
               poster={poster}
               isPlaying={isPlaying}
               onVideoMouseOver={this._onVideoMouseOver}
