@@ -1,7 +1,7 @@
 export const ActionType = {
   CHANGE_GENRE: `CHANGE_GENRE`,
   LOAD_FILMS: `LOAD_FILMS`,
-  REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`,
+  UPDATE_AUTHORIZATION: `UPDATE_AUTHORIZATION`,
 };
 
 export const ActionCreator = {
@@ -13,8 +13,8 @@ export const ActionCreator = {
     type: ActionType.LOAD_FILMS,
     payload: films,
   }),
-  requireAuthorization: (status) => ({
-    type: ActionType.REQUIRE_AUTHORIZATION,
+  updateAuthorization: (status) => ({
+    type: ActionType.UPDATE_AUTHORIZATION,
     payload: status,
   }),
 };

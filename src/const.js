@@ -24,6 +24,7 @@ const AuthorizationStatus = {
 
 const APIRoute = {
   FILMS: `/films`,
+  LOGIN: `/login`,
 };
 
 export {MovieViewTypes, GenreTypes, AuthorizationStatus, APIRoute};
