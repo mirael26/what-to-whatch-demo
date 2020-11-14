@@ -10,7 +10,7 @@ const SmallMovieCard = (props) => {
     <article className="small-movie-card catalog__movies-card">
       {renderPlayer(previewVideoSrc, picture)}
       <h3 className="small-movie-card__title">
-        <Link className="small-movie-card__link" to="/films/1">{title}</Link>
+        <Link to="/films/1" className="small-movie-card__link">{title}</Link>
       </h3>
     </article>
   );

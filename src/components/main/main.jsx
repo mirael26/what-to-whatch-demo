@@ -1,8 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 import Catalog from "../catalog/catalog";
+import UserBlock from "../user-block/user-block";
+import {isAuthorized} from "../../utils";
 
-const Main = ({promoFilm}) => {
+const Main = ({promoFilm, authorizationStatus}) => {
 
   return (<React.Fragment>
     <section className="movie-card">
@@ -21,11 +24,7 @@ const Main = ({promoFilm}) => {
           </a>
         </div>
 
-        <div className="user-block">
-          <div className="user-block__avatar">
-            <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-          </div>
-        </div>
+        {<UserBlock isAuthorized={isAuthorized(authorizationStatus)}/>}
       </header>
 
       <div className="movie-card__wrap">
@@ -88,6 +87,12 @@ Main.propTypes = {
     poster: PropTypes.string.isRequired,
     backgroundPicture: PropTypes.string.isRequired,
   }).isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
 };
 
-export default Main;
+const mapStateToProps = ({USER}) => ({
+  authorizationStatus: USER.authorizationStatus,
+});
+
+export {Main};
+export default connect(mapStateToProps, null)(Main);
