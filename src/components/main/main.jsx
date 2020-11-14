@@ -5,7 +5,7 @@ import Catalog from "../catalog/catalog";
 import UserBlock from "../user-block/user-block";
 import {isAuthorized} from "../../utils";
 
-const Main = ({promoFilm, authorizationStatus}) => {
+const Main = ({promoFilm, authorizationStatus, userAvatarUrl}) => {
 
   return (<React.Fragment>
     <section className="movie-card">
@@ -24,7 +24,7 @@ const Main = ({promoFilm, authorizationStatus}) => {
           </a>
         </div>
 
-        {<UserBlock isAuthorized={isAuthorized(authorizationStatus)}/>}
+        {<UserBlock isAuthorized={isAuthorized(authorizationStatus)} avatarUrl={userAvatarUrl}/>}
       </header>
 
       <div className="movie-card__wrap">
@@ -88,10 +88,12 @@ Main.propTypes = {
     backgroundPicture: PropTypes.string.isRequired,
   }).isRequired,
   authorizationStatus: PropTypes.string.isRequired,
+  userAvatarUrl: PropTypes.string,
 };
 
 const mapStateToProps = ({USER}) => ({
   authorizationStatus: USER.authorizationStatus,
+  userAvatarUrl: USER.authorizationInfo.avatar_url,
 });
 
 export {Main};

@@ -8,6 +8,7 @@ import {createAPI} from "./services/api";
 import {ActionCreator} from "./store/action";
 import {fetchFilmsList, checkAuth} from "./store/api-actions";
 import {AuthorizationStatus} from "./const";
+import {redirect} from "./store/middlewares/redirect";
 import rootReducer from "./store/reducers/root-reducer";
 import App from "./components/app/app";
 import films from "./mocks/films";
@@ -22,7 +23,8 @@ const promoFilm = films[0];
 const store = createStore(
     rootReducer,
     composeWithDevTools(
-        applyMiddleware(thunk.withExtraArgument(api))
+        applyMiddleware(thunk.withExtraArgument(api)),
+        applyMiddleware(redirect)
     )
 );
 
