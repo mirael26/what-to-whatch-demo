@@ -7,6 +7,7 @@ import MyList from "../my-list/my-list";
 import Movie from "../movie/movie";
 import Player from "../player/player";
 import AddReview from "../add-review/add-review";
+import {PrivateRoute} from "../private-route/private-route";
 
 const App = (props) => {
   const {promoFilm, films, reviews} = props;
@@ -22,9 +23,11 @@ const App = (props) => {
         <Route path="/login">
           <SignIn />
         </Route>
-        <Route exact path="/mylist">
-          <MyList films={films}/>
-        </Route>
+        <PrivateRoute
+          exact
+          path={`/mylist`}
+          render={() => <MyList films={films} />}
+        />
         <Route exact path="/films/:id">
           <Movie films={films} reviews={reviews} />
         </Route>
