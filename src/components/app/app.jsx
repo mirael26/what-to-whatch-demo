@@ -1,18 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {Switch, Route, Router as BrowserRouter} from "react-router-dom";
+import browserHistory from "../../browser-history";
 import Main from "../main/main";
 import SignIn from "../sign-in/sign-in";
 import MyList from "../my-list/my-list";
 import Movie from "../movie/movie";
 import Player from "../player/player";
 import AddReview from "../add-review/add-review";
+import {PrivateRoute} from "../private-route/private-route";
 
 const App = (props) => {
   const {promoFilm, films, reviews} = props;
 
   return (
-    <BrowserRouter>
+    <BrowserRouter history={browserHistory}>
       <Switch>
         <Route exact path="/">
           <Main
@@ -22,9 +24,11 @@ const App = (props) => {
         <Route path="/login">
           <SignIn />
         </Route>
-        <Route exact path="/mylist">
-          <MyList films={films}/>
-        </Route>
+        <PrivateRoute
+          exact
+          path={`/mylist`}
+          render={() => <MyList films={films} />}
+        />
         <Route exact path="/films/:id">
           <Movie films={films} reviews={reviews} />
         </Route>

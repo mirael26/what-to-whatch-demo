@@ -10,7 +10,7 @@ npm i react@16.12 -E
 ## dependencies
 
 * + axios@0.19
-* history@4.10
+* + history@4.10
 * + prop-types@15.7
 * + react@16.12
 * + react-dom@16.12
