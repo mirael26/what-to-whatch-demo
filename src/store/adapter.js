@@ -20,18 +20,18 @@ const adaptToClient = (film) => {
       }
   );
 
-  delete film.name;
-  delete film.released;
-  delete film.preview_image;
-  delete film.poster_image;
-  delete film.background_image;
-  delete film.background_color;
-  delete film.rating;
-  delete film.scores_count;
-  delete film.run_time;
-  delete film.video_link;
-  delete film.preview_video_link;
-  delete film.is_favorite;
+  delete adaptedFilm.name;
+  delete adaptedFilm.released;
+  delete adaptedFilm.preview_image;
+  delete adaptedFilm.poster_image;
+  delete adaptedFilm.background_image;
+  delete adaptedFilm.background_color;
+  delete adaptedFilm.rating;
+  delete adaptedFilm.scores_count;
+  delete adaptedFilm.run_time;
+  delete adaptedFilm.video_link;
+  delete adaptedFilm.preview_video_link;
+  delete adaptedFilm.is_favorite;
 
   return adaptedFilm;
 };
@@ -40,8 +40,6 @@ const adaptToClient = (film) => {
 
 const adaptGenre = (genre) => {
   switch (genre) {
-    case `Action`:
-      return ``;
     case `Drama`:
       return `Dramas`;
     case `Comedy`:
