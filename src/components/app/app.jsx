@@ -29,9 +29,11 @@ const App = (props) => {
           path={`/mylist`}
           render={() => <MyList films={films} />}
         />
-        <Route exact path="/films/:id">
-          <Movie films={films} reviews={reviews} />
-        </Route>
+        <Route
+          exact
+          path="/films/:id"
+          render={(routerProps) => <Movie {...routerProps} films={films} reviews={reviews} />}
+        />
         <Route exact path="/films/:id/review">
           <AddReview film={films[1]} />
         </Route>

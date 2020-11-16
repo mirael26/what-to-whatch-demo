@@ -1,6 +1,6 @@
 import {extend} from "../utils";
 
-const adaptToClient = (film) => {
+const adaptFilmToClient = (film) => {
   const adaptedFilm = extend(
       film,
       {
@@ -51,4 +51,4 @@ const adaptGenre = (genre) => {
   }
 };
 
-export {adaptToClient};
+export {adaptFilmToClient};

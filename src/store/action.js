@@ -1,6 +1,7 @@
 export const ActionType = {
   CHANGE_GENRE: `CHANGE_GENRE`,
   LOAD_FILMS: `LOAD_FILMS`,
+  LOAD_CURRENT_FILM: `LOAD_CURRENT_FILM`,
   LOAD_USER_INFO: `LOAD_USER_INFO`,
   UPDATE_AUTHORIZATION: `UPDATE_AUTHORIZATION`,
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
@@ -14,6 +15,10 @@ export const ActionCreator = {
   loadFilms: (films) => ({
     type: ActionType.LOAD_FILMS,
     payload: films,
+  }),
+  loadCurrentFilm: (currentFilm) => ({
+    type: ActionType.LOAD_CURRENT_FILM,
+    payload: currentFilm,
   }),
   loadUserInfo: (info) => ({
     type: ActionType.LOAD_USER_INFO,

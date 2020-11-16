@@ -4,6 +4,7 @@ import {ActionType} from "../../../store/action";
 
 const initialState = {
   films: [],
+  currentFilm: {},
 };
 
 const dataReducer = (state = initialState, action) => {
@@ -11,6 +12,10 @@ const dataReducer = (state = initialState, action) => {
     case ActionType.LOAD_FILMS:
       return extend(state, {
         films: action.payload,
+      });
+    case ActionType.LOAD_CURRENT_FILM:
+      return extend(state, {
+        currentFilm: action.payload,
       });
     default:
       return state;

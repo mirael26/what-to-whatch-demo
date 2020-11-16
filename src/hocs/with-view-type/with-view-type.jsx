@@ -27,7 +27,7 @@ const withViewType = (Component) => {
       return (
         <Component
           {...this.props}
-          viewType={this.state.viewType}
+          viewType={viewType}
           onViewNavClick={this.onViewNavClick}
         />
       );
