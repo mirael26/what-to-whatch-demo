@@ -2,7 +2,10 @@ import React, {PureComponent} from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
+
 import {fetchCurrentFilm} from "../../store/api-actions";
+import {AuthorizationStatus} from "../../const";
+
 import MoviesList from "../movies-list/movies-list";
 import MovieInfo from "../movie-info/movie-info";
 import withViewType from "../../hocs/with-view-type/with-view-type";
@@ -28,12 +31,14 @@ class Movie extends PureComponent {
     const {
       films,
       currentFilm,
+      authorizationStatus,
     } = this.props;
 
     const similarFilms = films
       .filter((film) => {
         return (film.genre === currentFilm.genre) && film.id !== currentFilm.id;
       });
+    const isAuthorized = authorizationStatus === AuthorizationStatus.AUTH;
 
     return Object.keys(currentFilm).length === 0 ? null : (<React.Fragment>
       <section className="movie-card movie-card--full">
@@ -81,7 +86,7 @@ class Movie extends PureComponent {
                   </svg>
                   <span>My list</span>
                 </button>
-                <Link to="/films/1/review" className="btn movie-card__button">Add review</Link>
+                {isAuthorized ? <Link to="/films/1/review" className="btn movie-card__button">Add review</Link> : ``}
               </div>
             </div>
           </div>
@@ -161,11 +166,13 @@ Movie.propTypes = {
   }),
   match: PropTypes.object.isRequired,
   loadCurrentFilm: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = ({DATA}) => ({
+const mapStateToProps = ({DATA, USER}) => ({
   films: DATA.films,
   currentFilm: DATA.currentFilm,
+  authorizationStatus: USER.authorizationStatus,
 });
 
 const mapDispatchToProps = (dispatch) => ({
