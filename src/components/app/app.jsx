@@ -34,9 +34,11 @@ const App = (props) => {
           path="/films/:id"
           render={(routerProps) => <Movie {...routerProps} />}
         />
-        <Route exact path="/films/:id/review">
-          <AddReview film={films[1]} />
-        </Route>
+        <PrivateRoute
+          exact
+          path={`/films/:id/review`}
+          render={(routerProps) => <AddReview {...routerProps} />}
+        />
         <Route exact path="/player/:id">
           <Player />
         </Route>

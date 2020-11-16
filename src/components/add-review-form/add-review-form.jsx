@@ -9,12 +9,13 @@ const AddReviewForm = (props) => {
     reviewText,
     onRateChange,
     onTextChange,
+    isDisabled,
+    handleSubmit,
   } = props;
-
 
   return (
     <div className="add-review">
-      <form action="#" className="add-review__form">
+      <form action="#" className="add-review__form" onSubmit={handleSubmit}>
         <div className="rating">
           <div className="rating__stars">
             {new Array(MAX_RATE).fill().map((element, i) => {
@@ -28,9 +29,18 @@ const AddReviewForm = (props) => {
         </div>
 
         <div className="add-review__text">
-          <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text" onChange={onTextChange} value={reviewText}></textarea>
+          <textarea
+            className="add-review__textarea"
+            name="review-text"
+            id="review-text"
+            placeholder="Review text"
+            minLength="50"
+            maxLength="400"
+            onChange={onTextChange}
+            value={reviewText}
+          ></textarea>
           <div className="add-review__submit">
-            <button className="add-review__btn" type="submit">Post</button>
+            <button className="add-review__btn" type="submit" disabled={isDisabled ? true : false}>Post</button>
           </div>
 
         </div>
@@ -44,6 +54,8 @@ AddReviewForm.propTypes = {
   reviewText: PropTypes.string.isRequired,
   onRateChange: PropTypes.func.isRequired,
   onTextChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  isDisabled: PropTypes.bool.isRequired,
 };
 
 export default AddReviewForm;

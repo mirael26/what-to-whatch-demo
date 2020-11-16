@@ -27,6 +27,22 @@ class Movie extends PureComponent {
     loadCurrentFilm(this.filmId);
   }
 
+  // componentShouldUpdate(prevProps) {
+  //   if (this.props.match !== prevProps.match) {
+  //     return true;
+  //   }
+  //   if (this.props !== prevProps) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
+
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.match !== prevProps.match) {
+  //     this.props.loadCurrentFilm(this.filmId);
+  //   }
+  // }
+
   render() {
     const {
       films,
@@ -86,7 +102,7 @@ class Movie extends PureComponent {
                   </svg>
                   <span>My list</span>
                 </button>
-                {isAuthorized ? <Link to="/films/1/review" className="btn movie-card__button">Add review</Link> : ``}
+                {isAuthorized ? <Link to={`/films/${this.filmId}/review`} className="btn movie-card__button">Add review</Link> : ``}
               </div>
             </div>
           </div>

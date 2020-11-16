@@ -1,62 +1,82 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
+
+import {fetchCurrentFilm} from "../../store/api-actions";
+
 import AddReviewForm from "../add-review-form/add-review-form";
 import withUserReview from "../../hocs/with-user-review/with-user-review";
 
 const AddReviewFormWithUserReview = withUserReview(AddReviewForm);
 
-const AddReview = (props) => {
-  const {film} = props;
+class AddReview extends PureComponent {
+  constructor(props) {
+    super(props);
+  }
 
-  return (
-    <section className="movie-card movie-card--full">
-      <div className="movie-card__header">
-        <div className="movie-card__bg">
-          <img src={film.backgroundPicture} alt={film.title} />
-        </div>
+  componentDidMount() {
+    const {currentFilm, match, loadCurrentFilm} = this.props;
+    const {params: {id}} = match;
+    const filmId = parseInt(id, 10);
 
-        <h1 className="visually-hidden">WTW</h1>
+    if (filmId !== currentFilm.id) {
+      loadCurrentFilm(filmId);
+    }
+  }
 
-        <header className="page-header">
-          <div className="logo">
-            <a href="main.html" className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
+  render() {
+    const {currentFilm} = this.props;
+    return (
+      <section className="movie-card movie-card--full">
+        <div className="movie-card__header">
+          <div className="movie-card__bg">
+            <img src={currentFilm.backgroundPicture} alt={currentFilm.title} />
           </div>
 
-          <nav className="breadcrumbs">
-            <ul className="breadcrumbs__list">
-              <li className="breadcrumbs__item">
-                <a href="movie-page.html" className="breadcrumbs__link">{film.title}</a>
-              </li>
-              <li className="breadcrumbs__item">
-                <a className="breadcrumbs__link">Add review</a>
-              </li>
-            </ul>
-          </nav>
+          <h1 className="visually-hidden">WTW</h1>
 
-          <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+          <header className="page-header">
+            <div className="logo">
+              <a href="main.html" className="logo__link">
+                <span className="logo__letter logo__letter--1">W</span>
+                <span className="logo__letter logo__letter--2">T</span>
+                <span className="logo__letter logo__letter--3">W</span>
+              </a>
             </div>
+
+            <nav className="breadcrumbs">
+              <ul className="breadcrumbs__list">
+                <li className="breadcrumbs__item">
+                  <a href="movie-page.html" className="breadcrumbs__link">{currentFilm.title}</a>
+                </li>
+                <li className="breadcrumbs__item">
+                  <a className="breadcrumbs__link">Add review</a>
+                </li>
+              </ul>
+            </nav>
+
+            <div className="user-block">
+              <div className="user-block__avatar">
+                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+              </div>
+            </div>
+          </header>
+
+          <div className="movie-card__poster movie-card__poster--small">
+            <img src={currentFilm.poster} alt={currentFilm.title} width="218" height="327" />
           </div>
-        </header>
-
-        <div className="movie-card__poster movie-card__poster--small">
-          <img src={film.poster} alt={film.title} width="218" height="327" />
         </div>
-      </div>
 
-      <AddReviewFormWithUserReview />
+        <AddReviewFormWithUserReview />
 
-    </section>
-  );
-};
+      </section>
+    );
+  }
+}
 
 AddReview.propTypes = {
-  film: PropTypes.shape({
+  currentFilm: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     releaseDate: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
@@ -71,6 +91,19 @@ AddReview.propTypes = {
     runTime: PropTypes.number.isRequired,
     previewVideoSrc: PropTypes.string.isRequired,
   }).isRequired,
+  match: PropTypes.object.isRequired,
+  loadCurrentFilm: PropTypes.func.isRequired,
 };
 
-export default AddReview;
+const mapStateToProps = ({DATA}) => ({
+  currentFilm: DATA.currentFilm,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  loadCurrentFilm(id) {
+    dispatch(fetchCurrentFilm(id));
+  }
+});
+
+export {AddReview};
+export default connect(mapStateToProps, mapDispatchToProps)(AddReview);

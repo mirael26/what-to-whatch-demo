@@ -20,6 +20,11 @@ const fetchReviews = (id) => (dispatch, _getState, api) => (
     .then((reviews) => dispatch(ActionCreator.loadReviews(reviews)))
 );
 
+const postReview = (id, {rating, comment}) => (dispatch, _getState, api) => {
+  api.post(`${APIRoute.REVIEWS}/${id}`, {rating, comment})
+    .then(() => dispatch(ActionCreator.redirectToRoute(`/films/${id}`)));
+};
+
 const checkAuth = () => (dispatch, _getState, api) => (
   api.get(APIRoute.LOGIN)
     .then(({data}) => dispatch(ActionCreator.loadUserInfo(data)))
@@ -28,9 +33,9 @@ const checkAuth = () => (dispatch, _getState, api) => (
 );
 
 const login = ({login: email, password}) => (dispatch, _getState, api) => (
-  api.post(`/login`, {email, password})
+  api.post(APIRoute.LOGIN, {email, password})
     .then(() => dispatch(ActionCreator.updateAuthorization(AuthorizationStatus.AUTH)))
     .then(() => dispatch(ActionCreator.redirectToRoute(`/`)))
 );
 
-export {fetchFilmsList, fetchCurrentFilm, fetchReviews, checkAuth, login};
+export {fetchFilmsList, fetchCurrentFilm, fetchReviews, postReview, checkAuth, login};
