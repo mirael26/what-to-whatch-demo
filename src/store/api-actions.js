@@ -1,6 +1,6 @@
 import {ActionCreator} from "./action";
 import {APIRoute, AuthorizationStatus} from "../const";
-import {adaptFilmToClient} from "./adapter";
+import {adaptFilmToClient, adaptReviewToClient} from "./adapter";
 
 const fetchFilmsList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.FILMS)
@@ -12,6 +12,12 @@ const fetchCurrentFilm = (id) => (dispatch, _getState, api) => (
   api.get(`${APIRoute.FILMS}/${id}`)
     .then(({data}) => adaptFilmToClient(data))
     .then((currentFilm) => dispatch(ActionCreator.loadCurrentFilm(currentFilm)))
+);
+
+const fetchReviews = (id) => (dispatch, _getState, api) => (
+  api.get(`${APIRoute.REVIEWS}/${id}`)
+    .then(({data}) => data.map(adaptReviewToClient))
+    .then((reviews) => dispatch(ActionCreator.loadReviews(reviews)))
 );
 
 const checkAuth = () => (dispatch, _getState, api) => (
@@ -27,4 +33,4 @@ const login = ({login: email, password}) => (dispatch, _getState, api) => (
     .then(() => dispatch(ActionCreator.redirectToRoute(`/`)))
 );
 
-export {fetchFilmsList, fetchCurrentFilm, checkAuth, login};
+export {fetchFilmsList, fetchCurrentFilm, fetchReviews, checkAuth, login};

@@ -11,7 +11,7 @@ import AddReview from "../add-review/add-review";
 import {PrivateRoute} from "../private-route/private-route";
 
 const App = (props) => {
-  const {promoFilm, films, reviews} = props;
+  const {promoFilm, films} = props;
 
   return (
     <BrowserRouter history={browserHistory}>
@@ -32,7 +32,7 @@ const App = (props) => {
         <Route
           exact
           path="/films/:id"
-          render={(routerProps) => <Movie {...routerProps} films={films} reviews={reviews} />}
+          render={(routerProps) => <Movie {...routerProps} />}
         />
         <Route exact path="/films/:id/review">
           <AddReview film={films[1]} />
@@ -68,15 +68,6 @@ App.propTypes = {
     starring: PropTypes.arrayOf(PropTypes.string).isRequired,
     runTime: PropTypes.number.isRequired,
     previewVideoSrc: PropTypes.string.isRequired,
-  })).isRequired,
-  reviews: PropTypes.arrayOf(PropTypes.shape({
-    film: PropTypes.string.isRequired,
-    reviews: PropTypes.arrayOf(PropTypes.shape({
-      text: PropTypes.string.isRequired,
-      rate: PropTypes.number.isRequired,
-      author: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
-    })).isRequired,
   })).isRequired,
 };
 

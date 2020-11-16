@@ -13,27 +13,26 @@ class Movie extends PureComponent {
   constructor(props) {
     super(props);
 
+    this.filmId = null;
   }
 
   componentDidMount() {
     const {match, loadCurrentFilm} = this.props;
     const {params: {id}} = match;
-    const filmId = parseInt(id, 10);
+    this.filmId = parseInt(id, 10);
 
-    loadCurrentFilm(filmId);
+    loadCurrentFilm(this.filmId);
   }
 
   render() {
     const {
       films,
-      reviews,
       currentFilm,
     } = this.props;
-    const currentReviews = reviews[1].reviews;
 
     const similarFilms = films
       .filter((film) => {
-        return (film.genre === currentFilm.genre) && film !== currentFilm;
+        return (film.genre === currentFilm.genre) && film.id !== currentFilm.id;
       });
 
     return Object.keys(currentFilm).length === 0 ? null : (<React.Fragment>
@@ -96,7 +95,7 @@ class Movie extends PureComponent {
 
             <MovieInfoWithViewType
               film={currentFilm}
-              reviews={currentReviews}
+              id={this.filmId}
             />
           </div>
         </div>
@@ -129,6 +128,7 @@ class Movie extends PureComponent {
 
 Movie.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     releaseDate: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
@@ -143,16 +143,8 @@ Movie.propTypes = {
     runTime: PropTypes.number.isRequired,
     previewVideoSrc: PropTypes.string.isRequired,
   })).isRequired,
-  reviews: PropTypes.arrayOf(PropTypes.shape({
-    film: PropTypes.string.isRequired,
-    reviews: PropTypes.arrayOf(PropTypes.shape({
-      text: PropTypes.string.isRequired,
-      rate: PropTypes.number.isRequired,
-      author: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
-    })).isRequired,
-  })).isRequired,
   currentFilm: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     title: PropTypes.string,
     genre: PropTypes.string,
     releaseDate: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -172,6 +164,7 @@ Movie.propTypes = {
 };
 
 const mapStateToProps = ({DATA}) => ({
+  films: DATA.films,
   currentFilm: DATA.currentFilm,
 });
 

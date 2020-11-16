@@ -36,6 +36,24 @@ const adaptFilmToClient = (film) => {
   return adaptedFilm;
 };
 
+const adaptReviewToClient = (review) => {
+  const adaptedReview = extend(
+      review,
+      {
+        text: review.comment,
+        rate: review.rating,
+        author: review.user.name,
+      }
+  );
+
+  delete adaptedReview.comment;
+  delete adaptedReview.raiting;
+  delete adaptedReview.user;
+  delete adaptedReview.id;
+
+  return adaptedReview;
+};
+
 // adaptToClient ключи в кавычках
 
 const adaptGenre = (genre) => {
@@ -51,4 +69,4 @@ const adaptGenre = (genre) => {
   }
 };
 
-export {adaptFilmToClient};
+export {adaptFilmToClient, adaptReviewToClient};

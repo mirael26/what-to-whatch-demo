@@ -24,6 +24,7 @@ const AuthorizationStatus = {
 
 const APIRoute = {
   FILMS: `/films`,
+  REVIEWS: `/comments`,
   LOGIN: `/login`,
 };
 
