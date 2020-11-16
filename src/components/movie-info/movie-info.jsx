@@ -60,7 +60,7 @@ MovieInfo.propTypes = {
     runTime: PropTypes.number.isRequired,
     previewVideoSrc: PropTypes.string.isRequired,
   }).isRequired,
-  reviews: PropTypes.shape({
+  reviews: PropTypes.arrayOf(PropTypes.shape({
     film: PropTypes.string.isRequired,
     reviews: PropTypes.arrayOf(PropTypes.shape({
       text: PropTypes.string.isRequired,
@@ -68,7 +68,7 @@ MovieInfo.propTypes = {
       author: PropTypes.string.isRequired,
       date: PropTypes.string.isRequired,
     })).isRequired,
-  }).isRequired,
+  })).isRequired,
   viewType: PropTypes.string.isRequired,
   onViewNavClick: PropTypes.func.isRequired,
 };
