@@ -15,33 +15,25 @@ const MovieInfoWithViewType = withViewType(MovieInfo);
 class Movie extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.filmId = null;
+    this.getFilmId = this.getFilmId.bind(this);
   }
 
   componentDidMount() {
-    const {match, loadCurrentFilm} = this.props;
-    const {params: {id}} = match;
-    this.filmId = parseInt(id, 10);
-
-    loadCurrentFilm(this.filmId);
+    const {loadCurrentFilm} = this.props;
+    loadCurrentFilm(this.getFilmId());
   }
 
-  // componentShouldUpdate(prevProps) {
-  //   if (this.props.match !== prevProps.match) {
-  //     return true;
-  //   }
-  //   if (this.props !== prevProps) {
-  //     return true;
-  //   }
-  //   return false;
-  // }
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.id !== prevProps.match.params.id) {
+      this.props.loadCurrentFilm(this.getFilmId());
+    }
+  }
 
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.match !== prevProps.match) {
-  //     this.props.loadCurrentFilm(this.filmId);
-  //   }
-  // }
+  getFilmId() {
+    const {match} = this.props;
+    const {params: {id}} = match;
+    return parseInt(id, 10);
+  }
 
   render() {
     const {

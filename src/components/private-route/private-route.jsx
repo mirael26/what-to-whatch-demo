@@ -12,8 +12,6 @@ const PrivateRoute = (props) => {
     authorizationStatus
   } = props;
 
-  console.log(authorizationStatus);
-
   return (
     <Route
       path={path}
