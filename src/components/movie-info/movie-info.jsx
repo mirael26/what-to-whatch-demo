@@ -9,9 +9,9 @@ import {makeFirstUpperCase} from "../../utils";
 const MovieInfo = (props) => {
   const {
     film,
-    reviews,
     viewType,
     onViewNavClick,
+    id,
   } = props;
 
   let movieComponent;
@@ -20,7 +20,7 @@ const MovieInfo = (props) => {
       movieComponent = <MovieDetails film={film} />;
       break;
     case MovieViewTypes.REVIEWS:
-      movieComponent = <MovieReviews reviews={reviews} />;
+      movieComponent = <MovieReviews id={id}/>;
       break;
     default:
       movieComponent = <MovieOverview film={film} />;
@@ -60,17 +60,9 @@ MovieInfo.propTypes = {
     runTime: PropTypes.number.isRequired,
     previewVideoSrc: PropTypes.string.isRequired,
   }).isRequired,
-  reviews: PropTypes.shape({
-    film: PropTypes.string.isRequired,
-    reviews: PropTypes.arrayOf(PropTypes.shape({
-      text: PropTypes.string.isRequired,
-      rate: PropTypes.number.isRequired,
-      author: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
-    })).isRequired,
-  }).isRequired,
   viewType: PropTypes.string.isRequired,
   onViewNavClick: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default MovieInfo;

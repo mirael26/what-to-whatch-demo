@@ -1,6 +1,6 @@
 import {extend} from "../utils";
 
-const adaptToClient = (film) => {
+const adaptFilmToClient = (film) => {
   const adaptedFilm = extend(
       film,
       {
@@ -20,28 +20,44 @@ const adaptToClient = (film) => {
       }
   );
 
-  delete film.name;
-  delete film.released;
-  delete film.preview_image;
-  delete film.poster_image;
-  delete film.background_image;
-  delete film.background_color;
-  delete film.rating;
-  delete film.scores_count;
-  delete film.run_time;
-  delete film.video_link;
-  delete film.preview_video_link;
-  delete film.is_favorite;
+  delete adaptedFilm.name;
+  delete adaptedFilm.released;
+  delete adaptedFilm.preview_image;
+  delete adaptedFilm.poster_image;
+  delete adaptedFilm.background_image;
+  delete adaptedFilm.background_color;
+  delete adaptedFilm.rating;
+  delete adaptedFilm.scores_count;
+  delete adaptedFilm.run_time;
+  delete adaptedFilm.video_link;
+  delete adaptedFilm.preview_video_link;
+  delete adaptedFilm.is_favorite;
 
   return adaptedFilm;
+};
+
+const adaptReviewToClient = (review) => {
+  const adaptedReview = extend(
+      review,
+      {
+        text: review.comment,
+        rate: review.rating,
+        author: review.user.name,
+      }
+  );
+
+  delete adaptedReview.comment;
+  delete adaptedReview.raiting;
+  delete adaptedReview.user;
+  delete adaptedReview.id;
+
+  return adaptedReview;
 };
 
 // adaptToClient ключи в кавычках
 
 const adaptGenre = (genre) => {
   switch (genre) {
-    case `Action`:
-      return ``;
     case `Drama`:
       return `Dramas`;
     case `Comedy`:
@@ -53,4 +69,4 @@ const adaptGenre = (genre) => {
   }
 };
 
-export {adaptToClient};
+export {adaptFilmToClient, adaptReviewToClient};

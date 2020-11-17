@@ -4,9 +4,13 @@ import {Route, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import {AuthorizationStatus} from "../../const";
 
-
 const PrivateRoute = (props) => {
-  const {render, path, exact, authorizationStatus} = props;
+  const {
+    render,
+    path,
+    exact,
+    authorizationStatus
+  } = props;
 
   return (
     <Route
@@ -30,10 +34,9 @@ PrivateRoute.propTypes = {
   render: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  authorizationStatus: state.USER.authorizationStatus,
+const mapStateToProps = ({USER}) => ({
+  authorizationStatus: USER.authorizationStatus,
 });
-
 
 export {PrivateRoute};
 export default connect(mapStateToProps)(PrivateRoute);

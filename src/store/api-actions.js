@@ -1,12 +1,29 @@
 import {ActionCreator} from "./action";
 import {APIRoute, AuthorizationStatus} from "../const";
-import {adaptToClient} from "./adapter";
+import {adaptFilmToClient, adaptReviewToClient} from "./adapter";
 
 const fetchFilmsList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.FILMS)
-    .then(({data}) => data.map(adaptToClient))
+    .then(({data}) => data.map(adaptFilmToClient))
     .then((films) => dispatch(ActionCreator.loadFilms(films)))
 );
+
+const fetchCurrentFilm = (id) => (dispatch, _getState, api) => (
+  api.get(`${APIRoute.FILMS}/${id}`)
+    .then(({data}) => adaptFilmToClient(data))
+    .then((currentFilm) => dispatch(ActionCreator.loadCurrentFilm(currentFilm)))
+);
+
+const fetchReviews = (id) => (dispatch, _getState, api) => (
+  api.get(`${APIRoute.REVIEWS}/${id}`)
+    .then(({data}) => data.map(adaptReviewToClient))
+    .then((reviews) => dispatch(ActionCreator.loadReviews(reviews)))
+);
+
+const postReview = (id, {rating, comment}) => (dispatch, _getState, api) => {
+  api.post(`${APIRoute.REVIEWS}/${id}`, {rating, comment})
+    .then(() => dispatch(ActionCreator.redirectToRoute(`/films/${id}`)));
+};
 
 const checkAuth = () => (dispatch, _getState, api) => (
   api.get(APIRoute.LOGIN)
@@ -16,9 +33,9 @@ const checkAuth = () => (dispatch, _getState, api) => (
 );
 
 const login = ({login: email, password}) => (dispatch, _getState, api) => (
-  api.post(`/login`, {email, password})
+  api.post(APIRoute.LOGIN, {email, password})
     .then(() => dispatch(ActionCreator.updateAuthorization(AuthorizationStatus.AUTH)))
     .then(() => dispatch(ActionCreator.redirectToRoute(`/`)))
 );
 
-export {fetchFilmsList, checkAuth, login};
+export {fetchFilmsList, fetchCurrentFilm, fetchReviews, postReview, checkAuth, login};

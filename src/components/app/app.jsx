@@ -8,10 +8,10 @@ import MyList from "../my-list/my-list";
 import Movie from "../movie/movie";
 import Player from "../player/player";
 import AddReview from "../add-review/add-review";
-import {PrivateRoute} from "../private-route/private-route";
+import PrivateRoute from "../private-route/private-route";
 
 const App = (props) => {
-  const {promoFilm, films, reviews} = props;
+  const {promoFilm, films} = props;
 
   return (
     <BrowserRouter history={browserHistory}>
@@ -29,12 +29,16 @@ const App = (props) => {
           path={`/mylist`}
           render={() => <MyList films={films} />}
         />
-        <Route exact path="/films/:id">
-          <Movie films={films} reviews={reviews} />
-        </Route>
-        <Route exact path="/films/:id/review">
-          <AddReview film={films[1]} />
-        </Route>
+        <Route
+          exact
+          path="/films/:id"
+          render={(routerProps) => <Movie {...routerProps} />}
+        />
+        <PrivateRoute
+          exact
+          path={`/films/:id/review`}
+          render={(routerProps) => <AddReview {...routerProps} />}
+        />
         <Route exact path="/player/:id">
           <Player />
         </Route>
@@ -66,15 +70,6 @@ App.propTypes = {
     starring: PropTypes.arrayOf(PropTypes.string).isRequired,
     runTime: PropTypes.number.isRequired,
     previewVideoSrc: PropTypes.string.isRequired,
-  })).isRequired,
-  reviews: PropTypes.arrayOf(PropTypes.shape({
-    film: PropTypes.string.isRequired,
-    reviews: PropTypes.arrayOf(PropTypes.shape({
-      text: PropTypes.string.isRequired,
-      rate: PropTypes.number.isRequired,
-      author: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
-    })).isRequired,
   })).isRequired,
 };
 
