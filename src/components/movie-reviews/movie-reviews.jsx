@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import moment from "moment";
+import dayjs from "dayjs";
 import {connect} from "react-redux";
 
 import {fetchReviews} from "../../store/api-actions";
@@ -32,7 +32,7 @@ class MovieReviews extends PureComponent {
 
                   <footer className="review__details">
                     <cite className="review__author">{review.author}</cite>
-                    <time className="review__date" dateTime={review.date}>{moment(review.date).format(`LL`)}</time>
+                    <time className="review__date" dateTime={review.date}>{dayjs(review.date).format(`MMMM D, YYYY`)}</time>
                   </footer>
                 </blockquote>
 

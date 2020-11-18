@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+const MAX_STARRING = 4;
+
 const MovieOverview = (props) => {
   const {film} = props;
 
@@ -18,7 +20,7 @@ const MovieOverview = (props) => {
 
       <p className="movie-card__director"><strong>Director: {film.director}</strong></p>
 
-      <p className="movie-card__starring"><strong>Starring: {film.starring.slice(0, 3).join(`, `)}{film.starring.length > 4 ? ` and other` : ``}</strong></p>
+      <p className="movie-card__starring"><strong>Starring: {film.starring.slice(0, MAX_STARRING).join(`, `)}{film.starring.length > 4 ? ` and other` : ``}</strong></p>
     </div>
   </React.Fragment>);
 };

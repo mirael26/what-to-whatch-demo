@@ -40,7 +40,7 @@ const AddReviewForm = (props) => {
             value={reviewText}
           ></textarea>
           <div className="add-review__submit">
-            <button className="add-review__btn" type="submit" disabled={isDisabled ? true : false}>Post</button>
+            <button className="add-review__btn" type="submit" disabled={isDisabled}>Post</button>
           </div>
 
         </div>

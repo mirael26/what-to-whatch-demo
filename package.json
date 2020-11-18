@@ -27,8 +27,8 @@
   },
   "dependencies": {
     "axios": "0.19.2",
+    "dayjs": "1.9.6",
     "history": "4.10.1",
-    "moment": "2.29.1",
     "prop-types": "15.7.2",
     "react": "16.12.0",
     "react-dom": "16.12.0",

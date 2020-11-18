@@ -4,11 +4,13 @@ import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
 import {fetchCurrentFilm} from "../../store/api-actions";
-import {AuthorizationStatus} from "../../const";
+import {AuthorizationStatus, AppRoute} from "../../const";
 
 import MoviesList from "../movies-list/movies-list";
 import MovieInfo from "../movie-info/movie-info";
 import withViewType from "../../hocs/with-view-type/with-view-type";
+
+const MAX_SIMILAR_FILMS = 4;
 
 const MovieInfoWithViewType = withViewType(MovieInfo);
 
@@ -41,11 +43,13 @@ class Movie extends PureComponent {
       currentFilm,
       authorizationStatus,
     } = this.props;
+    const filmId = this.getFilmId();
 
     const similarFilms = films
       .filter((film) => {
-        return (film.genre === currentFilm.genre) && film.id !== currentFilm.id;
-      });
+        return (film.genre === currentFilm.genre) && (film.id !== currentFilm.id);
+      })
+      .slice(0, MAX_SIMILAR_FILMS);
     const isAuthorized = authorizationStatus === AuthorizationStatus.AUTH;
 
     return Object.keys(currentFilm).length === 0 ? null : (<React.Fragment>
@@ -59,7 +63,7 @@ class Movie extends PureComponent {
 
           <header className="page-header movie-card__head">
             <div className="logo">
-              <Link className="logo__link" to="/">
+              <Link to={AppRoute.MAIN} className="logo__link">
                 <span className="logo__letter logo__letter--1">W</span>
                 <span className="logo__letter logo__letter--2">T</span>
                 <span className="logo__letter logo__letter--3">W</span>
@@ -108,7 +112,7 @@ class Movie extends PureComponent {
 
             <MovieInfoWithViewType
               film={currentFilm}
-              id={this.filmId}
+              id={filmId}
             />
           </div>
         </div>
@@ -123,11 +127,11 @@ class Movie extends PureComponent {
 
         <footer className="page-footer">
           <div className="logo">
-            <a href="main.html" className="logo__link logo__link--light">
+            <Link to={AppRoute.MAIN} className="logo__link logo__link--light">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
-            </a>
+            </Link>
           </div>
 
           <div className="copyright">

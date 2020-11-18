@@ -28,4 +28,13 @@ const APIRoute = {
   LOGIN: `/login`,
 };
 
-export {MovieViewTypes, GenreTypes, AuthorizationStatus, APIRoute};
+const AppRoute = {
+  MAIN: `/`,
+  LOGIN: `/login`,
+  MOVIE: `/films/:id`,
+  REVIEW: `/films/:id/review`,
+  MY_LIST: `/mylist`,
+  PLAYER: `/player/:id`,
+};
+
+export {MovieViewTypes, GenreTypes, AuthorizationStatus, APIRoute, AppRoute};
