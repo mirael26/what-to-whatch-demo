@@ -41,6 +41,7 @@ class Movie extends PureComponent {
       currentFilm,
       authorizationStatus,
     } = this.props;
+    const filmId = this.getFilmId();
 
     const similarFilms = films
       .filter((film) => {
@@ -108,7 +109,7 @@ class Movie extends PureComponent {
 
             <MovieInfoWithViewType
               film={currentFilm}
-              id={this.filmId}
+              id={filmId}
             />
           </div>
         </div>
