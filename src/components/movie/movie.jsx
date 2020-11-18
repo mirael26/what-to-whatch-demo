@@ -10,6 +10,8 @@ import MoviesList from "../movies-list/movies-list";
 import MovieInfo from "../movie-info/movie-info";
 import withViewType from "../../hocs/with-view-type/with-view-type";
 
+const MAX_SIMILAR_FILMS = 4;
+
 const MovieInfoWithViewType = withViewType(MovieInfo);
 
 class Movie extends PureComponent {
@@ -45,8 +47,9 @@ class Movie extends PureComponent {
 
     const similarFilms = films
       .filter((film) => {
-        return (film.genre === currentFilm.genre) && film.id !== currentFilm.id;
-      });
+        return (film.genre === currentFilm.genre) && (film.id !== currentFilm.id);
+      })
+      .slice(0, MAX_SIMILAR_FILMS);
     const isAuthorized = authorizationStatus === AuthorizationStatus.AUTH;
 
     return Object.keys(currentFilm).length === 0 ? null : (<React.Fragment>
