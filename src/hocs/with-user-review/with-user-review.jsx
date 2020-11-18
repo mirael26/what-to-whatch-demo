@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 
 import {postReview} from "../../store/api-actions";
 
-const RAITING_RATE = 2;
+const RATING_RATE = 2;
 
 const withUserReview = (Component) => {
   class WithUserReview extends PureComponent {
@@ -38,7 +38,7 @@ const withUserReview = (Component) => {
       evt.preventDefault();
 
       onSubmit(currentFilmId, {
-        rating: this.state.rate * RAITING_RATE,
+        rating: this.state.rate * RATING_RATE,
         comment: this.state.reviewText,
       });
 
