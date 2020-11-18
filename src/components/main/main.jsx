@@ -1,12 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import Catalog from "../catalog/catalog";
-import UserBlock from "../user-block/user-block";
+
 import {isAuthorized} from "../../utils";
 
-const Main = ({promoFilm, authorizationStatus, userAvatarUrl}) => {
+import Catalog from "../catalog/catalog";
+import UserBlock from "../user-block/user-block";
+import withShowMore from "../../hocs/with-show-more/with-show-more";
 
+const CatalogWithShowMore = withShowMore(Catalog);
+
+const Main = ({promoFilm, authorizationStatus, userAvatarUrl}) => {
   return (<React.Fragment>
     <section className="movie-card">
       <div className="movie-card__bg">
@@ -60,7 +64,7 @@ const Main = ({promoFilm, authorizationStatus, userAvatarUrl}) => {
     </section>
 
     <div className="page-content">
-      <Catalog/>
+      <CatalogWithShowMore/>
 
       <footer className="page-footer">
         <div className="logo">

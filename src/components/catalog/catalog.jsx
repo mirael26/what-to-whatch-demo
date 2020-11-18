@@ -1,18 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
+
 import {ActionCreator} from "../../store/action";
 import {getFilmsByGenre} from "../../store/selectors";
+
 import GenreList from "../genre-list/genre-list";
 import MoviesList from "../movies-list/movies-list";
+import ShowMore from "../show-more-button/show-more-button.jsx";
 
 
 const Catalog = (props) => {
   const {
     filmsByGenre,
     genre,
-    onChangeGenre
+    onChangeGenre,
+    filmsCount,
+    onShowMoreButton,
   } = props;
+
+  const isAllFilmsShown = filmsCount >= filmsByGenre.length;
+
   return (
     <section className="catalog">
       <h2 className="catalog__title visually-hidden">Catalog</h2>
@@ -22,11 +30,9 @@ const Catalog = (props) => {
         onChangeGenre={onChangeGenre}
       />
 
-      <MoviesList films={filmsByGenre}/>
+      <MoviesList films={filmsByGenre.slice(0, filmsCount)}/>
 
-      <div className="catalog__more">
-        <button className="catalog__button" type="button">Show more</button>
-      </div>
+      {isAllFilmsShown ? null : <ShowMore onShowMoreButton={onShowMoreButton} />}
     </section>
   );
 };
@@ -49,6 +55,8 @@ Catalog.propTypes = {
   })).isRequired,
   genre: PropTypes.string.isRequired,
   onChangeGenre: PropTypes.func.isRequired,
+  filmsCount: PropTypes.number.isRequired,
+  onShowMoreButton: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({DATA, STATE}) => ({
