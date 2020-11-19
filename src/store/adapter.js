@@ -16,7 +16,6 @@ const adaptFilmToClient = (film) => {
         videoSrc: film.video_link,
         previewVideoSrc: film.preview_video_link,
         isFavorite: film.is_favorite,
-        genre: adaptGenre(film.genre)
       }
   );
 
@@ -52,19 +51,6 @@ const adaptReviewToClient = (review) => {
   delete adaptedReview.id;
 
   return adaptedReview;
-};
-
-const adaptGenre = (genre) => {
-  switch (genre) {
-    case `Drama`:
-      return `Dramas`;
-    case `Comedy`:
-      return `Comedies`;
-    case `Thriller`:
-      return `Thrillers`;
-    default:
-      return genre;
-  }
 };
 
 export {adaptFilmToClient, adaptReviewToClient};

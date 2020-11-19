@@ -1,11 +1,11 @@
 import {extend} from "../../../utils";
 import {ActionType} from "../../../store/action";
 
-
 const initialState = {
   films: [],
   currentFilm: {},
   reviews: [],
+  genres: [],
 };
 
 const dataReducer = (state = initialState, action) => {
@@ -13,6 +13,12 @@ const dataReducer = (state = initialState, action) => {
     case ActionType.LOAD_FILMS:
       return extend(state, {
         films: action.payload,
+      });
+    case ActionType.GET_GENRES_LIST:
+      const genres = state.films.map((film) => film.genre);
+      const uniqGenres = [...new Set(genres)];
+      return extend(state, {
+        genres: uniqGenres.slice(0, 9),
       });
     case ActionType.LOAD_CURRENT_FILM:
       return extend(state, {
