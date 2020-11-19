@@ -18,10 +18,10 @@ const APIRoute = {
 const AppRoute = {
   MAIN: `/`,
   LOGIN: `/login`,
-  MOVIE: `/films/:id`,
-  REVIEW: `/films/:id/review`,
+  MOVIE: `/films`,
+  REVIEW: `/review`,
   MY_LIST: `/mylist`,
-  PLAYER: `/player/:id`,
+  PLAYER: `/player`,
 };
 
 const FilmRates = {

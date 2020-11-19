@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
+import {AppRoute} from "../../const";
+
 const SmallMovieCard = (props) => {
   const {film, renderPlayer} = props;
   const {title, previewVideoSrc, picture, id} = film;
@@ -10,7 +12,7 @@ const SmallMovieCard = (props) => {
     <article className="small-movie-card catalog__movies-card">
       {renderPlayer(previewVideoSrc, picture)}
       <h3 className="small-movie-card__title">
-        <Link to={`/films/${id}`} className="small-movie-card__link">{title}</Link>
+        <Link to={`${AppRoute.MOVIE}/${id}`} className="small-movie-card__link">{title}</Link>
       </h3>
     </article>
   );
