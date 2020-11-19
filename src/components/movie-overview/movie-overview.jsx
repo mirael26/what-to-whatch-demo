@@ -1,16 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import {findRateDescription} from "../../utils";
+
 const MAX_STARRING = 4;
 
 const MovieOverview = (props) => {
   const {film} = props;
+  const rateDescription = findRateDescription(film.rate);
 
   return (<React.Fragment>
     <div className="movie-rating">
       <div className="movie-rating__score">{film.rate}</div>
       <p className="movie-rating__meta">
-        <span className="movie-rating__level">Very good</span>
+        <span className="movie-rating__level">{rateDescription}</span>
         <span className="movie-rating__count">{film.voteCount} ratings</span>
       </p>
     </div>

@@ -1,4 +1,4 @@
-import {AuthorizationStatus} from "./const";
+import {AuthorizationStatus, FilmRates} from "./const";
 
 const formatRunTime = (initialMinutes) => {
   if (initialMinutes > 60) {
@@ -21,4 +21,25 @@ const isAuthorized = (status) => {
   return status === AuthorizationStatus.AUTH;
 };
 
-export {formatRunTime, makeFirstUpperCase, extend, isAuthorized};
+const findRateDescription = (rate) => {
+  switch (Math.floor(rate)) {
+    case 0:
+    case 1:
+    case 2:
+      return FilmRates.BAD;
+    case 3:
+    case 4:
+      return FilmRates.NORMAL;
+    case 5:
+    case 6:
+    case 7:
+      return FilmRates.GOOD;
+    case 8:
+    case 9:
+      return FilmRates.VERY_GOOD;
+    default:
+      return FilmRates.AWESOME;
+  }
+};
+
+export {formatRunTime, makeFirstUpperCase, extend, isAuthorized, findRateDescription};

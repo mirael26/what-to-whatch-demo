@@ -37,4 +37,12 @@ const AppRoute = {
   PLAYER: `/player/:id`,
 };
 
-export {MovieViewTypes, GenreTypes, AuthorizationStatus, APIRoute, AppRoute};
+const FilmRates = {
+  BAD: `Bad`,
+  NORMAL: `Normal`,
+  GOOD: `Good`,
+  VERY_GOOD: `Very good`,
+  AWESOME: `Awesome`,
+};
+
+export {MovieViewTypes, GenreTypes, AuthorizationStatus, APIRoute, AppRoute, FilmRates};

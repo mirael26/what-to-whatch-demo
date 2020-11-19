@@ -54,8 +54,6 @@ const adaptReviewToClient = (review) => {
   return adaptedReview;
 };
 
-// adaptToClient ключи в кавычках
-
 const adaptGenre = (genre) => {
   switch (genre) {
     case `Drama`:
