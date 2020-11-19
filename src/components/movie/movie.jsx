@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 import {fetchCurrentFilm} from "../../store/api-actions";
 import {AuthorizationStatus, AppRoute} from "../../const";
 
+import UserBlock from "../user-block/user-block";
 import MoviesList from "../movies-list/movies-list";
 import MovieInfo from "../movie-info/movie-info";
 import withViewType from "../../hocs/with-view-type/with-view-type";
@@ -70,11 +71,7 @@ class Movie extends PureComponent {
               </Link>
             </div>
 
-            <div className="user-block">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-              </div>
-            </div>
+            {<UserBlock />}
           </header>
 
           <div className="movie-card__wrap">

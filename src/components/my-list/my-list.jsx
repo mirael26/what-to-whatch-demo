@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import {AppRoute} from "../../const";
 
 import MoviesList from "../movies-list/movies-list";
+import UserBlock from "../user-block/user-block";
 
 const MyList = (props) => {
   const {films} = props;
@@ -22,11 +23,7 @@ const MyList = (props) => {
 
         <h1 className="page-title user-page__title">My list</h1>
 
-        <div className="user-block">
-          <div className="user-block__avatar">
-            <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-          </div>
-        </div>
+        {<UserBlock />}
       </header>
 
       <section className="catalog">
