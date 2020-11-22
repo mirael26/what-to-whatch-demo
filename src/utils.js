@@ -1,4 +1,8 @@
 import {AuthorizationStatus, FilmRates} from "./const";
+import dayjs from "dayjs";
+
+const duration = require(`dayjs/plugin/duration`);
+dayjs.extend(duration);
 
 const formatRunTime = (initialMinutes) => {
   if (initialMinutes > 60) {
@@ -42,4 +46,15 @@ const findRateDescription = (rate) => {
   }
 };
 
-export {formatRunTime, makeFirstUpperCase, extend, isAuthorized, findRateDescription};
+const convertIntoTwoNumerals = (number) => {
+  return (`0` + number).slice(-2);
+};
+
+const formatPlayerTimer = (time) => {
+  const seconds = convertIntoTwoNumerals(dayjs.duration(time, `s`).seconds());
+  const minutes = convertIntoTwoNumerals(dayjs.duration(time, `s`).minutes());
+  const hours = convertIntoTwoNumerals(dayjs.duration(time, `s`).hours());
+  return `${hours}:${minutes}:${seconds}`;
+};
+
+export {formatRunTime, makeFirstUpperCase, extend, isAuthorized, findRateDescription, convertIntoTwoNumerals, formatPlayerTimer};

@@ -12,6 +12,9 @@ import Movie from "../movie/movie";
 import Player from "../player/player";
 import AddReview from "../add-review/add-review";
 import PrivateRoute from "../private-route/private-route";
+import withActiveControl from "../../hocs/with-active-control/with-active-control";
+
+const PlayerWithControlPanel = withActiveControl(Player);
 
 const App = (props) => {
   const {promoFilm, films} = props;
@@ -42,8 +45,15 @@ const App = (props) => {
           path={`${AppRoute.MOVIE}/:id${AppRoute.REVIEW}`}
           render={(routerProps) => <AddReview {...routerProps} />}
         />
-        <Route exact path={`${AppRoute.PLAYER}/:id`}>
-          <Player />
+        <Route
+          exact
+          path={`${AppRoute.PLAYER}/:id`}
+          render={({match, history}) =>
+            <PlayerWithControlPanel
+              match={match}
+              onExitButtonClick={() => history.goBack()}
+            />
+          }>
         </Route>
       </Switch>
     </BrowserRouter>
