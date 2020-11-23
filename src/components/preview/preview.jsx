@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const VideoPlayer = (props) => {
+const Preview = (props) => {
   const {
     onVideoMouseOver,
     onVideoMouseOut,
@@ -15,7 +15,7 @@ const VideoPlayer = (props) => {
   );
 };
 
-VideoPlayer.propTypes = {
+Preview.propTypes = {
   onVideoMouseOver: PropTypes.func.isRequired,
   onVideoMouseOut: PropTypes.func.isRequired,
   children: PropTypes.oneOfType([
@@ -24,4 +24,4 @@ VideoPlayer.propTypes = {
   ]).isRequired,
 };
 
-export default VideoPlayer;
+export default Preview;

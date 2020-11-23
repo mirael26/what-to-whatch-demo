@@ -1,8 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
-
-import {isAuthorized} from "../../utils";
 
 import Catalog from "../catalog/catalog";
 import UserBlock from "../user-block/user-block";
@@ -10,7 +7,7 @@ import withShowMore from "../../hocs/with-show-more/with-show-more";
 
 const CatalogWithShowMore = withShowMore(Catalog);
 
-const Main = ({promoFilm, authorizationStatus, userAvatarUrl}) => {
+const Main = ({promoFilm}) => {
   return (<React.Fragment>
     <section className="movie-card">
       <div className="movie-card__bg">
@@ -28,7 +25,7 @@ const Main = ({promoFilm, authorizationStatus, userAvatarUrl}) => {
           </a>
         </div>
 
-        {<UserBlock isAuthorized={isAuthorized(authorizationStatus)} avatarUrl={userAvatarUrl}/>}
+        {<UserBlock />}
       </header>
 
       <div className="movie-card__wrap">
@@ -91,14 +88,6 @@ Main.propTypes = {
     poster: PropTypes.string.isRequired,
     backgroundPicture: PropTypes.string.isRequired,
   }).isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-  userAvatarUrl: PropTypes.string,
 };
 
-const mapStateToProps = ({USER}) => ({
-  authorizationStatus: USER.authorizationStatus,
-  userAvatarUrl: USER.authorizationInfo.avatar_url,
-});
-
-export {Main};
-export default connect(mapStateToProps, null)(Main);
+export default Main;

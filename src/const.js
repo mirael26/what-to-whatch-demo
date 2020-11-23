@@ -4,19 +4,6 @@ const MovieViewTypes = {
   REVIEWS: `reviews`
 };
 
-const GenreTypes = {
-  ALL_GENRES: `All genres`,
-  COMEDIES: `Comedies`,
-  CRIME: `Crime`,
-  DOCUMENTARY: `Documentary`,
-  DRAMAS: `Dramas`,
-  HORROR: `Horror`,
-  KIDS_FAMILY: `Kids & Family`,
-  ROMANCE: `Romance`,
-  SCI_FI: `Sci-Fi`,
-  THRILLERS: `Thrillers`
-};
-
 const AuthorizationStatus = {
   AUTH: `AUTH`,
   NO_AUTH: `NO_AUTH`,
@@ -31,10 +18,18 @@ const APIRoute = {
 const AppRoute = {
   MAIN: `/`,
   LOGIN: `/login`,
-  MOVIE: `/films/:id`,
-  REVIEW: `/films/:id/review`,
+  MOVIE: `/films`,
+  REVIEW: `/review`,
   MY_LIST: `/mylist`,
-  PLAYER: `/player/:id`,
+  PLAYER: `/player`,
 };
 
-export {MovieViewTypes, GenreTypes, AuthorizationStatus, APIRoute, AppRoute};
+const FilmRates = {
+  BAD: `Bad`,
+  NORMAL: `Normal`,
+  GOOD: `Good`,
+  VERY_GOOD: `Very good`,
+  AWESOME: `Awesome`,
+};
+
+export {MovieViewTypes, AuthorizationStatus, APIRoute, AppRoute, FilmRates};

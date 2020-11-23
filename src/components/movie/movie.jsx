@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 import {fetchCurrentFilm} from "../../store/api-actions";
 import {AuthorizationStatus, AppRoute} from "../../const";
 
+import UserBlock from "../user-block/user-block";
 import MoviesList from "../movies-list/movies-list";
 import MovieInfo from "../movie-info/movie-info";
 import withViewType from "../../hocs/with-view-type/with-view-type";
@@ -70,11 +71,7 @@ class Movie extends PureComponent {
               </Link>
             </div>
 
-            <div className="user-block">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-              </div>
-            </div>
+            {<UserBlock />}
           </header>
 
           <div className="movie-card__wrap">
@@ -86,7 +83,7 @@ class Movie extends PureComponent {
               </p>
 
               <div className="movie-card__buttons">
-                <Link to="/player/1" className="btn btn--play movie-card__button" type="button">
+                <Link to={`${AppRoute.PLAYER}/${filmId}`} className="btn btn--play movie-card__button" type="button">
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
@@ -98,7 +95,7 @@ class Movie extends PureComponent {
                   </svg>
                   <span>My list</span>
                 </button>
-                {isAuthorized ? <Link to={`/films/${this.filmId}/review`} className="btn movie-card__button">Add review</Link> : ``}
+                {isAuthorized ? <Link to={`${AppRoute.MOVIE}/${filmId}${AppRoute.REVIEW}`} className="btn movie-card__button">Add review</Link> : ``}
               </div>
             </div>
           </div>

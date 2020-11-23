@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 import {fetchCurrentFilm} from "../../store/api-actions";
 import {AppRoute} from "../../const";
 
+import UserBlock from "../user-block/user-block";
 import AddReviewForm from "../add-review-form/add-review-form";
 import withUserReview from "../../hocs/with-user-review/with-user-review";
 
@@ -49,7 +50,7 @@ class AddReview extends PureComponent {
             <nav className="breadcrumbs">
               <ul className="breadcrumbs__list">
                 <li className="breadcrumbs__item">
-                  <Link to={AppRoute.MOVIE} className="breadcrumbs__link">{currentFilm.title}</Link>
+                  <Link to={`${AppRoute.MOVIE}/${currentFilm.id}`} className="breadcrumbs__link">{currentFilm.title}</Link>
                 </li>
                 <li className="breadcrumbs__item">
                   <a className="breadcrumbs__link">Add review</a>
@@ -57,11 +58,7 @@ class AddReview extends PureComponent {
               </ul>
             </nav>
 
-            <div className="user-block">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-              </div>
-            </div>
+            {<UserBlock />}
           </header>
 
           <div className="movie-card__poster movie-card__poster--small">

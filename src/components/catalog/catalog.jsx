@@ -13,6 +13,7 @@ import ShowMore from "../show-more-button/show-more-button.jsx";
 const Catalog = (props) => {
   const {
     filmsByGenre,
+    genres,
     genre,
     onChangeGenre,
     filmsCount,
@@ -26,6 +27,7 @@ const Catalog = (props) => {
       <h2 className="catalog__title visually-hidden">Catalog</h2>
 
       <GenreList
+        genres={genres}
         activeGenre={genre}
         onChangeGenre={onChangeGenre}
       />
@@ -53,6 +55,7 @@ Catalog.propTypes = {
     runTime: PropTypes.number.isRequired,
     previewVideoSrc: PropTypes.string.isRequired,
   })).isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
   genre: PropTypes.string.isRequired,
   onChangeGenre: PropTypes.func.isRequired,
   filmsCount: PropTypes.number.isRequired,
@@ -60,6 +63,7 @@ Catalog.propTypes = {
 };
 
 const mapStateToProps = ({DATA, STATE}) => ({
+  genres: DATA.genres,
   genre: STATE.genre,
   filmsByGenre: getFilmsByGenre(DATA.films, STATE.genre),
 });

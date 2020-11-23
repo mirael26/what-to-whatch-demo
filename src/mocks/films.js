@@ -1,9 +1,7 @@
-import {GenreTypes} from "../const";
-
 export default [
   {
     title: `The Grand Budapest Hotel`,
-    genre: GenreTypes.DRAMAS,
+    genre: `Drama`,
     releaseDate: `2014`,
     description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.
 
@@ -16,111 +14,6 @@ export default [
     director: `Wes Andreson`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`, `Tony Revoloru`, `Tilda Swinton`, `Tom Wilkinson`, `Owen Wilkinson`, `Adrien Brody`, `Ralph Fiennes`, `Jeff Goldblum`],
     runTime: 99,
-    previewVideoSrc: `video/The_Grand_Budapest_Hotel.mp4`
-  },
-  {
-    title: `Aviator`,
-    genre: GenreTypes.DRAMAS,
-    releaseDate: `2004`,
-    description: `A biopic depicting the early years of legendary Director and aviator Howard Hughes' career from the late 1920s to the mid 1940s.`,
-    picture: `img/aviator.jpg`,
-    poster: `https://upload.wikimedia.org/wikipedia/en/f/fa/The_Aviator_%282004%29.png`,
-    backgroundPicture: `https://s3.zff.com/__processed__/c8d/THE_AVIATOR_01-0cfc98a784c4.jpg`,
-    rate: 7.6,
-    voteCount: 126,
-    director: `Martin Scorsese`,
-    starring: [`Leonardo DiCaprio`, `Cate Blanchett`, `John C. Reilly`, `Kate Beckinsale`, `Alec Baldwin`, `Alan Alda`, `Ian Holm`, `Danny Huston`],
-    runTime: 163,
-    previewVideoSrc: `video/The_Grand_Budapest_Hotel.mp4`
-  },
-  {
-    title: `Bohemian Rhapsody`,
-    genre: GenreTypes.DRAMAS,
-    releaseDate: `2018`,
-    description: `The story of the legendary British rock band Queen and lead singer Freddie Mercury, leading up to their famous performance at music festival Live Aid (1985).`,
-    picture: `img/bohemian-rhapsody.jpg`,
-    poster: `https://www.hdclub.ua/files/film/big/bigi5c40e10cd1e34.jpg`,
-    backgroundPicture: `https://mradio.fr/media/news/thumb/870x489_5f14bfcc33286-3e3a1fbb23f5dff2725156bec51dcf38-1540375498.jpg`,
-    rate: 8.0,
-    voteCount: 299,
-    director: `Bryan Singer`,
-    starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`, `Ben Hardy`, `Joe Mazzello`, `Aidan Gillen`, `Allen Leech`],
-    runTime: 134,
-    previewVideoSrc: `video/The_Grand_Budapest_Hotel.mp4`
-  },
-  {
-    title: `The Darjeeling Limited`,
-    genre: GenreTypes.COMEDIES,
-    releaseDate: `2007`,
-    description: `A year after their father's funeral, three brothers travel across India by train in an attempt to bond with each other.`,
-    picture: `img/dardjeeling-limited.jpg`,
-    poster: `https://upload.wikimedia.org/wikipedia/en/1/1e/Darjeeling_Limited_Poster.jpg`,
-    backgroundPicture: `https://www.film.ru/sites/default/files/styles/thumb_1024x450/public/trailers_frame/w1024x768_6875.jpg`,
-    rate: 7.1,
-    voteCount: 40,
-    director: `Wes Anderson`,
-    starring: [`Owen Wilson`, `Adrien Brody`, `Jason Schwartzman`, `Amara Karan`, `Wallace Wolodarsky`, `Waris Ahluwalia`],
-    runTime: 92,
-    previewVideoSrc: `video/The_Grand_Budapest_Hotel.mp4`
-  },
-  {
-    title: `Fantastic Beasts: The Crimes of Grindelwald`,
-    genre: GenreTypes.DRAMAS,
-    releaseDate: `2018`,
-    description: `The second installment of the "Fantastic Beasts" series featuring the adventures of Magizoologist Newt Scamander.`,
-    picture: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-    poster: `https://img01.mgo-images.com/image/thumbnail/v2/content/MMVACD149BD0C03123839396373196D30C64.jpeg`,
-    backgroundPicture: `https://i0.wp.com/www.usnewsexpress.com/wp-content/uploads/2018/11/43505715_2010370095688139_7865702818408038400_n.png?fit=700%2C259&ssl=1`,
-    rate: 6.6,
-    voteCount: 211,
-    director: `David Yates`,
-    starring: [`Eddie Redmayne`, `Katherine Waterston`, `Dan Fogler`, `Alison Sudol`, `Ezra Miller`, `Zoë Kravitz`, `Callum Turner`, `Claudia Kim`, `William Nadylam`, `Jude Law`, `Johnny Depp`],
-    runTime: 134,
-    previewVideoSrc: `video/The_Grand_Budapest_Hotel.mp4`
-  },
-  {
-    title: `Johnny English`,
-    genre: GenreTypes.COMEDIES,
-    releaseDate: `2003`,
-    description: `After a sudden attack on MI5, Johnny English, Britain's most confident, yet unintelligent spy, becomes Britain's only spy.`,
-    picture: `img/johnny-english.jpg`,
-    poster: `https://m.media-amazon.com/images/M/MV5BNDkxODhlNmItYjhiMC00ZjNmLWE2YmMtOTQ3NmQxM2YzOGFiXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_UY1200_CR88,0,630,1200_AL_.jpg`,
-    backgroundPicture: `https://theknockturnal.com/wp-content/uploads/2018/10/johnny-english-strikes-again-2018-x4_cover_1920_1080_60_c1_c_t_0_-200.jpg`,
-    rate: 6.7,
-    voteCount: 37,
-    director: `Peter Howitt`,
-    starring: [`Rowan Atkinson`, `Natalie Imbruglia`, `Ben Miller`, `John Malkovich`],
-    runTime: 84,
-    previewVideoSrc: `video/The_Grand_Budapest_Hotel.mp4`
-  },
-  {
-    title: `Macbeth`,
-    genre: GenreTypes.DRAMAS,
-    releaseDate: `2015`,
-    description: `Macbeth, the Thane of Glamis, receives a prophecy from a trio of witches that one day he will become King of Scotland. Consumed by ambition and spurred to action by his wife, Macbeth murders his king and takes the throne for himself.`,
-    picture: `img/macbeth.jpg`,
-    poster: `https://upload.wikimedia.org/wikipedia/en/7/79/Macbeth_2015_poster.jpg`,
-    backgroundPicture: `https://foreveronalilo.files.wordpress.com/2015/10/macbeth2.jpg?w=640`,
-    rate: 7.1,
-    voteCount: 29,
-    director: `Justin Kurzel`,
-    starring: [`Michael Fassbender`, `Marion Cotillard`, `Paddy Considine`, `Sean Harris`, `Jack Reynor`, `Elizabeth Debicki`, `David Thewlis`],
-    runTime: 113,
-    previewVideoSrc: `video/The_Grand_Budapest_Hotel.mp4`
-  },
-  {
-    title: `Orlando`,
-    genre: GenreTypes.DOCUMENTARY,
-    releaseDate: `1992`,
-    description: `After Queen Elizabeth I commands him not to grow old, a young nobleman struggles with love and his place in the world.`,
-    picture: `img/orlando.jpg`,
-    poster: `https://m.media-amazon.com/images/M/MV5BYmY1OTA3MjAtYjQxOC00OTlkLWExZWQtMjc3ZjExOWFhM2UwXkEyXkFqcGdeQXVyMTA0MjU0Ng@@._V1_.jpg`,
-    backgroundPicture: `https://i.pinimg.com/originals/8f/c8/f7/8fc8f7360467115bfb48914d2a57caf0.jpg`,
-    rate: 7.2,
-    voteCount: 100,
-    director: `Sally Potter`,
-    starring: [`Tilda Swinton`, `Billy Zane`, `Lothaire Bluteau`, `John Wood`, `Charlotte Valandrey`, `Heathcote Williams`, `Quentin Crisp`],
-    runTime: 94,
     previewVideoSrc: `video/The_Grand_Budapest_Hotel.mp4`
   },
 ];

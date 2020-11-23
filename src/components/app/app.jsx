@@ -2,6 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Switch, Route, Router as BrowserRouter} from "react-router-dom";
 import browserHistory from "../../browser-history";
+
+import {AppRoute} from "../../const";
+
 import Main from "../main/main";
 import SignIn from "../sign-in/sign-in";
 import MyList from "../my-list/my-list";
@@ -9,6 +12,9 @@ import Movie from "../movie/movie";
 import Player from "../player/player";
 import AddReview from "../add-review/add-review";
 import PrivateRoute from "../private-route/private-route";
+import withActiveControl from "../../hocs/with-active-control/with-active-control";
+
+const PlayerWithControlPanel = withActiveControl(Player);
 
 const App = (props) => {
   const {promoFilm, films} = props;
@@ -16,31 +22,38 @@ const App = (props) => {
   return (
     <BrowserRouter history={browserHistory}>
       <Switch>
-        <Route exact path="/">
+        <Route exact path={AppRoute.MAIN}>
           <Main
             promoFilm={promoFilm}
           />
         </Route>
-        <Route path="/login">
+        <Route path={AppRoute.LOGIN}>
           <SignIn />
         </Route>
         <PrivateRoute
           exact
-          path={`/mylist`}
+          path={AppRoute.MY_LIST}
           render={() => <MyList films={films} />}
         />
         <Route
           exact
-          path="/films/:id"
+          path={`${AppRoute.MOVIE}/:id`}
           render={(routerProps) => <Movie {...routerProps} />}
         />
         <PrivateRoute
           exact
-          path={`/films/:id/review`}
+          path={`${AppRoute.MOVIE}/:id${AppRoute.REVIEW}`}
           render={(routerProps) => <AddReview {...routerProps} />}
         />
-        <Route exact path="/player/:id">
-          <Player />
+        <Route
+          exact
+          path={`${AppRoute.PLAYER}/:id`}
+          render={({match, history}) =>
+            <PlayerWithControlPanel
+              match={match}
+              onExitButtonClick={() => history.goBack()}
+            />
+          }>
         </Route>
       </Switch>
     </BrowserRouter>

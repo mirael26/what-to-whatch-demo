@@ -1,9 +1,10 @@
 import {extend} from "../../../utils";
-import {GenreTypes} from "../../../const";
 import {ActionType} from "../../../store/action";
 
+const DEFAULT_GENRE = `All genres`;
+
 const initialState = {
-  genre: GenreTypes.ALL_GENRES,
+  genre: DEFAULT_GENRE,
 };
 
 const stateReducer = (state = initialState, action) => {

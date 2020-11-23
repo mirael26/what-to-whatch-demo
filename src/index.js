@@ -32,6 +32,7 @@ Promise.all([
   store.dispatch(fetchFilmsList()),
   store.dispatch(checkAuth()),
 ])
+.then(() => store.dispatch(ActionCreator.getGenresList()))
 .then(() => {
   ReactDOM.render(
       <Provider store={store}>

@@ -1,6 +1,7 @@
 export const ActionType = {
   CHANGE_GENRE: `CHANGE_GENRE`,
   LOAD_FILMS: `LOAD_FILMS`,
+  GET_GENRES_LIST: `GET_GENRES_LIST`,
   LOAD_CURRENT_FILM: `LOAD_CURRENT_FILM`,
   LOAD_USER_INFO: `LOAD_USER_INFO`,
   UPDATE_AUTHORIZATION: `UPDATE_AUTHORIZATION`,
@@ -15,6 +16,10 @@ export const ActionCreator = {
   }),
   loadFilms: (films) => ({
     type: ActionType.LOAD_FILMS,
+    payload: films,
+  }),
+  getGenresList: (films) => ({
+    type: ActionType.GET_GENRES_LIST,
     payload: films,
   }),
   loadCurrentFilm: (currentFilm) => ({
