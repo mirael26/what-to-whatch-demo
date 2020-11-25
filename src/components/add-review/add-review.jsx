@@ -30,7 +30,7 @@ class AddReview extends PureComponent {
   render() {
     const {currentFilm} = this.props;
     return (
-      <section className="movie-card movie-card--full">
+      <section className="movie-card movie-card--full" style={{backgroundColor: currentFilm.backgroundColor}}>
         <div className="movie-card__header">
           <div className="movie-card__bg">
             <img src={currentFilm.backgroundPicture} alt={currentFilm.title} />
@@ -66,7 +66,7 @@ class AddReview extends PureComponent {
           </div>
         </div>
 
-        <AddReviewFormWithUserReview />
+        <AddReviewFormWithUserReview background={currentFilm.backgroundColor} />
 
       </section>
     );
@@ -75,21 +75,22 @@ class AddReview extends PureComponent {
 
 AddReview.propTypes = {
   currentFilm: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    releaseDate: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    description: PropTypes.string.isRequired,
-    picture: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    backgroundPicture: PropTypes.string.isRequired,
-    rate: PropTypes.number.isRequired,
-    voteCount: PropTypes.number.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-    runTime: PropTypes.number.isRequired,
-    previewVideoSrc: PropTypes.string.isRequired,
-  }).isRequired,
+    id: PropTypes.number,
+    title: PropTypes.string,
+    genre: PropTypes.string,
+    releaseDate: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    description: PropTypes.string,
+    picture: PropTypes.string,
+    poster: PropTypes.string,
+    backgroundPicture: PropTypes.string,
+    rate: PropTypes.number,
+    voteCount: PropTypes.number,
+    director: PropTypes.string,
+    starring: PropTypes.arrayOf(PropTypes.string),
+    runTime: PropTypes.number,
+    previewVideoSrc: PropTypes.string,
+    backgroundColor: PropTypes.string,
+  }),
   match: PropTypes.object.isRequired,
   loadCurrentFilm: PropTypes.func.isRequired,
 };

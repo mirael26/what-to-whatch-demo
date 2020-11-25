@@ -8,8 +8,8 @@ const RATING_RATE = 2;
 
 const withUserReview = (Component) => {
   class WithUserReview extends PureComponent {
-    constructor() {
-      super();
+    constructor(props) {
+      super(props);
 
       this.state = {
         rate: 0,
@@ -61,6 +61,7 @@ const withUserReview = (Component) => {
 
       return (
         <Component
+          {...this.props}
           currentRate={rate}
           reviewText={reviewText}
           onRateChange={this.onRateChange}
@@ -73,7 +74,7 @@ const withUserReview = (Component) => {
   }
 
   WithUserReview.propTypes = {
-    currentFilmId: PropTypes.number.isRequired,
+    currentFilmId: PropTypes.number,
     onSubmit: PropTypes.func.isRequired,
   };
 

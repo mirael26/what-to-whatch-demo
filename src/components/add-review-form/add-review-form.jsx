@@ -11,6 +11,7 @@ const AddReviewForm = (props) => {
     onTextChange,
     isDisabled,
     handleSubmit,
+    background,
   } = props;
 
   return (
@@ -28,7 +29,7 @@ const AddReviewForm = (props) => {
           </div>
         </div>
 
-        <div className="add-review__text">
+        <div className="add-review__text" style={{backgroundColor: background, filter: `brightness(120%)`}}>
           <textarea
             className="add-review__textarea"
             name="review-text"
@@ -56,6 +57,7 @@ AddReviewForm.propTypes = {
   onTextChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   isDisabled: PropTypes.bool.isRequired,
+  background: PropTypes.string,
 };
 
 export default AddReviewForm;
