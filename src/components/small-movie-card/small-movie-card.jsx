@@ -10,10 +10,12 @@ const SmallMovieCard = (props) => {
 
   return (
     <article className="small-movie-card catalog__movies-card">
-      {renderPlayer(previewVideoSrc, picture)}
-      <h3 className="small-movie-card__title">
-        <Link to={`${AppRoute.MOVIE}/${id}`} className="small-movie-card__link">{title}</Link>
-      </h3>
+      <Link to={`${AppRoute.MOVIE}/${id}`} className="small-movie-card__link">
+        {renderPlayer(previewVideoSrc, picture)}
+        <h3 className="small-movie-card__title">
+          <a href="#" className="small-movie-card__link">{title}</a>
+        </h3>
+      </Link>
     </article>
   );
 };
