@@ -13,7 +13,7 @@ const SmallMovieCard = (props) => {
       <Link to={`${AppRoute.MOVIE}/${id}`} className="small-movie-card__link">
         {renderPlayer(previewVideoSrc, picture)}
         <h3 className="small-movie-card__title">
-          <a href="#" className="small-movie-card__link">{title}</a>
+          <span className="small-movie-card__link">{title}</span>
         </h3>
       </Link>
     </article>
