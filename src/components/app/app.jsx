@@ -2,7 +2,7 @@ import React from "react";
 import {Switch, Route, Router as BrowserRouter} from "react-router-dom";
 import browserHistory from "../../browser-history";
 
-import {AppRoute} from "../../const";
+import {AppRoute, AuthorizationStatus} from "../../const";
 
 import Main from "../main/main";
 import SignIn from "../sign-in/sign-in";
@@ -25,12 +25,18 @@ const App = () => {
           path={AppRoute.MAIN}
           render={({history}) => <Main onPlayerButtonClick={(id) => history.push(`${AppRoute.PLAYER}/${id}`)}/>}>
         </Route>
-        <Route path={AppRoute.LOGIN}>
-          <SignIn />
-        </Route>
+        <PrivateRoute
+          exact
+          path={AppRoute.LOGIN}
+          statusRequired={AuthorizationStatus.NO_AUTH}
+          redirectPath={AppRoute.MAIN}
+          render={() => <SignIn />}
+        />
         <PrivateRoute
           exact
           path={AppRoute.MY_LIST}
+          statusRequired={AuthorizationStatus.AUTH}
+          redirectPath={AppRoute.LOGIN}
           render={() => <MyList />}
         />
         <Route
@@ -43,6 +49,8 @@ const App = () => {
         <PrivateRoute
           exact
           path={`${AppRoute.MOVIE}/:id${AppRoute.REVIEW}`}
+          statusRequired={AuthorizationStatus.AUTH}
+          redirectPath={AppRoute.LOGIN}
           render={(routerProps) => <AddReview {...routerProps} />}
         />
         <Route
