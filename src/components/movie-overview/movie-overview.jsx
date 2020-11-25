@@ -11,7 +11,7 @@ const MovieOverview = (props) => {
 
   return (<React.Fragment>
     <div className="movie-rating">
-      <div className="movie-rating__score">{film.rate}</div>
+      <div className="movie-rating__score">{film.rate.toFixed(1)}</div>
       <p className="movie-rating__meta">
         <span className="movie-rating__level">{rateDescription}</span>
         <span className="movie-rating__count">{film.voteCount} ratings</span>

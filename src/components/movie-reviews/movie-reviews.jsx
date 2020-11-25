@@ -39,7 +39,7 @@ class MovieReviews extends PureComponent {
                     </footer>
                   </blockquote>
 
-                  <div className="review__rating">{review.rate}</div>
+                  <div className="review__rating">{review.rate.toFixed(1)}</div>
                 </div>
               )
           }
