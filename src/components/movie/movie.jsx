@@ -54,7 +54,7 @@ class Movie extends PureComponent {
     const isAuthorized = authorizationStatus === AuthorizationStatus.AUTH;
 
     return Object.keys(currentFilm).length === 0 ? null : (<React.Fragment>
-      <section className="movie-card movie-card--full">
+      <section className="movie-card movie-card--full" style={{backgroundColor: currentFilm.backgroundColor}}>
         <div className="movie-card__hero">
           <div className="movie-card__bg">
             <img src={currentFilm.backgroundPicture} alt={currentFilm.title} />
@@ -150,6 +150,7 @@ Movie.propTypes = {
     picture: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
     backgroundPicture: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string,
     rate: PropTypes.number.isRequired,
     voteCount: PropTypes.number.isRequired,
     director: PropTypes.string.isRequired,
@@ -166,6 +167,7 @@ Movie.propTypes = {
     picture: PropTypes.string,
     poster: PropTypes.string,
     backgroundPicture: PropTypes.string,
+    backgroundColor: PropTypes.string,
     rate: PropTypes.number,
     voteCount: PropTypes.number,
     director: PropTypes.string,

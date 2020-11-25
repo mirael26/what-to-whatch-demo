@@ -106,6 +106,7 @@ Main.propTypes = {
     picture: PropTypes.string,
     poster: PropTypes.string,
     backgroundPicture: PropTypes.string,
+    backgroundColor: PropTypes.string,
     rate: PropTypes.number,
     voteCount: PropTypes.number,
     director: PropTypes.string,
