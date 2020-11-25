@@ -1,5 +1,6 @@
 import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 
 import {formatPlayerTimer} from "../../utils";
 
@@ -13,17 +14,26 @@ class TimeBar extends PureComponent {
     this._endCoord = null;
     this._shift = null;
     this._isPauseForced = null;
+    this._isLaunched = false;
 
     this.onMouseDown = this.onMouseDown.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onMouseUp = this.onMouseUp.bind(this);
   }
 
+  componentDidUpdate() {
+    if (this._isLaunched) {
+      return;
+    }
+    const {currentTime} = this.props;
+    this._isLaunched = currentTime > 0;
+  }
+
   onMouseDown(evt) {
     evt.preventDefault();
     this._startCoord = evt.clientX;
-    document.onmousemove = this.onMouseMove;
-    document.onmouseup = this.onMouseUp;
+    document.addEventListener(`mousemove`, this.onMouseMove);
+    document.addEventListener(`mouseup`, this.onMouseUp);
 
     const {changePlayMode, isPlaying} = this.props;
     if (isPlaying) {
@@ -48,6 +58,8 @@ class TimeBar extends PureComponent {
     const slider = this._slider.current;
     const newSliderPoint = slider.offsetLeft + this._shift;
     slider.style.left = `${newSliderPoint}px`;
+    const progressBar = this._progressBar.current;
+    progressBar.value = `${newSliderPoint / progressBar.clientWidth * 100}`;
   }
 
   onMouseUp(evt) {
@@ -59,8 +71,8 @@ class TimeBar extends PureComponent {
     const {changeTime} = this.props;
     changeTime(this._newTime);
 
-    document.onmousemove = null;
-    document.onmouseup = null;
+    document.removeEventListener(`mousemove`, this.onMouseMove);
+    document.removeEventListener(`mouseup`, this.onMouseUp);
 
     const {changePlayMode} = this.props;
     if (this._isPauseForced) {
@@ -73,7 +85,7 @@ class TimeBar extends PureComponent {
     const {currentTime, runTime} = this.props;
     const timer = formatPlayerTimer(currentTime);
     const progressInPercents = (currentTime / runTime * 100);
-    const progress = Number.isNaN(progressInPercents) ? 0 : progressInPercents.toFixed(1);
+    const progress = progressInPercents.toFixed(1);
 
     return (
       <div className="player__controls-row">
@@ -83,7 +95,7 @@ class TimeBar extends PureComponent {
             className="player__toggler"
             style={{left: `${progress}%`}}
             ref={this._slider}
-            onMouseDown={Number.isNaN(progressInPercents) ? null : this.onMouseDown}
+            onMouseDown={this._isLaunched ? this.onMouseDown : null}
           >Toggler</div>
         </div>
         <div className="player__time-value">{timer}</div>
@@ -100,5 +112,9 @@ TimeBar.propTypes = {
   isPlaying: PropTypes.bool.isRequired,
 };
 
-export default TimeBar;
+const mapStateToProps = ({STATE}) => ({
+  currentTime: STATE.playerTime,
+});
 
+export {TimeBar};
+export default connect(mapStateToProps)(TimeBar);

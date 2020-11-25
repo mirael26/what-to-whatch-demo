@@ -5,6 +5,7 @@ const DEFAULT_GENRE = `All genres`;
 
 const initialState = {
   genre: DEFAULT_GENRE,
+  playerTime: 0,
 };
 
 const stateReducer = (state = initialState, action) => {
@@ -16,6 +17,10 @@ const stateReducer = (state = initialState, action) => {
       }
       return extend(state, {
         genre: newGenre
+      });
+    case ActionType.SET_PLAYER_TIME:
+      return extend(state, {
+        playerTime: action.payload,
       });
     default:
       return state;

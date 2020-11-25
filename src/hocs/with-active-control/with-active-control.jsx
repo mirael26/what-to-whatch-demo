@@ -7,30 +7,15 @@ const withActiveControl = (Component) => {
 
       this.state = {
         isPlaying: false,
-        currentTime: 0,
       };
 
       this.onPlayButtonClick = this.onPlayButtonClick.bind(this);
-      this.setCurrentTime = this.setCurrentTime.bind(this);
-      this.changeTime = this.changeTime.bind(this);
     }
 
     onPlayButtonClick() {
       const isPlaying = this.state.isPlaying;
       this.setState({
         isPlaying: !isPlaying,
-      });
-    }
-
-    setCurrentTime(currentTime) {
-      this.setState({
-        currentTime,
-      });
-    }
-
-    changeTime(newTime) {
-      this.setState({
-        currentTime: newTime,
       });
     }
 
@@ -42,9 +27,6 @@ const withActiveControl = (Component) => {
           onPlayButtonClick={this.onPlayButtonClick}
           isFullscreen={this.state.isFullscreen}
           onFullScreenButtonClick={this.onFullScreenButtonClick}
-          currentTime={this.state.currentTime}
-          setCurrentTime={this.setCurrentTime}
-          changeTime={this.changeTime}
         >
         </Component>
       );

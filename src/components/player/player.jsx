@@ -3,8 +3,12 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
 import {fetchCurrentFilm} from "../../store/api-actions";
+import {ActionCreator} from "../../store/action";
+import {debounce} from "../../utils";
 
 import TimeBar from "../time-bar/time-bar";
+
+const DEFAULT_RUN_TIME = 5400;
 
 class Player extends PureComponent {
   constructor(props) {
@@ -12,18 +16,19 @@ class Player extends PureComponent {
 
     this._videoRef = createRef();
     this._fullscreenButtonRef = createRef();
-    this._duration = 0;
+    this._duration = DEFAULT_RUN_TIME;
 
     this.onFullscreenButtonClick = this.onFullscreenButtonClick.bind(this);
+    this.changeTime = this.changeTime.bind(this);
+    this.sendCurrentTime = this.sendCurrentTime.bind(this);
   }
 
   componentDidMount() {
     const {loadCurrentFilm} = this.props;
     loadCurrentFilm(this.getFilmId());
-  }
 
-  componentWillUnmount() {
-    clearInterval(this.timerID);
+    const video = this._videoRef.current;
+    video.addEventListener(`durationchange`, () => this.setDuration());
   }
 
   componentDidUpdate(prevProps) {
@@ -31,24 +36,9 @@ class Player extends PureComponent {
       this.props.loadCurrentFilm(this.getFilmId());
     }
 
-    const video = this._videoRef.current;
-    if (this.props.currentTime !== video.currentTime) {
-      video.currentTime = this.props.currentTime;
-    }
-
     if (prevProps.isPlaying !== this.props.isPlaying) {
       this.changePlayMode();
-      if (this.props.isPlaying) {
-        this.timerID = setInterval(
-            () => this.tick(),
-            1000
-        );
-      } else {
-        clearInterval(this.timerID);
-      }
     }
-
-    this._duration = this._videoRef.current.duration;
   }
 
   getFilmId() {
@@ -78,9 +68,18 @@ class Player extends PureComponent {
     }
   }
 
-  tick() {
+  sendCurrentTime() {
+    const currentTime = this._videoRef.current.currentTime;
     const {setCurrentTime} = this.props;
-    setCurrentTime(this._videoRef.current.currentTime);
+    setCurrentTime(currentTime);
+  }
+
+  setDuration() {
+    this._duration = this._videoRef.current.duration;
+  }
+
+  changeTime(newTime) {
+    this._videoRef.current.currentTime = newTime;
   }
 
   render() {
@@ -89,8 +88,6 @@ class Player extends PureComponent {
       onExitButtonClick,
       isPlaying,
       onPlayButtonClick,
-      currentTime,
-      changeTime,
     } = this.props;
 
     return (
@@ -98,15 +95,15 @@ class Player extends PureComponent {
         <video
           src={currentFilm.videoSrc}
           className="player__video"
-          ref={this._videoRef}></video>
+          ref={this._videoRef}
+          onTimeUpdate={debounce(this.sendCurrentTime, 1000)}></video>
 
         <button type="button" className="player__exit" onClick={onExitButtonClick}>Exit</button>
 
         <div className="player__controls">
           <TimeBar
             runTime={this._duration}
-            currentTime={currentTime}
-            changeTime={changeTime}
+            changeTime={this.changeTime}
             changePlayMode={onPlayButtonClick}
             isPlaying={isPlaying}/>
 
@@ -167,9 +164,7 @@ Player.propTypes = {
   onExitButtonClick: PropTypes.func.isRequired,
   isPlaying: PropTypes.bool.isRequired,
   onPlayButtonClick: PropTypes.func.isRequired,
-  currentTime: PropTypes.number.isRequired,
   setCurrentTime: PropTypes.func.isRequired,
-  changeTime: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({DATA}) => ({
@@ -179,6 +174,9 @@ const mapStateToProps = ({DATA}) => ({
 const mapDispatchToProps = (dispatch) => ({
   loadCurrentFilm(id) {
     dispatch(fetchCurrentFilm(id));
+  },
+  setCurrentTime(time) {
+    dispatch(ActionCreator.setPlayerTime(time));
   }
 });
 

@@ -7,6 +7,7 @@ export const ActionType = {
   UPDATE_AUTHORIZATION: `UPDATE_AUTHORIZATION`,
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
   LOAD_REVIEWS: `LOAD_REVIEWS`,
+  SET_PLAYER_TIME: `SET_PLAYER_TIME`,
 };
 
 export const ActionCreator = {
@@ -41,5 +42,9 @@ export const ActionCreator = {
   redirectToRoute: (url) => ({
     type: ActionType.REDIRECT_TO_ROUTE,
     payload: url,
+  }),
+  setPlayerTime: (time) => ({
+    type: ActionType.SET_PLAYER_TIME,
+    payload: time,
   })
 };

@@ -57,4 +57,24 @@ const formatPlayerTimer = (time) => {
   return `${hours}:${minutes}:${seconds}`;
 };
 
-export {formatRunTime, makeFirstUpperCase, extend, isAuthorized, findRateDescription, convertIntoTwoNumerals, formatPlayerTimer};
+const debounce = (func, ms) => {
+
+  let isCooldown = false;
+
+  return function (...args) {
+    if (isCooldown) {
+      return;
+    }
+
+    func.apply(...args);
+
+    isCooldown = true;
+
+    setTimeout(() => {
+      isCooldown = false;
+    }, ms);
+  };
+
+}
+
+export {formatRunTime, makeFirstUpperCase, extend, isAuthorized, findRateDescription, convertIntoTwoNumerals, formatPlayerTimer, debounce};
