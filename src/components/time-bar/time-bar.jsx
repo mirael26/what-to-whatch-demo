@@ -16,9 +16,9 @@ class TimeBar extends PureComponent {
     this._isPauseForced = null;
     this._isLaunched = false;
 
-    this.onMouseDown = this.onMouseDown.bind(this);
-    this.onMouseMove = this.onMouseMove.bind(this);
-    this.onMouseUp = this.onMouseUp.bind(this);
+    this.handleSliderMouseDown = this.handleSliderMouseDown.bind(this);
+    this.handleDocumentMouseMove = this.handleDocumentMouseMove.bind(this);
+    this.handleDocumentMouseUp = this.handleDocumentMouseUp.bind(this);
   }
 
   componentDidUpdate() {
@@ -29,20 +29,20 @@ class TimeBar extends PureComponent {
     this._isLaunched = currentTime > 0;
   }
 
-  onMouseDown(evt) {
+  handleSliderMouseDown(evt) {
     evt.preventDefault();
     this._startCoord = evt.clientX;
-    document.addEventListener(`mousemove`, this.onMouseMove);
-    document.addEventListener(`mouseup`, this.onMouseUp);
+    document.addEventListener(`mousemove`, this.handleDocumentMouseMove);
+    document.addEventListener(`mouseup`, this.handleDocumentMouseUp);
 
-    const {changePlayMode, isPlaying} = this.props;
+    const {onPlayModeChange, isPlaying} = this.props;
     if (isPlaying) {
-      changePlayMode();
+      onPlayModeChange();
       this._isPauseForced = true;
     }
   }
 
-  onMouseMove(evt) {
+  handleDocumentMouseMove(evt) {
     evt.preventDefault();
     this._endCoord = evt.clientX;
     const minCoord = this._progressBar.current.getBoundingClientRect().left;
@@ -62,21 +62,21 @@ class TimeBar extends PureComponent {
     progressBar.value = `${newSliderPoint / progressBar.clientWidth * 100}`;
   }
 
-  onMouseUp(evt) {
+  handleDocumentMouseUp(evt) {
     evt.preventDefault();
     const progressBarWidth = this._progressBar.current.clientWidth;
     const newFilmPoint = (this._slider.current.offsetLeft / progressBarWidth).toFixed(3);
     this._newTime = this.props.runTime * newFilmPoint;
 
-    const {changeTime} = this.props;
-    changeTime(this._newTime);
+    const {onTimeChange} = this.props;
+    onTimeChange(this._newTime);
 
-    document.removeEventListener(`mousemove`, this.onMouseMove);
-    document.removeEventListener(`mouseup`, this.onMouseUp);
+    document.removeEventListener(`mousemove`, this.handleDocumentMouseMove);
+    document.removeEventListener(`mouseup`, this.handleDocumentMouseUp);
 
-    const {changePlayMode} = this.props;
+    const {onPlayModeChange} = this.props;
     if (this._isPauseForced) {
-      changePlayMode();
+      onPlayModeChange();
     }
     this._isPauseForced = null;
   }
@@ -95,7 +95,7 @@ class TimeBar extends PureComponent {
             className="player__toggler"
             style={{left: `${progress}%`}}
             ref={this._slider}
-            onMouseDown={this._isLaunched ? this.onMouseDown : null}
+            onMouseDown={this._isLaunched ? this.handleSliderMouseDown : null}
           >Toggler</div>
         </div>
         <div className="player__time-value">{timer}</div>
@@ -107,8 +107,8 @@ class TimeBar extends PureComponent {
 TimeBar.propTypes = {
   currentTime: PropTypes.number.isRequired,
   runTime: PropTypes.number.isRequired,
-  changeTime: PropTypes.func.isRequired,
-  changePlayMode: PropTypes.func.isRequired,
+  onTimeChange: PropTypes.func.isRequired,
+  onPlayModeChange: PropTypes.func.isRequired,
   isPlaying: PropTypes.bool.isRequired,
 };
 

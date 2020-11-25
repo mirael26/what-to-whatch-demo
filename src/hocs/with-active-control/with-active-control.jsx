@@ -9,10 +9,10 @@ const withActiveControl = (Component) => {
         isPlaying: false,
       };
 
-      this.onPlayButtonClick = this.onPlayButtonClick.bind(this);
+      this.handlePlayButtonClick = this.handlePlayButtonClick.bind(this);
     }
 
-    onPlayButtonClick() {
+    handlePlayButtonClick() {
       const isPlaying = this.state.isPlaying;
       this.setState({
         isPlaying: !isPlaying,
@@ -24,7 +24,7 @@ const withActiveControl = (Component) => {
         <Component
           {...this.props}
           isPlaying={this.state.isPlaying}
-          onPlayButtonClick={this.onPlayButtonClick}
+          onPlayButtonClick={this.handlePlayButtonClick}
           isFullscreen={this.state.isFullscreen}
           onFullScreenButtonClick={this.onFullScreenButtonClick}
         >
