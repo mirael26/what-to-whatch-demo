@@ -43,6 +43,7 @@ class Movie extends PureComponent {
       films,
       currentFilm,
       authorizationStatus,
+      onPlayerButtonClick,
     } = this.props;
     const filmId = this.getFilmId();
 
@@ -83,12 +84,12 @@ class Movie extends PureComponent {
               </p>
 
               <div className="movie-card__buttons">
-                <Link to={`${AppRoute.PLAYER}/${filmId}`} className="btn btn--play movie-card__button" type="button">
+                <button className="btn btn--play movie-card__button" type="button" onClick={() => onPlayerButtonClick(filmId)}>
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
                   <span>Play</span>
-                </Link>
+                </button>
                 <button className="btn btn--list movie-card__button" type="button">
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref="#add"></use>
@@ -178,6 +179,7 @@ Movie.propTypes = {
   match: PropTypes.object.isRequired,
   loadCurrentFilm: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
+  onPlayerButtonClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({DATA, USER}) => ({

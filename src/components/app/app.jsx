@@ -20,8 +20,10 @@ const App = () => {
   return (
     <BrowserRouter history={browserHistory}>
       <Switch>
-        <Route exact path={AppRoute.MAIN}>
-          <Main />
+        <Route
+          exact
+          path={AppRoute.MAIN}
+          render={({history}) => <Main onPlayerButtonClick={(id) => history.push(`${AppRoute.PLAYER}/${id}`)}/>}>
         </Route>
         <Route path={AppRoute.LOGIN}>
           <SignIn />
@@ -34,7 +36,9 @@ const App = () => {
         <Route
           exact
           path={`${AppRoute.MOVIE}/:id`}
-          render={(routerProps) => <Movie {...routerProps} />}
+          render={({match, history}) => <Movie
+            match={match}
+            onPlayerButtonClick={(id) => history.push(`${AppRoute.PLAYER}/${id}`)} />}
         />
         <PrivateRoute
           exact
