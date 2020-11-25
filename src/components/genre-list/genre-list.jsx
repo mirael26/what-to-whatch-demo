@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const ALL_GENRES = `All genres`;
+const GENRE_LINK_CLASS = `catalog__genres-link`;
 
 const GenreList = (props) => {
   const {
@@ -12,6 +13,9 @@ const GenreList = (props) => {
 
   const onGenreClick = (evt) => {
     evt.preventDefault();
+    if (evt.target.className !== GENRE_LINK_CLASS) {
+      return;
+    }
     onChangeGenre(evt.target.id);
   };
 
