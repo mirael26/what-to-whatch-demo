@@ -77,6 +77,8 @@ class Player extends PureComponent {
 
   handleDurationChange() {
     this._duration = this._videoRef.current.duration;
+    const {onPlayButtonClick} = this.props;
+    onPlayButtonClick();
   }
 
   changeTime(newTime) {
