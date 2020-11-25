@@ -18,27 +18,51 @@ class MovieReviews extends PureComponent {
 
   render() {
     const {reviews} = this.props;
-    const isReviews = reviews.length !== 0;
+    const reviewsCount = reviews.length;
+    const isReviews = reviewsCount !== 0;
 
     return !isReviews ? null : (
       <div className="movie-card__reviews movie-card__row">
+
         <div className="movie-card__reviews-col">
-
           {
-            reviews.map((review, i) =>
-              <div className="review" key={`${i}-${review.author}`}>
-                <blockquote className="review__quote">
-                  <p className="review__text">{review.text}</p>
+            reviews
+              .slice(0, Math.ceil(reviewsCount / 2))
+              .map((review) =>
+                <div className="review" key={`${review.id}-${review.author}`}>
+                  <blockquote className="review__quote">
+                    <p className="review__text">{review.text}</p>
 
-                  <footer className="review__details">
-                    <cite className="review__author">{review.author}</cite>
-                    <time className="review__date" dateTime={review.date}>{dayjs(review.date).format(`MMMM D, YYYY`)}</time>
-                  </footer>
-                </blockquote>
+                    <footer className="review__details">
+                      <cite className="review__author">{review.author}</cite>
+                      <time className="review__date" dateTime={review.date}>{dayjs(review.date).format(`MMMM D, YYYY`)}</time>
+                    </footer>
+                  </blockquote>
 
-                <div className="review__rating">{review.rate}</div>
-              </div>
-            )
+                  <div className="review__rating">{review.rate}</div>
+                </div>
+              )
+          }
+        </div>
+
+        <div className="movie-card__reviews-col">
+          {
+            reviews
+              .slice(0, Math.floor(reviewsCount / 2))
+              .map((review) =>
+                <div className="review" key={`${review.id}-${review.author}`}>
+                  <blockquote className="review__quote">
+                    <p className="review__text">{review.text}</p>
+
+                    <footer className="review__details">
+                      <cite className="review__author">{review.author}</cite>
+                      <time className="review__date" dateTime={review.date}>{dayjs(review.date).format(`MMMM D, YYYY`)}</time>
+                    </footer>
+                  </blockquote>
+
+                  <div className="review__rating">{review.rate}</div>
+                </div>
+              )
           }
         </div>
       </div>
