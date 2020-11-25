@@ -3,6 +3,7 @@ import {ActionType} from "../../../store/action";
 
 const initialState = {
   films: [],
+  promoFilm: {},
   currentFilm: {},
   reviews: [],
   genres: [],
@@ -19,6 +20,10 @@ const dataReducer = (state = initialState, action) => {
       const uniqGenres = [...new Set(genres)];
       return extend(state, {
         genres: uniqGenres.slice(0, 9),
+      });
+    case ActionType.LOAD_PROMO_FILM:
+      return extend(state, {
+        promoFilm: action.payload,
       });
     case ActionType.LOAD_CURRENT_FILM:
       return extend(state, {

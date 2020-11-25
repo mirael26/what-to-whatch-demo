@@ -158,7 +158,7 @@ Movie.propTypes = {
     previewVideoSrc: PropTypes.string.isRequired,
   })).isRequired,
   currentFilm: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.number,
     title: PropTypes.string,
     genre: PropTypes.string,
     releaseDate: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

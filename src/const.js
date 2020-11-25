@@ -9,12 +9,6 @@ const AuthorizationStatus = {
   NO_AUTH: `NO_AUTH`,
 };
 
-const APIRoute = {
-  FILMS: `/films`,
-  REVIEWS: `/comments`,
-  LOGIN: `/login`,
-};
-
 const AppRoute = {
   MAIN: `/`,
   LOGIN: `/login`,
@@ -22,6 +16,13 @@ const AppRoute = {
   REVIEW: `/review`,
   MY_LIST: `/mylist`,
   PLAYER: `/player`,
+};
+
+const APIRoute = {
+  FILMS: `/films`,
+  REVIEWS: `/comments`,
+  LOGIN: `/login`,
+  PROMO: `/films/promo`,
 };
 
 const FilmRates = {

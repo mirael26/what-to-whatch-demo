@@ -11,14 +11,10 @@ import {AuthorizationStatus} from "./const";
 import {redirect} from "./store/middlewares/redirect";
 import rootReducer from "./store/reducers/root-reducer";
 import App from "./components/app/app";
-import films from "./mocks/films";
-import reviews from "./mocks/reviews";
 
 const api = createAPI(
     () => store.dispatch(ActionCreator.updateAuthorization(AuthorizationStatus.NO_AUTH))
 );
-
-const promoFilm = films[0];
 
 const store = createStore(
     rootReducer,
@@ -36,11 +32,7 @@ Promise.all([
 .then(() => {
   ReactDOM.render(
       <Provider store={store}>
-        <App
-          films={films}
-          reviews={reviews}
-          promoFilm={promoFilm}
-        />,
+        <App />,
       </Provider>,
       document.querySelector(`#root`)
   );

@@ -8,6 +8,12 @@ const fetchFilmsList = () => (dispatch, _getState, api) => (
     .then((films) => dispatch(ActionCreator.loadFilms(films)))
 );
 
+const fetchPromoFilm = () => (dispatch, _getState, api) => (
+  api.get(APIRoute.PROMO)
+    .then(({data}) => adaptFilmToClient(data))
+    .then((promoFilm) => dispatch(ActionCreator.loadPromoFilm(promoFilm)))
+);
+
 const fetchCurrentFilm = (id) => (dispatch, _getState, api) => (
   api.get(`${APIRoute.FILMS}/${id}`)
     .then(({data}) => adaptFilmToClient(data))
@@ -38,4 +44,4 @@ const login = ({login: email, password}) => (dispatch, _getState, api) => (
     .then(() => dispatch(ActionCreator.redirectToRoute(AppRoute.MAIN)))
 );
 
-export {fetchFilmsList, fetchCurrentFilm, fetchReviews, postReview, checkAuth, login};
+export {fetchFilmsList, fetchPromoFilm, fetchCurrentFilm, fetchReviews, postReview, checkAuth, login};

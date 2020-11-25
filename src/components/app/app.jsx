@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import {Switch, Route, Router as BrowserRouter} from "react-router-dom";
 import browserHistory from "../../browser-history";
 
@@ -16,16 +15,13 @@ import withActiveControl from "../../hocs/with-active-control/with-active-contro
 
 const PlayerWithControlPanel = withActiveControl(Player);
 
-const App = (props) => {
-  const {promoFilm, films} = props;
+const App = () => {
 
   return (
     <BrowserRouter history={browserHistory}>
       <Switch>
         <Route exact path={AppRoute.MAIN}>
-          <Main
-            promoFilm={promoFilm}
-          />
+          <Main />
         </Route>
         <Route path={AppRoute.LOGIN}>
           <SignIn />
@@ -33,7 +29,7 @@ const App = (props) => {
         <PrivateRoute
           exact
           path={AppRoute.MY_LIST}
-          render={() => <MyList films={films} />}
+          render={() => <MyList />}
         />
         <Route
           exact
@@ -58,32 +54,6 @@ const App = (props) => {
       </Switch>
     </BrowserRouter>
   );
-};
-
-App.propTypes = {
-  promoFilm: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    releaseDate: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    poster: PropTypes.string.isRequired,
-    backgroundPicture: PropTypes.string.isRequired,
-    previewVideoSrc: PropTypes.string.isRequired,
-  }).isRequired,
-  films: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    releaseDate: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    description: PropTypes.string.isRequired,
-    picture: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    backgroundPicture: PropTypes.string.isRequired,
-    rate: PropTypes.number.isRequired,
-    voteCount: PropTypes.number.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-    runTime: PropTypes.number.isRequired,
-    previewVideoSrc: PropTypes.string.isRequired,
-  })).isRequired,
 };
 
 export default App;
