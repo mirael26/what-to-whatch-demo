@@ -3,6 +3,7 @@ import {ActionType} from "../../../store/action";
 
 const initialState = {
   films: [],
+  favoriteFilms: [],
   promoFilm: {},
   currentFilm: {},
   reviews: [],
@@ -14,6 +15,10 @@ const dataReducer = (state = initialState, action) => {
     case ActionType.LOAD_FILMS:
       return extend(state, {
         films: action.payload,
+      });
+    case ActionType.LOAD_FAVORITE_FILMS:
+      return extend(state, {
+        favoriteFilms: action.payload,
       });
     case ActionType.GET_GENRES_LIST:
       const genres = state.films.map((film) => film.genre);

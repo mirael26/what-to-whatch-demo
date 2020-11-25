@@ -1,59 +1,97 @@
-import React from "react";
-import {Link} from "react-router-dom";
-
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
+import {connect} from "react-redux";
+
 import {AppRoute} from "../../const";
+import {fetchFavoriteFilms} from "../../store/api-actions";
 
 import MoviesList from "../movies-list/movies-list";
 import UserBlock from "../user-block/user-block";
 
-const MyList = (props) => {
-  const {films} = props;
+class MyList extends PureComponent {
+  constructor(props) {
+    super(props);
+  }
 
-  return (
-    <div className="user-page">
-      <header className="page-header user-page__head">
-        <div className="logo">
-          <Link to={AppRoute.MAIN} className="logo__link">
-            <span className="logo__letter logo__letter--1">W</span>
-            <span className="logo__letter logo__letter--2">T</span>
-            <span className="logo__letter logo__letter--3">W</span>
-          </Link>
-        </div>
+  componentDidMount() {
+    const {loadFavoriteFilms} = this.props;
+    loadFavoriteFilms();
+  }
 
-        <h1 className="page-title user-page__title">My list</h1>
+  render() {
+    const {favoriteFilms} = this.props;
 
-        {<UserBlock />}
-      </header>
+    return (
+      <div className="user-page">
+        <header className="page-header user-page__head">
+          <div className="logo">
+            <Link to={AppRoute.MAIN} className="logo__link">
+              <span className="logo__letter logo__letter--1">W</span>
+              <span className="logo__letter logo__letter--2">T</span>
+              <span className="logo__letter logo__letter--3">W</span>
+            </Link>
+          </div>
 
-      <section className="catalog">
-        <h2 className="catalog__title visually-hidden">Catalog</h2>
+          <h1 className="page-title user-page__title">My list</h1>
 
-        {<MoviesList films={films}/>}
-      </section>
+          {<UserBlock />}
+        </header>
 
-      <footer className="page-footer">
-        <div className="logo">
-          <Link to={AppRoute.MAIN} className="logo__link logo__link--light">
-            <span className="logo__letter logo__letter--1">W</span>
-            <span className="logo__letter logo__letter--2">T</span>
-            <span className="logo__letter logo__letter--3">W</span>
-          </Link>
-        </div>
+        <section className="catalog">
+          <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <div className="copyright">
-          <p>© 2019 What to watch Ltd.</p>
-        </div>
-      </footer>
-    </div>
-  );
-};
+          {<MoviesList films={favoriteFilms}/>}
+        </section>
+
+        <footer className="page-footer">
+          <div className="logo">
+            <Link to={AppRoute.MAIN} className="logo__link logo__link--light">
+              <span className="logo__letter logo__letter--1">W</span>
+              <span className="logo__letter logo__letter--2">T</span>
+              <span className="logo__letter logo__letter--3">W</span>
+            </Link>
+          </div>
+
+          <div className="copyright">
+            <p>© 2019 What to watch Ltd.</p>
+          </div>
+        </footer>
+      </div>
+    );
+  }
+}
 
 MyList.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    picture: PropTypes.string.isRequired,
-  })).isRequired,
+  favoriteFilms: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    genre: PropTypes.string,
+    releaseDate: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    description: PropTypes.string,
+    picture: PropTypes.string,
+    poster: PropTypes.string,
+    backgroundPicture: PropTypes.string,
+    backgroundColor: PropTypes.string,
+    rate: PropTypes.number,
+    voteCount: PropTypes.number,
+    director: PropTypes.string,
+    starring: PropTypes.arrayOf(PropTypes.string),
+    runTime: PropTypes.number,
+    previewVideoSrc: PropTypes.string,
+  })),
+  loadFavoriteFilms: PropTypes.func.isRequired,
 };
 
-export default MyList;
+const mapStateToProps = ({DATA}) => ({
+  favoriteFilms: DATA.favoriteFilms,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  loadFavoriteFilms() {
+    dispatch(fetchFavoriteFilms());
+  }
+});
+
+export {MyList};
+export default connect(mapStateToProps, mapDispatchToProps)(MyList);

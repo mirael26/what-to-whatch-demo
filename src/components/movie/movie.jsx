@@ -3,8 +3,8 @@ import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
-import {fetchCurrentFilm} from "../../store/api-actions";
-import {AuthorizationStatus, AppRoute} from "../../const";
+import {fetchCurrentFilm, postFavoriteStatus} from "../../store/api-actions";
+import {AuthorizationStatus, AppRoute, FavoriteStatus} from "../../const";
 
 import UserBlock from "../user-block/user-block";
 import MoviesList from "../movies-list/movies-list";
@@ -19,6 +19,8 @@ class Movie extends PureComponent {
   constructor(props) {
     super(props);
     this.getFilmId = this.getFilmId.bind(this);
+
+    this.handleMyListButtonClick = this.handleMyListButtonClick.bind(this);
   }
 
   componentDidMount() {
@@ -36,6 +38,13 @@ class Movie extends PureComponent {
     const {match} = this.props;
     const {params: {id}} = match;
     return parseInt(id, 10);
+  }
+
+  handleMyListButtonClick() {
+    const {currentFilm, changeFavoriteStatus} = this.props;
+    const {isFavorite, id} = currentFilm;
+    const status = isFavorite ? FavoriteStatus.DELETE : FavoriteStatus.ADD;
+    changeFavoriteStatus(id, status);
   }
 
   render() {
@@ -90,10 +99,15 @@ class Movie extends PureComponent {
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
+                <button className="btn btn--list movie-card__button" type="button" onClick={this.handleMyListButtonClick}>
+                  {currentFilm.isFavorite
+                    ? <svg viewBox="0 0 18 14" width="18" height="14">
+                      <use xlinkHref="#in-list"></use>
+                    </svg>
+                    : <svg viewBox="0 0 19 20" width="19" height="20">
+                      <use xlinkHref="#add"></use>
+                    </svg>
+                  }
                   <span>My list</span>
                 </button>
                 {isAuthorized ? <Link to={`${AppRoute.MOVIE}/${filmId}${AppRoute.REVIEW}`} className="btn movie-card__button">Add review</Link> : ``}
@@ -175,11 +189,13 @@ Movie.propTypes = {
     starring: PropTypes.arrayOf(PropTypes.string),
     runTime: PropTypes.number,
     previewVideoSrc: PropTypes.string,
+    isFavorite: PropTypes.bool,
   }),
   match: PropTypes.object.isRequired,
   loadCurrentFilm: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   onPlayerButtonClick: PropTypes.func.isRequired,
+  changeFavoriteStatus: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({DATA, USER}) => ({
@@ -191,6 +207,9 @@ const mapStateToProps = ({DATA, USER}) => ({
 const mapDispatchToProps = (dispatch) => ({
   loadCurrentFilm(id) {
     dispatch(fetchCurrentFilm(id));
+  },
+  changeFavoriteStatus(id, status) {
+    dispatch(postFavoriteStatus(id, status));
   }
 });
 

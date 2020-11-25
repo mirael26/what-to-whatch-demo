@@ -23,6 +23,7 @@ const APIRoute = {
   REVIEWS: `/comments`,
   LOGIN: `/login`,
   PROMO: `/films/promo`,
+  FAVORITE: `/favorite`,
 };
 
 const FilmRates = {
@@ -33,4 +34,9 @@ const FilmRates = {
   AWESOME: `Awesome`,
 };
 
-export {MovieViewTypes, AuthorizationStatus, APIRoute, AppRoute, FilmRates};
+const FavoriteStatus = {
+  ADD: `1`,
+  DELETE: `0`,
+};
+
+export {MovieViewTypes, AuthorizationStatus, APIRoute, AppRoute, FilmRates, FavoriteStatus};

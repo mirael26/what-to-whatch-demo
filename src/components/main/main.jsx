@@ -2,7 +2,8 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
-import {fetchPromoFilm} from "../../store/api-actions";
+import {fetchPromoFilm, postFavoriteStatus} from "../../store/api-actions";
+import {FavoriteStatus} from "../../const";
 
 import Catalog from "../catalog/catalog";
 import UserBlock from "../user-block/user-block";
@@ -13,12 +14,22 @@ const CatalogWithShowMore = withShowMore(Catalog);
 class Main extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.handleMyListButtonClick = this.handleMyListButtonClick.bind(this);
   }
 
   componentDidMount() {
     const {loadPromoFilm} = this.props;
     loadPromoFilm();
   }
+
+  handleMyListButtonClick() {
+    const {promoFilm, changeFavoriteStatus} = this.props;
+    const {isFavorite, id} = promoFilm;
+    const status = isFavorite ? FavoriteStatus.DELETE : FavoriteStatus.ADD;
+    changeFavoriteStatus(id, status);
+  }
+
 
   render() {
     const {promoFilm, onPlayerButtonClick} = this.props;
@@ -63,10 +74,15 @@ class Main extends PureComponent {
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
+                <button className="btn btn--list movie-card__button" type="button" onClick={this.handleMyListButtonClick}>
+                  {promoFilm.isFavorite
+                    ? <svg viewBox="0 0 18 14" width="18" height="14">
+                      <use xlinkHref="#in-list"></use>
+                    </svg>
+                    : <svg viewBox="0 0 19 20" width="19" height="20">
+                      <use xlinkHref="#add"></use>
+                    </svg>
+                  }
                   <span>My list</span>
                 </button>
               </div>
@@ -113,9 +129,11 @@ Main.propTypes = {
     starring: PropTypes.arrayOf(PropTypes.string),
     runTime: PropTypes.number,
     previewVideoSrc: PropTypes.string,
+    isFavorite: PropTypes.bool,
   }),
   loadPromoFilm: PropTypes.func.isRequired,
   onPlayerButtonClick: PropTypes.func.isRequired,
+  changeFavoriteStatus: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({DATA}) => ({
@@ -125,7 +143,10 @@ const mapStateToProps = ({DATA}) => ({
 const mapDispatchToProps = (dispatch) => ({
   loadPromoFilm() {
     dispatch(fetchPromoFilm());
-  }
+  },
+  changeFavoriteStatus(id, status) {
+    dispatch(postFavoriteStatus(id, status));
+  },
 });
 
 export {Main};
