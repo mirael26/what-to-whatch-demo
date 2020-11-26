@@ -6,9 +6,9 @@ import {Link} from "react-router-dom";
 import {isAuthorized} from "../../utils";
 import {AppRoute} from "../../const";
 
-const avatarDefault = `img/avatar.jpg`;
+const AVATAR_DEFAULT_SRC = `img/avatar.jpg`;
 
-const UserBlock = ({authorizationStatus, userAvatarUrl = avatarDefault}) => {
+const UserBlock = ({authorizationStatus, userAvatarUrl = AVATAR_DEFAULT_SRC}) => {
   const isUserAuthorized = isAuthorized(authorizationStatus);
   return (
     <div className="user-block">
