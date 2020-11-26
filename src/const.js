@@ -1,4 +1,4 @@
-const MovieViewTypes = {
+const MovieViewType = {
   OVERVIEW: `overview`,
   DETAILS: `details`,
   REVIEWS: `reviews`
@@ -26,7 +26,7 @@ const APIRoute = {
   FAVORITE: `/favorite`,
 };
 
-const FilmRates = {
+const FilmRate = {
   BAD: `Bad`,
   NORMAL: `Normal`,
   GOOD: `Good`,
@@ -39,4 +39,4 @@ const FavoriteStatus = {
   DELETE: `0`,
 };
 
-export {MovieViewTypes, AuthorizationStatus, APIRoute, AppRoute, FilmRates, FavoriteStatus};
+export {MovieViewType, AuthorizationStatus, APIRoute, AppRoute, FilmRate, FavoriteStatus};

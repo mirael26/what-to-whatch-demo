@@ -1,4 +1,4 @@
-import {AuthorizationStatus, FilmRates} from "./const";
+import {AuthorizationStatus, FilmRate} from "./const";
 import dayjs from "dayjs";
 
 const duration = require(`dayjs/plugin/duration`);
@@ -30,19 +30,19 @@ const findRateDescription = (rate) => {
     case 0:
     case 1:
     case 2:
-      return FilmRates.BAD;
+      return FilmRate.BAD;
     case 3:
     case 4:
-      return FilmRates.NORMAL;
+      return FilmRate.NORMAL;
     case 5:
     case 6:
     case 7:
-      return FilmRates.GOOD;
+      return FilmRate.GOOD;
     case 8:
     case 9:
-      return FilmRates.VERY_GOOD;
+      return FilmRate.VERY_GOOD;
     default:
-      return FilmRates.AWESOME;
+      return FilmRate.AWESOME;
   }
 };
 

@@ -1,12 +1,12 @@
 import React, {PureComponent} from "react";
-import {MovieViewTypes} from "../../const";
+import {MovieViewType} from "../../const";
 
 const withViewType = (Component) => {
   class WithViewType extends PureComponent {
     constructor(props) {
       super(props);
       this.state = {
-        viewType: MovieViewTypes.OVERVIEW
+        viewType: MovieViewType.OVERVIEW
       };
 
       this.onTabClick = this.onTabClick.bind(this);

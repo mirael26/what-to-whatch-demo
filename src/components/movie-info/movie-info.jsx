@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import {MovieViewTypes} from "../../const";
+import {MovieViewType} from "../../const";
 
 import MovieTabs from "../movie-tabs/movie-tabs";
 import MovieOverview from "../movie-overview/movie-overview";
@@ -18,10 +18,10 @@ const MovieInfo = (props) => {
 
   let movieComponent;
   switch (viewType) {
-    case MovieViewTypes.DETAILS:
+    case MovieViewType.DETAILS:
       movieComponent = <MovieDetails film={film} />;
       break;
-    case MovieViewTypes.REVIEWS:
+    case MovieViewType.REVIEWS:
       movieComponent = <MovieReviews id={id}/>;
       break;
     default:
