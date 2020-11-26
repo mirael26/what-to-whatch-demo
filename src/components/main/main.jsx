@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
 import {fetchPromoFilm, postFavoriteStatus} from "../../store/api-actions";
-import {FavoriteStatus} from "../../const";
+import {FavoriteStatus, AuthorizationStatus} from "../../const";
 
 import Catalog from "../catalog/catalog";
 import UserBlock from "../user-block/user-block";
@@ -24,12 +24,16 @@ class Main extends PureComponent {
   }
 
   handleMyListButtonClick() {
-    const {promoFilm, changeFavoriteStatus} = this.props;
+    const {promoFilm, changeFavoriteStatus, authorizationStatus, onUnauthorizedFavoriteClick} = this.props;
+
+    if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+      onUnauthorizedFavoriteClick();
+    }
+
     const {isFavorite, id} = promoFilm;
     const status = isFavorite ? FavoriteStatus.DELETE : FavoriteStatus.ADD;
     changeFavoriteStatus(id, status);
   }
-
 
   render() {
     const {promoFilm, onPlayerButtonClick} = this.props;
@@ -131,13 +135,16 @@ Main.propTypes = {
     previewVideoSrc: PropTypes.string,
     isFavorite: PropTypes.bool,
   }),
+  authorizationStatus: PropTypes.string.isRequired,
   loadPromoFilm: PropTypes.func.isRequired,
   onPlayerButtonClick: PropTypes.func.isRequired,
   changeFavoriteStatus: PropTypes.func.isRequired,
+  onUnauthorizedFavoriteClick: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({DATA}) => ({
+const mapStateToProps = ({DATA, USER}) => ({
   promoFilm: DATA.promoFilm,
+  authorizationStatus: USER.authorizationStatus,
 });
 
 const mapDispatchToProps = (dispatch) => ({

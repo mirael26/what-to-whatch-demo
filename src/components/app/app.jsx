@@ -23,7 +23,11 @@ const App = () => {
         <Route
           exact
           path={AppRoute.MAIN}
-          render={({history}) => <Main onPlayerButtonClick={(id) => history.push(`${AppRoute.PLAYER}/${id}`)}/>}>
+          render={({history}) =>
+            <Main
+              onPlayerButtonClick={(id) => history.push(`${AppRoute.PLAYER}/${id}`)}
+              onUnauthorizedFavoriteClick={() => history.push(`${AppRoute.LOGIN}`)}
+            />}>
         </Route>
         <PrivateRoute
           exact
@@ -44,7 +48,8 @@ const App = () => {
           path={`${AppRoute.MOVIE}/:id`}
           render={({match, history}) => <Movie
             match={match}
-            onPlayerButtonClick={(id) => history.push(`${AppRoute.PLAYER}/${id}`)} />}
+            onPlayerButtonClick={(id) => history.push(`${AppRoute.PLAYER}/${id}`)}
+            onUnauthorizedFavoriteClick={() => history.push(`${AppRoute.LOGIN}`)}/>}
         />
         <PrivateRoute
           exact

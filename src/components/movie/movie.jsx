@@ -41,6 +41,10 @@ class Movie extends PureComponent {
   }
 
   handleMyListButtonClick() {
+    const {onUnauthorizedFavoriteClick, authorizationStatus} = this.props;
+    if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+      onUnauthorizedFavoriteClick();
+    }
     const {currentFilm, changeFavoriteStatus} = this.props;
     const {isFavorite, id} = currentFilm;
     const status = isFavorite ? FavoriteStatus.DELETE : FavoriteStatus.ADD;
@@ -196,6 +200,7 @@ Movie.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   onPlayerButtonClick: PropTypes.func.isRequired,
   changeFavoriteStatus: PropTypes.func.isRequired,
+  onUnauthorizedFavoriteClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({DATA, USER}) => ({
