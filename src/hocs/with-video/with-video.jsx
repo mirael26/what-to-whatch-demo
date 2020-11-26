@@ -8,8 +8,8 @@ const withVideo = (Component) => {
     constructor(props) {
       super(props);
 
-      this._videoRef = createRef();
-      this._timerId = null;
+      this.videoRef = createRef();
+      this.timerId = null;
 
       this.state = {
         isLoading: true
@@ -18,7 +18,7 @@ const withVideo = (Component) => {
 
     componentDidMount() {
       const {previewVideoSrc, poster} = this.props;
-      const video = this._videoRef.current;
+      const video = this.videoRef.current;
 
       video.src = previewVideoSrc;
       video.poster = poster;
@@ -29,13 +29,13 @@ const withVideo = (Component) => {
     }
 
     componentWillUnmount() {
-      const video = this._videoRef.current;
+      const video = this.videoRef.current;
 
       video.oncanplaythrough = null;
     }
 
     componentDidUpdate(prevProps) {
-      const video = this._videoRef.current;
+      const video = this.videoRef.current;
       if (prevProps.isPlaying === this.props.isPlaying) {
         return;
       }
@@ -43,9 +43,9 @@ const withVideo = (Component) => {
       const playVideo = () => video.play();
 
       if (this.props.isPlaying || this.state.isLoading) {
-        this._timerId = setTimeout(playVideo, VIDEO_TIME_OUT);
+        this.timerId = setTimeout(playVideo, VIDEO_TIME_OUT);
       } else {
-        clearTimeout(this._timerId);
+        clearTimeout(this.timerId);
         video.load();
       }
     }
@@ -56,7 +56,7 @@ const withVideo = (Component) => {
           {...this.props}
         >
           <video width="280" height="175"
-            ref={this._videoRef}
+            ref={this.videoRef}
             muted
           />
         </Component>

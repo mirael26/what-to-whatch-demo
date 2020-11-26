@@ -14,9 +14,9 @@ class Player extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._videoRef = createRef();
-    this._fullscreenButtonRef = createRef();
-    this._duration = DEFAULT_RUN_TIME;
+    this.videoRef = createRef();
+    this.fullscreenButtonRef = createRef();
+    this.duration = DEFAULT_RUN_TIME;
 
     this.handleFullscreenButtonClick = this.handleFullscreenButtonClick.bind(this);
     this.changeTime = this.changeTime.bind(this);
@@ -28,7 +28,7 @@ class Player extends PureComponent {
     const {loadCurrentFilm} = this.props;
     loadCurrentFilm(this.getFilmId());
 
-    const video = this._videoRef.current;
+    const video = this.videoRef.current;
     video.addEventListener(`durationchange`, () => this.handleDurationChange());
   }
 
@@ -50,7 +50,7 @@ class Player extends PureComponent {
 
   changePlayMode() {
     const {isPlaying} = this.props;
-    const video = this._videoRef.current;
+    const video = this.videoRef.current;
     if (isPlaying) {
       video.play();
     } else {
@@ -59,7 +59,7 @@ class Player extends PureComponent {
   }
 
   handleFullscreenButtonClick() {
-    const video = this._videoRef.current;
+    const video = this.videoRef.current;
     if (video.requestFullscreen) {
       video.requestFullscreen();
     } else if (video.webkitRequestFullscreen) {
@@ -70,19 +70,19 @@ class Player extends PureComponent {
   }
 
   handleTimeUpdate() {
-    const currentTime = this._videoRef.current.currentTime;
+    const currentTime = this.videoRef.current.currentTime;
     const {setCurrentTime} = this.props;
     setCurrentTime(currentTime);
   }
 
   handleDurationChange() {
-    this._duration = this._videoRef.current.duration;
+    this.duration = this.videoRef.current.duration;
     const {onPlayButtonClick} = this.props;
     onPlayButtonClick();
   }
 
   changeTime(newTime) {
-    this._videoRef.current.currentTime = newTime;
+    this.videoRef.current.currentTime = newTime;
   }
 
   render() {
@@ -98,14 +98,14 @@ class Player extends PureComponent {
         <video
           src={currentFilm.videoSrc}
           className="player__video"
-          ref={this._videoRef}
+          ref={this.videoRef}
           onTimeUpdate={debounce(this.handleTimeUpdate, 1000)}></video>
 
         <button type="button" className="player__exit" onClick={onExitButtonClick}>Exit</button>
 
         <div className="player__controls">
           <TimeBar
-            runTime={this._duration}
+            runTime={this.duration}
             onTimeChange={this.changeTime}
             onPlayModeChange={onPlayButtonClick}
             isPlaying={isPlaying}/>
@@ -130,7 +130,7 @@ class Player extends PureComponent {
             <button
               type="button"
               className="player__full-screen"
-              ref={this._fullscreenButtonRef}
+              ref={this.fullscreenButtonRef}
               onClick={this.handleFullscreenButtonClick}>
               <svg viewBox="0 0 27 27" width="27" height="27">
                 <use xlinkHref="#full-screen"></use>

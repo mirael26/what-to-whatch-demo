@@ -13,17 +13,17 @@ const withVideoPreview = (Component) => {
         isPlaying: false,
       };
 
-      this._onVideoMouseOver = this._onVideoMouseOver.bind(this);
-      this._onVideoMouseOut = this._onVideoMouseOut.bind(this);
+      this.handleVideoMouseOver = this.handleVideoMouseOver.bind(this);
+      this.handleVideoMouseOut = this.handleVideoMouseOut.bind(this);
     }
 
-    _onVideoMouseOver() {
+    handleVideoMouseOver() {
       this.setState({
         isPlaying: true
       });
     }
 
-    _onVideoMouseOut() {
+    handleVideoMouseOut() {
       this.setState({
         isPlaying: false
       });
@@ -40,8 +40,8 @@ const withVideoPreview = (Component) => {
               previewVideoSrc={previewVideoSrc}
               poster={poster}
               isPlaying={isPlaying}
-              onVideoMouseOver={this._onVideoMouseOver}
-              onVideoMouseOut={this._onVideoMouseOut}
+              onVideoMouseOver={this.handleVideoMouseOver}
+              onVideoMouseOut={this.handleVideoMouseOut}
             />
           );
         }}

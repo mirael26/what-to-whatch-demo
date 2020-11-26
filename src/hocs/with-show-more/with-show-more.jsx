@@ -10,10 +10,10 @@ const withShowMore = (Component) => {
         filmsCount: FILMS_COUNT_STEP,
       };
 
-      this.onShowMoreButton = this.onShowMoreButton.bind(this);
+      this.handleShowMoreButton = this.handleShowMoreButton.bind(this);
     }
 
-    onShowMoreButton() {
+    handleShowMoreButton() {
       const prevCount = this.state.filmsCount;
       this.setState({
         filmsCount: prevCount + FILMS_COUNT_STEP,
@@ -24,7 +24,7 @@ const withShowMore = (Component) => {
       return (
         <Component
           filmsCount={this.state.filmsCount}
-          onShowMoreButton={this.onShowMoreButton}
+          onShowMoreButton={this.handleShowMoreButton}
         />
       );
     }

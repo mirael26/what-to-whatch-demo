@@ -19,24 +19,24 @@ const withUserReview = (Component) => {
 
       this.isValid = false;
 
-      this.onRateChange = this.onRateChange.bind(this);
-      this.onTextChange = this.onTextChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleRateChange = this.handleRateChange.bind(this);
+      this.handleTextChange = this.handleTextChange.bind(this);
+      this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
 
-    onRateChange(evt) {
+    handleRateChange(evt) {
       this.setState({rate: +evt.target.value});
       const {onInputChange} = this.props;
       onInputChange();
     }
 
-    onTextChange(evt) {
+    handleTextChange(evt) {
       this.setState({reviewText: evt.target.value});
       const {onInputChange} = this.props;
       onInputChange();
     }
 
-    handleSubmit(evt) {
+    handleFormSubmit(evt) {
       const {onSubmit, currentFilmId} = this.props;
 
       evt.preventDefault();
@@ -68,9 +68,9 @@ const withUserReview = (Component) => {
           {...this.props}
           currentRate={rate}
           reviewText={reviewText}
-          onRateChange={this.onRateChange}
-          onTextChange={this.onTextChange}
-          handleSubmit={this.handleSubmit}
+          onRateChange={this.handleRateChange}
+          onTextChange={this.handleTextChange}
+          onFormSubmit={this.handleFormSubmit}
           isDisabled={isDisabled}
         />
       );

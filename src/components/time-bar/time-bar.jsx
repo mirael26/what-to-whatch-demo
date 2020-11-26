@@ -8,13 +8,13 @@ class TimeBar extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._slider = createRef();
-    this._progressBar = createRef();
-    this._startCoord = null;
-    this._endCoord = null;
-    this._shift = null;
-    this._isPauseForced = null;
-    this._isLaunched = false;
+    this.slider = createRef();
+    this.progressBar = createRef();
+    this.startCoord = null;
+    this.endCoord = null;
+    this.shift = null;
+    this.isPauseForced = null;
+    this.isLaunched = false;
 
     this.handleSliderMouseDown = this.handleSliderMouseDown.bind(this);
     this.handleDocumentMouseMove = this.handleDocumentMouseMove.bind(this);
@@ -22,50 +22,50 @@ class TimeBar extends PureComponent {
   }
 
   componentDidUpdate() {
-    if (this._isLaunched) {
+    if (this.isLaunched) {
       return;
     }
     const {currentTime} = this.props;
-    this._isLaunched = currentTime > 0;
+    this.isLaunched = currentTime > 0;
   }
 
   handleSliderMouseDown(evt) {
     evt.preventDefault();
-    this._startCoord = evt.clientX;
+    this.startCoord = evt.clientX;
     document.addEventListener(`mousemove`, this.handleDocumentMouseMove);
     document.addEventListener(`mouseup`, this.handleDocumentMouseUp);
 
     const {onPlayModeChange, isPlaying} = this.props;
     if (isPlaying) {
       onPlayModeChange();
-      this._isPauseForced = true;
+      this.isPauseForced = true;
     }
   }
 
   handleDocumentMouseMove(evt) {
     evt.preventDefault();
-    this._endCoord = evt.clientX;
-    const minCoord = this._progressBar.current.getBoundingClientRect().left;
-    const maxCoord = this._progressBar.current.getBoundingClientRect().right;
-    if (this._endCoord < minCoord) {
-      this._endCoord = minCoord;
+    this.endCoord = evt.clientX;
+    const minCoord = this.progressBar.current.getBoundingClientRect().left;
+    const maxCoord = this.progressBar.current.getBoundingClientRect().right;
+    if (this.endCoord < minCoord) {
+      this.endCoord = minCoord;
     }
-    if (this._endCoord > maxCoord) {
-      this._endCoord = maxCoord;
+    if (this.endCoord > maxCoord) {
+      this.endCoord = maxCoord;
     }
-    this._shift = this._endCoord - this._startCoord;
-    this._startCoord = this._endCoord;
-    const slider = this._slider.current;
-    const newSliderPoint = slider.offsetLeft + this._shift;
+    this.shift = this.endCoord - this.startCoord;
+    this.startCoord = this.endCoord;
+    const slider = this.slider.current;
+    const newSliderPoint = slider.offsetLeft + this.shift;
     slider.style.left = `${newSliderPoint}px`;
-    const progressBar = this._progressBar.current;
+    const progressBar = this.progressBar.current;
     progressBar.value = `${newSliderPoint / progressBar.clientWidth * 100}`;
   }
 
   handleDocumentMouseUp(evt) {
     evt.preventDefault();
-    const progressBarWidth = this._progressBar.current.clientWidth;
-    const newFilmPoint = (this._slider.current.offsetLeft / progressBarWidth).toFixed(3);
+    const progressBarWidth = this.progressBar.current.clientWidth;
+    const newFilmPoint = (this.slider.current.offsetLeft / progressBarWidth).toFixed(3);
     this._newTime = this.props.runTime * newFilmPoint;
 
     const {onTimeChange} = this.props;
@@ -75,10 +75,10 @@ class TimeBar extends PureComponent {
     document.removeEventListener(`mouseup`, this.handleDocumentMouseUp);
 
     const {onPlayModeChange} = this.props;
-    if (this._isPauseForced) {
+    if (this.isPauseForced) {
       onPlayModeChange();
     }
-    this._isPauseForced = null;
+    this.isPauseForced = null;
   }
 
   render() {
@@ -90,12 +90,12 @@ class TimeBar extends PureComponent {
     return (
       <div className="player__controls-row">
         <div className="player__time">
-          <progress className="player__progress" value={progress} max="100" ref={this._progressBar}></progress>
+          <progress className="player__progress" value={progress} max="100" ref={this.progressBar}></progress>
           <div
             className="player__toggler"
             style={{left: `${progress}%`}}
-            ref={this._slider}
-            onMouseDown={this._isLaunched ? this.handleSliderMouseDown : null}
+            ref={this.slider}
+            onMouseDown={this.isLaunched ? this.handleSliderMouseDown : null}
           >Toggler</div>
         </div>
         <div className="player__time-value">{timer}</div>

@@ -10,14 +10,14 @@ const AddReviewForm = (props) => {
     onRateChange,
     onTextChange,
     isDisabled,
-    handleSubmit,
+    onFormSubmit,
     background,
     errorStatus,
   } = props;
 
   return (
     <div className="add-review">
-      <form action="#" className="add-review__form" onSubmit={handleSubmit}>
+      <form action="#" className="add-review__form" onSubmit={onFormSubmit}>
         <div className="rating">
           <div className="rating__stars">
             {new Array(MAX_RATE).fill().map((element, i) => {
@@ -62,7 +62,7 @@ AddReviewForm.propTypes = {
   reviewText: PropTypes.string.isRequired,
   onRateChange: PropTypes.func.isRequired,
   onTextChange: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
+  onFormSubmit: PropTypes.func.isRequired,
   isDisabled: PropTypes.bool.isRequired,
   background: PropTypes.string,
   errorStatus: PropTypes.bool.isRequired,

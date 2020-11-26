@@ -9,10 +9,10 @@ const withViewType = (Component) => {
         viewType: MovieViewType.OVERVIEW
       };
 
-      this.onTabClick = this.onTabClick.bind(this);
+      this.handleTabClick = this.handleTabClick.bind(this);
     }
 
-    onTabClick(evt) {
+    handleTabClick(evt) {
       evt.preventDefault();
       if (!evt.target.id) {
         return;
@@ -27,7 +27,7 @@ const withViewType = (Component) => {
         <Component
           {...this.props}
           viewType={viewType}
-          onTabClick={this.onTabClick}
+          onTabClick={this.handleTabClick}
         />
       );
     }
