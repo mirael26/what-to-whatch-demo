@@ -31,7 +31,7 @@ class Main extends PureComponent {
     }
 
     const {isFavorite, id} = promoFilm;
-    const status = isFavorite ? FavoriteStatus.DELETE : FavoriteStatus.ADD;
+    const status = isFavorite ? FavoriteStatus.REMOVE : FavoriteStatus.ADD;
     changeFavoriteStatus(id, status);
   }
 

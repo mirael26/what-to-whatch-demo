@@ -47,7 +47,7 @@ class Movie extends PureComponent {
     }
     const {currentFilm, changeFavoriteStatus} = this.props;
     const {isFavorite, id} = currentFilm;
-    const status = isFavorite ? FavoriteStatus.DELETE : FavoriteStatus.ADD;
+    const status = isFavorite ? FavoriteStatus.REMOVE : FavoriteStatus.ADD;
     changeFavoriteStatus(id, status);
   }
 

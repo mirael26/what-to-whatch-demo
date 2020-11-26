@@ -36,7 +36,7 @@ const FilmRate = {
 
 const FavoriteStatus = {
   ADD: `1`,
-  DELETE: `0`,
+  REMOVE: `0`,
 };
 
 export {MovieViewType, AuthorizationStatus, APIRoute, AppRoute, FilmRate, FavoriteStatus};
