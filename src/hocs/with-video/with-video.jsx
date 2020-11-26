@@ -34,19 +34,6 @@ const withVideo = (Component) => {
       video.oncanplaythrough = null;
     }
 
-    render() {
-      return (
-        <Component
-          {...this.props}
-        >
-          <video width="280" height="175"
-            ref={this._videoRef}
-            muted
-          />
-        </Component>
-      );
-    }
-
     componentDidUpdate(prevProps) {
       const video = this._videoRef.current;
       if (prevProps.isPlaying === this.props.isPlaying) {
@@ -61,6 +48,19 @@ const withVideo = (Component) => {
         clearTimeout(this._timerId);
         video.load();
       }
+    }
+
+    render() {
+      return (
+        <Component
+          {...this.props}
+        >
+          <video width="280" height="175"
+            ref={this._videoRef}
+            muted
+          />
+        </Component>
+      );
     }
   }
 
