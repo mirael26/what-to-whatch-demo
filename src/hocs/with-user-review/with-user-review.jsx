@@ -26,10 +26,14 @@ const withUserReview = (Component) => {
 
     onRateChange(evt) {
       this.setState({rate: +evt.target.value});
+      const {onInputChange} = this.props;
+      onInputChange();
     }
 
     onTextChange(evt) {
       this.setState({reviewText: evt.target.value});
+      const {onInputChange} = this.props;
+      onInputChange();
     }
 
     handleSubmit(evt) {
@@ -76,6 +80,7 @@ const withUserReview = (Component) => {
   WithUserReview.propTypes = {
     currentFilmId: PropTypes.number,
     onSubmit: PropTypes.func.isRequired,
+    onInputChange: PropTypes.func.isRequired,
   };
 
   const mapStateToProps = ({DATA}) => ({

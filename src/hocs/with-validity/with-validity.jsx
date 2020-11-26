@@ -48,6 +48,6 @@ const withValidity = (Component) => {
   }
 
   return WithValidity;
-}
+};
 
 export default withValidity;

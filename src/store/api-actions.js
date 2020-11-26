@@ -40,7 +40,12 @@ const fetchReviews = (id) => (dispatch, _getState, api) => (
 const postReview = (id, {rating, comment}) => (dispatch, _getState, api) => {
   api.post(`${APIRoute.REVIEWS}/${id}`, {rating, comment})
     .then(() => dispatch(ActionCreator.redirectToRoute(`${AppRoute.FILMS}/${id}`)))
-    .then(() => dispatch(ActionCreator.updateErrorStatus(false)));
+    .then(() => dispatch(ActionCreator.updateErrorStatus(false)))
+    .catch((error) => {
+      if (error.response.status !== HttpCode.SUCCESS) {
+        dispatch(ActionCreator.updateErrorStatus(true));
+      }
+    });
 };
 
 const postFavoriteStatus = (id, status) => (dispatch, _getState, api) => {

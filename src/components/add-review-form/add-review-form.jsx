@@ -12,6 +12,7 @@ const AddReviewForm = (props) => {
     isDisabled,
     handleSubmit,
     background,
+    errorStatus,
   } = props;
 
   return (
@@ -28,6 +29,12 @@ const AddReviewForm = (props) => {
             })}
           </div>
         </div>
+
+        {errorStatus
+          ? <div className="sign-in__message">
+            <p>`We couldn&quot;t save your review. Please try again.`</p>
+          </div>
+          : ``}
 
         <div className="add-review__text" style={{backgroundColor: background, filter: `brightness(120%)`}}>
           <textarea
@@ -58,6 +65,7 @@ AddReviewForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   isDisabled: PropTypes.bool.isRequired,
   background: PropTypes.string,
+  errorStatus: PropTypes.bool.isRequired,
 };
 
 export default AddReviewForm;

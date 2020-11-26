@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 
 import {fetchCurrentFilm} from "../../store/api-actions";
+import {ActionCreator} from "../../store/action";
 import {AppRoute} from "../../const";
 
 import UserBlock from "../user-block/user-block";
@@ -28,7 +29,7 @@ class AddReview extends PureComponent {
   }
 
   render() {
-    const {currentFilm} = this.props;
+    const {currentFilm, errorStatus, resetErrorStatus} = this.props;
     return (
       <section className="movie-card movie-card--full" style={{backgroundColor: currentFilm.backgroundColor}}>
         <div className="movie-card__header">
@@ -66,7 +67,10 @@ class AddReview extends PureComponent {
           </div>
         </div>
 
-        <AddReviewFormWithUserReview background={currentFilm.backgroundColor} />
+        <AddReviewFormWithUserReview
+          background={currentFilm.backgroundColor}
+          errorStatus={errorStatus}
+          onInputChange={resetErrorStatus} />
 
       </section>
     );
@@ -93,16 +97,22 @@ AddReview.propTypes = {
   }),
   match: PropTypes.object.isRequired,
   loadCurrentFilm: PropTypes.func.isRequired,
+  errorStatus: PropTypes.bool.isRequired,
+  resetErrorStatus: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({DATA}) => ({
+const mapStateToProps = ({DATA, STATE}) => ({
   currentFilm: DATA.currentFilm,
+  errorStatus: STATE.errorStatus,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   loadCurrentFilm(id) {
     dispatch(fetchCurrentFilm(id));
-  }
+  },
+  resetErrorStatus() {
+    dispatch(ActionCreator.updateErrorStatus(false));
+  },
 });
 
 export {AddReview};
