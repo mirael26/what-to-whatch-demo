@@ -12,8 +12,10 @@ import Player from "../player/player";
 import AddReview from "../add-review/add-review";
 import PrivateRoute from "../private-route/private-route";
 import withActiveControl from "../../hocs/with-active-control/with-active-control";
+import withValidity from "../../hocs/with-validity/with-validity";
 
 const PlayerWithControlPanel = withActiveControl(Player);
+const SignInWithValidity = withValidity(SignIn);
 
 const App = () => {
 
@@ -34,7 +36,7 @@ const App = () => {
           path={AppRoute.LOGIN}
           statusRequired={AuthorizationStatus.NO_AUTH}
           redirectPath={AppRoute.MAIN}
-          render={() => <SignIn />}
+          render={() => <SignInWithValidity />}
         />
         <PrivateRoute
           exact

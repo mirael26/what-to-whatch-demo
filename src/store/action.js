@@ -10,6 +10,7 @@ export const ActionType = {
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
   LOAD_REVIEWS: `LOAD_REVIEWS`,
   SET_PLAYER_TIME: `SET_PLAYER_TIME`,
+  UPDATE_ERROR_STATUS: `UPDATE_ERROR_STATUS`,
 };
 
 export const ActionCreator = {
@@ -56,5 +57,9 @@ export const ActionCreator = {
   setPlayerTime: (time) => ({
     type: ActionType.SET_PLAYER_TIME,
     payload: time,
+  }),
+  updateErrorStatus: (status) => ({
+    type: ActionType.UPDATE_ERROR_STATUS,
+    payload: status,
   })
 };

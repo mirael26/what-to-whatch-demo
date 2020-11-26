@@ -2,6 +2,11 @@ import {ActionCreator} from "./action";
 import {APIRoute, AppRoute, AuthorizationStatus} from "../const";
 import {adaptFilmToClient, adaptReviewToClient} from "./adapter";
 
+const HttpCode = {
+  UNAUTHORIZED: 401,
+  SUCCESS: 200,
+};
+
 const fetchFilmsList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.FILMS)
     .then(({data}) => data.map(adaptFilmToClient))
@@ -34,7 +39,8 @@ const fetchReviews = (id) => (dispatch, _getState, api) => (
 
 const postReview = (id, {rating, comment}) => (dispatch, _getState, api) => {
   api.post(`${APIRoute.REVIEWS}/${id}`, {rating, comment})
-    .then(() => dispatch(ActionCreator.redirectToRoute(`${AppRoute.FILMS}/${id}`)));
+    .then(() => dispatch(ActionCreator.redirectToRoute(`${AppRoute.FILMS}/${id}`)))
+    .then(() => dispatch(ActionCreator.updateErrorStatus(false)));
 };
 
 const postFavoriteStatus = (id, status) => (dispatch, _getState, api) => {
@@ -53,7 +59,13 @@ const checkAuth = () => (dispatch, _getState, api) => (
 const login = ({login: email, password}) => (dispatch, _getState, api) => (
   api.post(APIRoute.LOGIN, {email, password})
     .then(() => dispatch(ActionCreator.updateAuthorization(AuthorizationStatus.AUTH)))
+    .then(() => dispatch(ActionCreator.updateErrorStatus(false)))
     .then(() => dispatch(ActionCreator.redirectToRoute(AppRoute.MAIN)))
+    .catch((error) => {
+      if (error.response.status !== HttpCode.SUCCESS) {
+        dispatch(ActionCreator.updateErrorStatus(true));
+      }
+    })
 );
 
 export {fetchFilmsList, fetchPromoFilm, fetchCurrentFilm, fetchReviews, postReview, checkAuth, login, fetchFavoriteFilms, postFavoriteStatus};

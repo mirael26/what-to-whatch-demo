@@ -74,7 +74,16 @@ const debounce = (func, ms) => {
       isCooldown = false;
     }, ms);
   };
+};
 
-}
+const validateLogin = (login) => {
+  const REG_EXP = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return REG_EXP.test(login);
+};
 
-export {formatRunTime, makeFirstUpperCase, extend, isAuthorized, findRateDescription, convertIntoTwoNumerals, formatPlayerTimer, debounce};
+const validatePassword = (password) => {
+  const REG_EXP = /^[a-zA-Z0-9]+/;
+  return REG_EXP.test(password);
+};
+
+export {formatRunTime, makeFirstUpperCase, extend, isAuthorized, findRateDescription, convertIntoTwoNumerals, formatPlayerTimer, debounce, validateLogin, validatePassword};
