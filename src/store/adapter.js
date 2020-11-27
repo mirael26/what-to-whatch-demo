@@ -46,7 +46,7 @@ const adaptReviewToClient = (review) => {
   );
 
   delete adaptedReview.comment;
-  delete adaptedReview.raiting;
+  delete adaptedReview.rating;
   delete adaptedReview.user;
 
   return adaptedReview;
