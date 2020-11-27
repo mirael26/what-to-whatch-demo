@@ -1,0 +1,245 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should Movie render correctly 1`] = `
+Array [
+  <section
+    className="movie-card movie-card--full"
+    style={
+      Object {
+        "backgroundColor": "#795433",
+      }
+    }
+  >
+    <div
+      className="movie-card__hero"
+    >
+      <div
+        className="movie-card__bg"
+      >
+        <img
+          alt="Pulp Fiction"
+          src="https://assets.htmlacademy.ru/intensives/javascript-3/film/background/Pulp_Fiction.jpg"
+        />
+      </div>
+      <h1
+        className="visually-hidden"
+      >
+        WTW
+      </h1>
+      <header
+        className="page-header movie-card__head"
+      >
+        <div
+          className="logo"
+        >
+          <a
+            className="logo__link"
+            href="/"
+            onClick={[Function]}
+          >
+            <span
+              className="logo__letter logo__letter--1"
+            >
+              W
+            </span>
+            <span
+              className="logo__letter logo__letter--2"
+            >
+              T
+            </span>
+            <span
+              className="logo__letter logo__letter--3"
+            >
+              W
+            </span>
+          </a>
+        </div>
+        <UserBlock />
+      </header>
+      <div
+        className="movie-card__wrap"
+      >
+        <div
+          className="movie-card__desc"
+        >
+          <h2
+            className="movie-card__title"
+          >
+            Pulp Fiction
+          </h2>
+          <p
+            className="movie-card__meta"
+          >
+            <span
+              className="movie-card__genre"
+            >
+              Crime
+            </span>
+            <span
+              className="movie-card__year"
+            >
+              1994
+            </span>
+          </p>
+          <div
+            className="movie-card__buttons"
+          >
+            <button
+              className="btn btn--play movie-card__button"
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                height="19"
+                viewBox="0 0 19 19"
+                width="19"
+              >
+                <use
+                  xlinkHref="#play-s"
+                />
+              </svg>
+              <span>
+                Play
+              </span>
+            </button>
+            <button
+              className="btn btn--list movie-card__button"
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                height="20"
+                viewBox="0 0 19 20"
+                width="19"
+              >
+                <use
+                  xlinkHref="#add"
+                />
+              </svg>
+              <span>
+                My list
+              </span>
+            </button>
+            <a
+              className="btn movie-card__button"
+              href="/films/1/review"
+              onClick={[Function]}
+            >
+              Add review
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="movie-card__wrap movie-card__translate-top"
+    >
+      <div
+        className="movie-card__info"
+      >
+        <div
+          className="movie-card__poster movie-card__poster--big"
+        >
+          <img
+            alt="Pulp Fiction"
+            height="327"
+            src="https://assets.htmlacademy.ru/intensives/javascript-3/film/poster/Pulp_Fiction.jpg"
+            width="218"
+          />
+        </div>
+        <MovieInfo
+          film={
+            Object {
+              "backgroundColor": "#795433",
+              "backgroundPicture": "https://assets.htmlacademy.ru/intensives/javascript-3/film/background/Pulp_Fiction.jpg",
+              "description": "The lives of two mob hitmen, a boxer, a gangster & his wife, and a pair of diner bandits intertwine in four tales of violence ,and redemption.",
+              "director": "Quentin Tarantino",
+              "genre": "Crime",
+              "id": 2,
+              "isFavorite": false,
+              "picture": "https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/pulp-fiction.jpg",
+              "poster": "https://assets.htmlacademy.ru/intensives/javascript-3/film/poster/Pulp_Fiction.jpg",
+              "previewVideoSrc": "https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.,ogv.360p.webm",
+              "rate": 1.5,
+              "releaseDate": 1994,
+              "runTime": 153,
+              "starring": Array [
+                "Bill Murray",
+                "Edward Norton",
+                "Jude Law",
+                "Willem Dafoe",
+                "Saoirse Ronan",
+                "Tony Revoloru",
+                "Tilda Swinton",
+                "Tom Wilkinson",
+                "Owen Wilkinson",
+                "Adrien Brody",
+                "Ralph Fiennes",
+                "Jeff Goldblum",
+              ],
+              "title": "Pulp Fiction",
+              "videoSrc": "http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4",
+              "voteCount": 1635992,
+            }
+          }
+          id={1}
+          onTabClick={[Function]}
+          viewType="overview"
+        />
+      </div>
+    </div>
+  </section>,
+  <div
+    className="page-content"
+  >
+    <section
+      className="catalog catalog--like-this"
+    >
+      <h2
+        className="catalog__title"
+      >
+        More like this
+      </h2>
+      <MoviesList
+        films={Array []}
+      />
+    </section>
+    <footer
+      className="page-footer"
+    >
+      <div
+        className="logo"
+      >
+        <a
+          className="logo__link logo__link--light"
+          href="/"
+          onClick={[Function]}
+        >
+          <span
+            className="logo__letter logo__letter--1"
+          >
+            W
+          </span>
+          <span
+            className="logo__letter logo__letter--2"
+          >
+            T
+          </span>
+          <span
+            className="logo__letter logo__letter--3"
+          >
+            W
+          </span>
+        </a>
+      </div>
+      <div
+        className="copyright"
+      >
+        <p>
+          © 2019 What to watch Ltd.
+        </p>
+      </div>
+    </footer>
+  </div>,
+]
+`;

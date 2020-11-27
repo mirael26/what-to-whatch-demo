@@ -7,7 +7,7 @@ import {getFilmsByGenre} from "../../store/selectors";
 
 import GenreList from "../genre-list/genre-list";
 import MoviesList from "../movies-list/movies-list";
-import ShowMore from "../show-more-button/show-more-button.jsx";
+import ShowMoreButton from "../show-more-button/show-more-button";
 
 
 const Catalog = (props) => {
@@ -34,7 +34,7 @@ const Catalog = (props) => {
 
       <MoviesList films={filmsByGenre.slice(0, filmsCount)}/>
 
-      {isAllFilmsShown ? null : <ShowMore onShowMoreButton={onShowMoreButton} />}
+      {isAllFilmsShown ? null : <ShowMoreButton onShowMoreButton={onShowMoreButton} />}
     </section>
   );
 };

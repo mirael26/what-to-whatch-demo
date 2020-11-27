@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should TimeBar render correctly 1`] = `
+<div
+  className="player__controls-row"
+>
+  <div
+    className="player__time"
+  >
+    <progress
+      className="player__progress"
+      max="100"
+      value="0.0"
+    />
+    <div
+      className="player__toggler"
+      onMouseDown={null}
+      style={
+        Object {
+          "left": "0.0%",
+        }
+      }
+    >
+      Toggler
+    </div>
+  </div>
+  <div
+    className="player__time-value"
+  >
+    00:00:00
+  </div>
+</div>
+`;

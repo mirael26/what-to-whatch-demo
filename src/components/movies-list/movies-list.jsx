@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 import SmallMovieCard from "../small-movie-card/small-movie-card";
 import withVideoPreview from "../../hocs/with-video-preview/with-video-preview";
 

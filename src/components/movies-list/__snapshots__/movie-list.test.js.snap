@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should MoviesList render correctly 1`] = `
+<div
+  className="catalog__movies-list"
+>
+  <SmallMovieCard
+    film={
+      Object {
+        "backgroundColor": "ffffff",
+        "backgroundPicture": "img/bg-the-grand-budapest-hotel.jpg",
+        "description": "In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.
+
+    Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.",
+        "director": "Wes Andreson",
+        "genre": "Drama",
+        "id": 1,
+        "isFavorite": true,
+        "picture": "https://www.theglobeandmail.com/resizer/ZlZ4o9jXtk_x8e20WPaKO1sFD6I=/1200x0/filters:quality(80)/arc-anglerfish-tgam-prod-tgam.s3.amazonaws.com/public/CEK54CW3HZBMXKO3QNV6PHHNEE",
+        "poster": "img/the-grand-budapest-hotel-poster.jpg",
+        "previewVideoSrc": "https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm",
+        "rate": 8.9,
+        "releaseDate": "2014",
+        "runTime": 99,
+        "starring": Array [
+          "Bill Murray",
+          "Edward Norton",
+          "Jude Law",
+          "Willem Dafoe",
+          "Saoirse Ronan",
+          "Tony Revoloru",
+          "Tilda Swinton",
+          "Tom Wilkinson",
+          "Owen Wilkinson",
+          "Adrien Brody",
+          "Ralph Fiennes",
+          "Jeff Goldblum",
+        ],
+        "title": "The Grand Budapest Hotel",
+        "videoSrc": "http://media.xiph.org/mango/tears_of_steel_1080p.webm",
+        "voteCount": 240,
+      }
+    }
+    renderPlayer={[Function]}
+  />
+  <SmallMovieCard
+    film={
+      Object {
+        "backgroundColor": "#795433",
+        "backgroundPicture": "https://assets.htmlacademy.ru/intensives/javascript-3/film/background/Pulp_Fiction.jpg",
+        "description": "The lives of two mob hitmen, a boxer, a gangster & his wife, and a pair of diner bandits intertwine in four tales of violence ,and redemption.",
+        "director": "Quentin Tarantino",
+        "genre": "Crime",
+        "id": 2,
+        "isFavorite": false,
+        "picture": "https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/pulp-fiction.jpg",
+        "poster": "https://assets.htmlacademy.ru/intensives/javascript-3/film/poster/Pulp_Fiction.jpg",
+        "previewVideoSrc": "https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.,ogv.360p.webm",
+        "rate": 1.5,
+        "releaseDate": 1994,
+        "runTime": 153,
+        "starring": Array [
+          "Bill Murray",
+          "Edward Norton",
+          "Jude Law",
+          "Willem Dafoe",
+          "Saoirse Ronan",
+          "Tony Revoloru",
+          "Tilda Swinton",
+          "Tom Wilkinson",
+          "Owen Wilkinson",
+          "Adrien Brody",
+          "Ralph Fiennes",
+          "Jeff Goldblum",
+        ],
+        "title": "Pulp Fiction",
+        "videoSrc": "http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4",
+        "voteCount": 1635992,
+      }
+    }
+    renderPlayer={[Function]}
+  />
+  <SmallMovieCard
+    film={
+      Object {
+        "backgroundColor": "#FDFDFC",
+        "backgroundPicture": "https: //assets.htmlacademy.ru/intensives/javascript-3/film/background/Snatch.jpg",
+        "description": "Unscrupulous boxing promoters, violent bookmakers, a Russian gangster, incompetent amateur robbers and supposedly Jewish jewelers ,fight to track down a priceless stolen diamond.",
+        "director": "Guy Ritchie",
+        "genre": "Comedy",
+        "id": 13,
+        "isFavorite": false,
+        "picture": "https: //assets.htmlacademy.ru/intensives/javascript-3/film/preview/snatch.jpg",
+        "poster": "https: //assets.htmlacademy.ru/intensives/javascript-3/film/poster/Snatch.jpg",
+        "previewVideoSrc": "https: //upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.,360p.webm",
+        "rate": 0.2,
+        "releaseDate": 2000,
+        "runTime": 104,
+        "starring": Array [
+          "Bill Murray",
+          "Edward Norton",
+          "Jude Law",
+          "Willem Dafoe",
+          "Saoirse Ronan",
+          "Tony Revoloru",
+          "Tilda Swinton",
+          "Tom Wilkinson",
+          "Owen Wilkinson",
+          "Adrien Brody",
+          "Ralph Fiennes",
+          "Jeff Goldblum",
+        ],
+        "title": "Snatch",
+        "videoSrc": "http: //media.xiph.org/mango/tears_of_steel_1080p.webm",
+        "voteCount": 716577,
+      }
+    }
+    renderPlayer={[Function]}
+  />
+</div>
+`;

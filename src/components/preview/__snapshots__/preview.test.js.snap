@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should Preview render correctly 1`] = `
+<div
+  className="small-movie-card__image"
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+/>
+`;
