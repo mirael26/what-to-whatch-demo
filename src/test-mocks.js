@@ -114,4 +114,42 @@ const match = {
   }
 };
 
-export {films, reviews, genres, match, userInfo};
+const filmFromServer = {
+  "id": 1,
+  "name": `film`,
+  "poster_image": ``,
+  "preview_image": ``,
+  "background_image": ``,
+  "background_color": `#ffffff`,
+  "video_link": ``,
+  "preview_video_link": ``,
+  "description": `1`,
+  "rating": 1,
+  "scores_count": 1,
+  "director": `1`,
+  "starring": [`1`, `1`],
+  "run_time": 1,
+  "genre": `comedy`,
+  "released": 1,
+  "is_favorite": false,
+};
+
+const reviewsFromServer = [{
+  id: 1,
+  comment: `sdf`,
+  date: `2020-11-29 14:00:00`,
+  rating: 1,
+  user: {
+    id: 1,
+    name: `name`,
+  }
+}];
+
+const userInfoFromServer = {
+  "id": 1,
+  "email": `capricorn_26@mail.ru`,
+  "name": `capricorn_26`,
+  "avatar_url": `/avatar.jpg`,
+};
+
+export {films, reviews, genres, match, userInfo, filmFromServer, reviewsFromServer, userInfoFromServer};

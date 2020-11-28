@@ -22,10 +22,9 @@ describe(`Action creators work correctly`, () => {
       payload: films,
     });
   });
-  it(`Action creator for getting genre's list returns correct action`, () => {
+  it(`Action creator for getting genre's list returns correct action with undefined payload`, () => {
     expect(ActionCreator.getGenresList(genres)).toEqual({
       type: ActionType.GET_GENRES_LIST,
-      payload: genres,
     });
   });
   it(`Action creator for loading promo-film returns correct action`, () => {

@@ -26,9 +26,8 @@ export const ActionCreator = {
     type: ActionType.LOAD_FAVORITE_FILMS,
     payload: favoriteFilms,
   }),
-  getGenresList: (films) => ({
+  getGenresList: () => ({
     type: ActionType.GET_GENRES_LIST,
-    payload: films,
   }),
   loadPromoFilm: (promoFilm) => ({
     type: ActionType.LOAD_PROMO_FILM,
