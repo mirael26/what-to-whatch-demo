@@ -25,8 +25,6 @@ const withActiveControl = (Component) => {
           {...this.props}
           isPlaying={this.state.isPlaying}
           onPlayButtonClick={this.handlePlayButtonClick}
-          isFullscreen={this.state.isFullscreen}
-          onFullScreenButtonClick={this.onFullScreenButtonClick}
         >
         </Component>
       );

@@ -10,6 +10,7 @@ import {AppRoute} from "../../const";
 import UserBlock from "../user-block/user-block";
 import AddReviewForm from "../add-review-form/add-review-form";
 import withUserReview from "../../hocs/with-user-review/with-user-review";
+import {postReview} from "../../store/api-actions";
 
 const AddReviewFormWithUserReview = withUserReview(AddReviewForm);
 
@@ -29,7 +30,7 @@ class AddReview extends PureComponent {
   }
 
   render() {
-    const {currentFilm, errorStatus, resetErrorStatus} = this.props;
+    const {currentFilm, errorStatus, resetErrorStatus, onSubmit} = this.props;
     return (
       <section className="movie-card movie-card--full" style={{backgroundColor: currentFilm.backgroundColor}}>
         <div className="movie-card__header">
@@ -70,7 +71,10 @@ class AddReview extends PureComponent {
         <AddReviewFormWithUserReview
           background={currentFilm.backgroundColor}
           errorStatus={errorStatus}
-          onInputChange={resetErrorStatus} />
+          onInputChange={resetErrorStatus}
+          currentFilmId={currentFilm.id}
+          onSubmit={onSubmit}
+        />
 
       </section>
     );
@@ -99,6 +103,7 @@ AddReview.propTypes = {
   loadCurrentFilm: PropTypes.func.isRequired,
   errorStatus: PropTypes.bool.isRequired,
   resetErrorStatus: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({DATA, STATE}) => ({
@@ -112,6 +117,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   resetErrorStatus() {
     dispatch(ActionCreator.updateErrorStatus(false));
+  },
+  onSubmit(id, review) {
+    dispatch(postReview(id, review));
   },
 });
 

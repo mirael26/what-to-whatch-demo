@@ -14,19 +14,10 @@ class TimeBar extends PureComponent {
     this.endCoord = null;
     this.shift = null;
     this.isPauseForced = null;
-    this.isLaunched = false;
 
     this.handleSliderMouseDown = this.handleSliderMouseDown.bind(this);
     this.handleDocumentMouseMove = this.handleDocumentMouseMove.bind(this);
     this.handleDocumentMouseUp = this.handleDocumentMouseUp.bind(this);
-  }
-
-  componentDidUpdate() {
-    if (this.isLaunched) {
-      return;
-    }
-    const {currentTime} = this.props;
-    this.isLaunched = currentTime > 0;
   }
 
   handleSliderMouseDown(evt) {
@@ -95,7 +86,7 @@ class TimeBar extends PureComponent {
             className="player__toggler"
             style={{left: `${progress}%`}}
             ref={this.slider}
-            onMouseDown={this.isLaunched ? this.handleSliderMouseDown : null}
+            onMouseDown={this.handleSliderMouseDown}
           >Toggler</div>
         </div>
         <div className="player__time-value">{timer}</div>

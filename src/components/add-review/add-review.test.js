@@ -21,6 +21,7 @@ it(`Should AddReview render correctly`, () => {
             errorStatus={false}
             loadCurrentFilm={noop}
             resetErrorStatus={noop}
+            onSubmit={noop}
           />
         </Router>
     )

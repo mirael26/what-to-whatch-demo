@@ -22,7 +22,9 @@ it(`Should Player render correctly`, () => {
         />
         , {
           createNodeMock: () => {
-            return {};
+            return {
+              addEventListener: noop,
+            };
           }
         }
     )

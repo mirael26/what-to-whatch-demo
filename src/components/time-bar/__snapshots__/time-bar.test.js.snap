@@ -14,7 +14,7 @@ exports[`Should TimeBar render correctly 1`] = `
     />
     <div
       className="player__toggler"
-      onMouseDown={null}
+      onMouseDown={[Function]}
       style={
         Object {
           "left": "0.0%",

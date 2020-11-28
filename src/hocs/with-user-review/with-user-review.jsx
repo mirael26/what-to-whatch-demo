@@ -1,8 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
 
-import {postReview} from "../../store/api-actions";
 
 const RATING_RATE = 2;
 
@@ -83,17 +81,7 @@ const withUserReview = (Component) => {
     onInputChange: PropTypes.func.isRequired,
   };
 
-  const mapStateToProps = ({DATA}) => ({
-    currentFilmId: DATA.currentFilm.id,
-  });
-
-  const mapDispatchToProps = (dispatch) => ({
-    onSubmit(id, review) {
-      dispatch(postReview(id, review));
-    }
-  });
-
-  return connect(mapStateToProps, mapDispatchToProps)(WithUserReview);
+  return WithUserReview;
 };
 
 export default withUserReview;

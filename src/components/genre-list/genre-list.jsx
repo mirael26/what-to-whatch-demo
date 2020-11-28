@@ -11,7 +11,7 @@ const GenreList = (props) => {
     onChangeGenre,
   } = props;
 
-  const onGenreClick = (evt) => {
+  const handleGenreClick = (evt) => {
     evt.preventDefault();
     if (evt.target.className !== GENRE_LINK_CLASS) {
       return;
@@ -23,7 +23,7 @@ const GenreList = (props) => {
   genreList.unshift(ALL_GENRES);
 
   return (
-    <ul className="catalog__genres-list" onClick={onGenreClick}>
+    <ul className="catalog__genres-list" onClick={handleGenreClick}>
       {genreList.map((genre, i) =>
         <li key={`genre-${i}`} className={`catalog__genres-item${activeGenre === genre ? ` catalog__genres-item--active` : ``}`}>
           <a href="#" className="catalog__genres-link" id={genre}>{genre}</a>
