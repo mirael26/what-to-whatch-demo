@@ -52,4 +52,17 @@ const adaptReviewToClient = (review) => {
   return adaptedReview;
 };
 
-export {adaptFilmToClient, adaptReviewToClient};
+const adaptUserInfoToClient = (info) => {
+  const adaptedInfo = extend(
+      info,
+      {
+        avatarUrl: info.avatar_url,
+      }
+  );
+
+  delete adaptedInfo.avatar_url;
+
+  return adaptedInfo;
+};
+
+export {adaptFilmToClient, adaptReviewToClient, adaptUserInfoToClient};

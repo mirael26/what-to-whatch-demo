@@ -1,6 +1,6 @@
 import {ActionCreator} from "./action";
 import {APIRoute, AppRoute, AuthorizationStatus} from "../const";
-import {adaptFilmToClient, adaptReviewToClient} from "./adapter";
+import {adaptFilmToClient, adaptReviewToClient, adaptUserInfoToClient} from "./adapter";
 
 const HttpCode = {
   UNAUTHORIZED: 401,
@@ -56,7 +56,7 @@ const postFavoriteStatus = (id, status) => (dispatch, _getState, api) => {
 
 const checkAuth = () => (dispatch, _getState, api) => (
   api.get(APIRoute.LOGIN)
-    .then(({data}) => dispatch(ActionCreator.loadUserInfo(data)))
+    .then(({data}) => dispatch(ActionCreator.loadUserInfo(adaptUserInfoToClient(data))))
     .then(() => dispatch(ActionCreator.updateAuthorization(AuthorizationStatus.AUTH)))
     .catch(() => {})
 );

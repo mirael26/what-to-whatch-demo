@@ -32,7 +32,7 @@ UserBlock.propTypes = {
 
 const mapStateToProps = ({USER}) => ({
   authorizationStatus: USER.authorizationStatus,
-  userAvatarUrl: USER.authorizationInfo.avatar_url,
+  userAvatarUrl: USER.authorizationInfo.avatarUrl,
 });
 
 export {UserBlock};

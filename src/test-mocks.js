@@ -101,10 +101,17 @@ const genres = [
   `Thriller`,
 ];
 
+const userInfo = {
+  id: 1,
+  email: `capricorn_26@mail.ru`,
+  name: `capricorn_26`,
+  avatarUrl: `/avatar.jpg`,
+};
+
 const match = {
   params: {
     id: 1,
   }
 };
 
-export {films, reviews, genres, match};
+export {films, reviews, genres, match, userInfo};

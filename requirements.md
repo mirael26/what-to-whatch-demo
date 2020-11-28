@@ -27,7 +27,7 @@ npm i react@16.12 -E
 * + @babel/preset-react@7.8
 * @types/jest@25.1
 * @types/react@16.9
-* axios-mock-adapter@1.17
+* + axios-mock-adapter@1.17
 * babel-jest@25.1
 * + babel-loader@8
 * + enzyme@3.11
