@@ -8,7 +8,7 @@ it(`Should ShowMoreButton render correctly`, () => {
   const tree = renderer
     .create(
         <ShowMoreButton
-          onShowMoreButton={noop}
+          onShowMoreButtonClick={noop}
         />
     )
     .toJSON();

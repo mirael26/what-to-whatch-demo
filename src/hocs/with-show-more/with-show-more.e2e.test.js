@@ -16,6 +16,6 @@ it(`withShowMore should change film's count`, () => {
 
   expect(wrapper.props().filmsCount).toEqual(8);
 
-  wrapper.props().onShowMoreButton();
+  wrapper.props().onShowMoreButtonClick();
   expect(wrapper.props().filmsCount).toEqual(16);
 });

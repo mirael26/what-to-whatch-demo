@@ -96,6 +96,7 @@ class Player extends PureComponent {
     return (
       <div className="player">
         <video
+          muted
           src={currentFilm.videoSrc}
           className="player__video"
           ref={this.videoRef}

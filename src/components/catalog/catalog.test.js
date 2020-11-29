@@ -23,7 +23,7 @@ it(`Should Catalog render correctly`, () => {
             genre={genres[1]}
             onChangeGenre={noop}
             filmsCount={9}
-            onShowMoreButton={noop}
+            onShowMoreButtonClick={noop}
           />
         </Router>
     )

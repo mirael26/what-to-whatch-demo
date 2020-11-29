@@ -133,7 +133,7 @@ Array [
   >
     <Catalog
       filmsCount={8}
-      onShowMoreButton={[Function]}
+      onShowMoreButtonClick={[Function]}
     />
     <footer
       className="page-footer"

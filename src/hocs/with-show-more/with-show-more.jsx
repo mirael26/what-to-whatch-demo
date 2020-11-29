@@ -24,7 +24,7 @@ const withShowMore = (Component) => {
       return (
         <Component
           filmsCount={this.state.filmsCount}
-          onShowMoreButton={this.handleShowMoreButton}
+          onShowMoreButtonClick={this.handleShowMoreButton}
         />
       );
     }

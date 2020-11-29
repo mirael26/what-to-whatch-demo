@@ -17,7 +17,7 @@ const Catalog = (props) => {
     genre,
     onChangeGenre,
     filmsCount,
-    onShowMoreButton,
+    onShowMoreButtonClick,
   } = props;
 
   const isAllFilmsShown = filmsCount >= filmsByGenre.length;
@@ -34,7 +34,7 @@ const Catalog = (props) => {
 
       <MoviesList films={filmsByGenre.slice(0, filmsCount)}/>
 
-      {isAllFilmsShown ? null : <ShowMoreButton onShowMoreButton={onShowMoreButton} />}
+      {isAllFilmsShown ? null : <ShowMoreButton onShowMoreButtonClick={onShowMoreButtonClick} />}
     </section>
   );
 };
@@ -59,7 +59,7 @@ Catalog.propTypes = {
   genre: PropTypes.string.isRequired,
   onChangeGenre: PropTypes.func.isRequired,
   filmsCount: PropTypes.number.isRequired,
-  onShowMoreButton: PropTypes.func.isRequired,
+  onShowMoreButtonClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({DATA, STATE}) => ({

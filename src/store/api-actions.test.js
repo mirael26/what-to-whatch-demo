@@ -127,7 +127,7 @@ describe(`Api-actions should work correctly`, () => {
           type: ActionType.REDIRECT_TO_ROUTE,
           payload: `/films/1`,
         });
-        expect(dispatch).toHaveBeenNthCalledWith(1, {
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: ActionType.UPDATE_ERROR_STATUS,
           payload: false,
         });
@@ -145,14 +145,6 @@ describe(`Api-actions should work correctly`, () => {
     return favoriteSender(dispatch, () => {}, api)
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(2);
-        expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: ActionType.LOAD_CURRENT_FILM,
-          payload: adaptFilmToClient(filmFromServer),
-        });
-        expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: ActionType.LOAD_PROMO_FILM,
-          payload: adaptFilmToClient(filmFromServer),
-        });
       });
   });
   it(`Should make a correct API call to /login`, () => {
@@ -171,7 +163,7 @@ describe(`Api-actions should work correctly`, () => {
           type: ActionType.LOAD_USER_INFO,
           payload: adaptUserInfoToClient(userInfoFromServer),
         });
-        expect(dispatch).toHaveBeenNthCalledWith(1, {
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: ActionType.UPDATE_AUTHORIZATION,
           payload: `AUTH`,
         });
@@ -193,11 +185,11 @@ describe(`Api-actions should work correctly`, () => {
           type: ActionType.UPDATE_AUTHORIZATION,
           payload: `AUTH`,
         });
-        expect(dispatch).toHaveBeenNthCalledWith(1, {
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: ActionType.UPDATE_ERROR_STATUS,
           payload: false,
         });
-        expect(dispatch).toHaveBeenNthCalledWith(1, {
+        expect(dispatch).toHaveBeenNthCalledWith(3, {
           type: ActionType.REDIRECT_TO_ROUTE,
           payload: `/`,
         });

@@ -11,7 +11,7 @@ it(`Click on showmore button should call callback`, () => {
 
   const wrapper = shallow(
       <ShowMoreButton
-        onShowMoreButton={handleShowMoreButton}
+        onShowMoreButtonClick={handleShowMoreButton}
       />
   );
 

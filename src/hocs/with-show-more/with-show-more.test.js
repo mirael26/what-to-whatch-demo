@@ -18,7 +18,7 @@ it(`Should withShowMore render correctly`, () => {
     .create(
         <MockComponentWrapped
           filmsCount={6}
-          onShowMoreButton={noop}
+          onShowMoreButtonClick={noop}
         />
     )
     .toJSON();

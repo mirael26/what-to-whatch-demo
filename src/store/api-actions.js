@@ -37,22 +37,20 @@ const fetchReviews = (id) => (dispatch, _getState, api) => (
     .then((reviews) => dispatch(ActionCreator.loadReviews(reviews)))
 );
 
-const postReview = (id, {rating, comment}) => (dispatch, _getState, api) => {
+const postReview = (id, {rating, comment}) => (dispatch, _getState, api) => (
   api.post(`${APIRoute.REVIEWS}/${id}`, {rating, comment})
     .then(() => dispatch(ActionCreator.redirectToRoute(`${AppRoute.MOVIE}/${id}`)))
     .then(() => dispatch(ActionCreator.updateErrorStatus(false)))
-    .catch((error) => {
-      if (error.response.status !== HttpCode.SUCCESS) {
-        dispatch(ActionCreator.updateErrorStatus(true));
-      }
-    });
-};
+    .catch(() => {
+      dispatch(ActionCreator.updateErrorStatus(true));
+    })
+);
 
-const postFavoriteStatus = (id, status) => (dispatch, _getState, api) => {
+const postFavoriteStatus = (id, status) => (dispatch, _getState, api) => (
   api.post(`${APIRoute.FAVORITE}/${id}/${status}`)
     .then(() => dispatch(fetchCurrentFilm(id)))
-    .then(() => dispatch(fetchPromoFilm()));
-};
+    .then(() => dispatch(fetchPromoFilm()))
+);
 
 const checkAuth = () => (dispatch, _getState, api) => (
   api.get(APIRoute.LOGIN)

@@ -6,6 +6,7 @@ exports[`Should Player render correctly 1`] = `
 >
   <video
     className="player__video"
+    muted={true}
     onTimeUpdate={[Function]}
     src="http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4"
   />
