@@ -1,6 +1,8 @@
 import {extend} from "../../../utils";
 import {ActionType} from "../../../store/action";
 
+const MAX_GENRES_COUNT = 9;
+
 const initialState = {
   films: [],
   favoriteFilms: [],
@@ -24,7 +26,7 @@ const dataReducer = (state = initialState, action) => {
       const genres = state.films.map((film) => film.genre);
       const uniqGenres = [...new Set(genres)];
       return extend(state, {
-        genres: uniqGenres.slice(0, 9),
+        genres: uniqGenres.slice(0, MAX_GENRES_COUNT),
       });
     case ActionType.LOAD_PROMO_FILM:
       return extend(state, {

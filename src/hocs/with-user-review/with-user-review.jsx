@@ -1,6 +1,8 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
+const MIN_REVIEW_TEXT_LENGTH = 50;
+const MAX_REVIEW_TEXT_LENGTH = 400;
 
 const RATING_RATE = 2;
 
@@ -52,8 +54,8 @@ const withUserReview = (Component) => {
     render() {
       const {reviewText, rate, isSending} = this.state;
       if (
-        reviewText.length > 50
-        && reviewText.length <= 400
+        reviewText.length > MIN_REVIEW_TEXT_LENGTH
+        && reviewText.length <= MAX_REVIEW_TEXT_LENGTH
         && rate > 0
       ) {
         this.isValid = true;
