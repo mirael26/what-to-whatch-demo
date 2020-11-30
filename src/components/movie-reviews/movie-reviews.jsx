@@ -48,7 +48,7 @@ class MovieReviews extends PureComponent {
         <div className="movie-card__reviews-col">
           {
             reviews
-              .slice(0, Math.floor(reviewsCount / 2))
+              .slice(Math.ceil(reviewsCount / 2))
               .map((review) =>
                 <div className="review" key={`${review.id}-${review.author}`}>
                   <blockquote className="review__quote">
@@ -60,7 +60,7 @@ class MovieReviews extends PureComponent {
                     </footer>
                   </blockquote>
 
-                  <div className="review__rating">{review.rate}</div>
+                  <div className="review__rating">{review.rate.toFixed(1)}</div>
                 </div>
               )
           }
