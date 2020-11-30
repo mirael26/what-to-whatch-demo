@@ -13,6 +13,7 @@ jest.mock(`../movie/movie`, () => `Movie`);
 jest.mock(`../player/player`, () => `Player`);
 jest.mock(`../add-review/add-review`, () => `AddReview`);
 jest.mock(`../private-route/private-route`, () => `PrivateRoute`);
+jest.mock(`../error-page/error-page`, () => `ErrorPage`);
 
 it(`Should App render correctly`, () => {
   const tree = renderer

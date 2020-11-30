@@ -7,6 +7,7 @@ const initialState = {
   genre: DEFAULT_GENRE,
   playerTime: 0,
   errorStatus: false,
+  loadingErrorStatus: false,
 };
 
 const stateReducer = (state = initialState, action) => {
@@ -26,6 +27,10 @@ const stateReducer = (state = initialState, action) => {
     case ActionType.UPDATE_ERROR_STATUS:
       return extend(state, {
         errorStatus: action.payload,
+      });
+    case ActionType.UPDATE_LOADING_ERROR_STATUS:
+      return extend(state, {
+        loadingErrorStatus: action.payload,
       });
     default:
       return state;

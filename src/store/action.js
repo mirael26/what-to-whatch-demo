@@ -11,6 +11,7 @@ export const ActionType = {
   LOAD_REVIEWS: `LOAD_REVIEWS`,
   SET_PLAYER_TIME: `SET_PLAYER_TIME`,
   UPDATE_ERROR_STATUS: `UPDATE_ERROR_STATUS`,
+  UPDATE_LOADING_ERROR_STATUS: `UPDATE_LOADING_ERROR_STATUS`,
 };
 
 export const ActionCreator = {
@@ -60,5 +61,9 @@ export const ActionCreator = {
   updateErrorStatus: (status) => ({
     type: ActionType.UPDATE_ERROR_STATUS,
     payload: status,
-  })
+  }),
+  updateLoadingErrorStatus: (status) => ({
+    type: ActionType.UPDATE_LOADING_ERROR_STATUS,
+    payload: status,
+  }),
 };

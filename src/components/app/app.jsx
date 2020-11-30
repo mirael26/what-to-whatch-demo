@@ -2,7 +2,7 @@ import React from "react";
 import {Switch, Route, Router as BrowserRouter} from "react-router-dom";
 import browserHistory from "../../browser-history";
 
-import {AppRoute, AuthorizationStatus} from "../../const";
+import {AppRoute, AuthorizationStatus, ErrorText} from "../../const";
 
 import Main from "../main/main";
 import SignIn from "../sign-in/sign-in";
@@ -10,6 +10,7 @@ import MyList from "../my-list/my-list";
 import Movie from "../movie/movie";
 import Player from "../player/player";
 import AddReview from "../add-review/add-review";
+import ErrorPage from "../error-page/error-page";
 import PrivateRoute from "../private-route/private-route";
 import withActiveControl from "../../hocs/with-active-control/with-active-control";
 import withValidity from "../../hocs/with-validity/with-validity";
@@ -69,6 +70,9 @@ const App = () => {
               onExitButtonClick={() => history.goBack()}
             />
           }>
+        </Route>
+        <Route exact path='*' >
+          <ErrorPage errorText={ErrorText.PAGE_NOT_FOUND} />
         </Route>
       </Switch>
     </BrowserRouter>

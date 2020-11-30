@@ -75,4 +75,10 @@ describe(`Action creators work correctly`, () => {
       payload: false,
     });
   });
+  it(`Action creator for updating loading error status returns correct action`, () => {
+    expect(ActionCreator.updateLoadingErrorStatus(false)).toEqual({
+      type: ActionType.UPDATE_LOADING_ERROR_STATUS,
+      payload: false,
+    });
+  });
 });

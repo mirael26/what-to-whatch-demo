@@ -25,6 +25,7 @@ it(`Should Movie render correctly`, () => {
             onPlayerButtonClick={noop}
             changeFavoriteStatus={noop}
             onUnauthorizedFavoriteClick={noop}
+            loadingErrorStatus={false}
           />
         </Router>
     )

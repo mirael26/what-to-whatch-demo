@@ -7,6 +7,7 @@ describe(`State-reducers should work correctly`, () => {
       genre: `All genres`,
       playerTime: 0,
       errorStatus: false,
+      loadingErrorStatus: false,
     });
   });
   it(`Reducer should update genre with received genre`, () => {
@@ -37,6 +38,16 @@ describe(`State-reducers should work correctly`, () => {
       payload: true,
     })).toEqual({
       errorStatus: true,
+    });
+  });
+  it(`Reducer should update loading error status`, () => {
+    expect(stateReducer({
+      loadingErrorStatus: false,
+    }, {
+      type: ActionType.UPDATE_LOADING_ERROR_STATUS,
+      payload: true,
+    })).toEqual({
+      loadingErrorStatus: true,
     });
   });
 });

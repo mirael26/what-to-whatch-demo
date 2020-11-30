@@ -39,4 +39,9 @@ const FavoriteStatus = {
   REMOVE: `0`,
 };
 
-export {MovieViewType, AuthorizationStatus, APIRoute, AppRoute, FilmRate, FavoriteStatus};
+const ErrorText = {
+  MOVIE_NOT_FOUND: `Movie not found`,
+  PAGE_NOT_FOUND: `Page not found`,
+};
+
+export {MovieViewType, AuthorizationStatus, APIRoute, AppRoute, FilmRate, FavoriteStatus, ErrorText};

@@ -5,10 +5,11 @@ import {Link} from "react-router-dom";
 
 import {fetchCurrentFilm} from "../../store/api-actions";
 import {ActionCreator} from "../../store/action";
-import {AppRoute} from "../../const";
+import {AppRoute, ErrorText} from "../../const";
 
 import UserBlock from "../user-block/user-block";
 import AddReviewForm from "../add-review-form/add-review-form";
+import ErrorPage from "../error-page/error-page";
 import withUserReview from "../../hocs/with-user-review/with-user-review";
 import {postReview} from "../../store/api-actions";
 
@@ -30,54 +31,56 @@ class AddReview extends PureComponent {
   }
 
   render() {
-    const {currentFilm, errorStatus, resetErrorStatus, onSubmit} = this.props;
-    return (
-      <section className="movie-card movie-card--full" style={{backgroundColor: currentFilm.backgroundColor}}>
-        <div className="movie-card__header">
-          <div className="movie-card__bg">
-            <img src={currentFilm.backgroundPicture} alt={currentFilm.title} />
-          </div>
-
-          <h1 className="visually-hidden">WTW</h1>
-
-          <header className="page-header">
-            <div className="logo">
-              <Link to={AppRoute.MAIN} className="logo__link">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </Link>
+    const {currentFilm, errorStatus, resetErrorStatus, onSubmit, loadingErrorStatus} = this.props;
+    return loadingErrorStatus
+      ? <ErrorPage errorText={ErrorText.MOVIE_NOT_FOUND} />
+      : (
+        <section className="movie-card movie-card--full" style={{backgroundColor: currentFilm.backgroundColor}}>
+          <div className="movie-card__header">
+            <div className="movie-card__bg">
+              <img src={currentFilm.backgroundPicture} alt={currentFilm.title} />
             </div>
 
-            <nav className="breadcrumbs">
-              <ul className="breadcrumbs__list">
-                <li className="breadcrumbs__item">
-                  <Link to={`${AppRoute.MOVIE}/${currentFilm.id}`} className="breadcrumbs__link">{currentFilm.title}</Link>
-                </li>
-                <li className="breadcrumbs__item">
-                  <a className="breadcrumbs__link">Add review</a>
-                </li>
-              </ul>
-            </nav>
+            <h1 className="visually-hidden">WTW</h1>
 
-            {<UserBlock />}
-          </header>
+            <header className="page-header">
+              <div className="logo">
+                <Link to={AppRoute.MAIN} className="logo__link">
+                  <span className="logo__letter logo__letter--1">W</span>
+                  <span className="logo__letter logo__letter--2">T</span>
+                  <span className="logo__letter logo__letter--3">W</span>
+                </Link>
+              </div>
 
-          <div className="movie-card__poster movie-card__poster--small">
-            <img src={currentFilm.poster} alt={currentFilm.title} width="218" height="327" />
+              <nav className="breadcrumbs">
+                <ul className="breadcrumbs__list">
+                  <li className="breadcrumbs__item">
+                    <Link to={`${AppRoute.MOVIE}/${currentFilm.id}`} className="breadcrumbs__link">{currentFilm.title}</Link>
+                  </li>
+                  <li className="breadcrumbs__item">
+                    <a className="breadcrumbs__link">Add review</a>
+                  </li>
+                </ul>
+              </nav>
+
+              {<UserBlock />}
+            </header>
+
+            <div className="movie-card__poster movie-card__poster--small">
+              <img src={currentFilm.poster} alt={currentFilm.title} width="218" height="327" />
+            </div>
           </div>
-        </div>
 
-        <AddReviewFormWithUserReview
-          background={currentFilm.backgroundColor}
-          errorStatus={errorStatus}
-          onInputChange={resetErrorStatus}
-          currentFilmId={currentFilm.id}
-          onSubmit={onSubmit}
-        />
+          <AddReviewFormWithUserReview
+            background={currentFilm.backgroundColor}
+            errorStatus={errorStatus}
+            onInputChange={resetErrorStatus}
+            currentFilmId={currentFilm.id}
+            onSubmit={onSubmit}
+          />
 
-      </section>
-    );
+        </section>
+      );
   }
 }
 
@@ -104,11 +107,13 @@ AddReview.propTypes = {
   errorStatus: PropTypes.bool.isRequired,
   resetErrorStatus: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  loadingErrorStatus: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = ({DATA, STATE}) => ({
   currentFilm: DATA.currentFilm,
   errorStatus: STATE.errorStatus,
+  loadingErrorStatus: STATE.loadingErrorStatus,
 });
 
 const mapDispatchToProps = (dispatch) => ({

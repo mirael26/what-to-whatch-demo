@@ -86,10 +86,14 @@ describe(`Api-actions should work correctly`, () => {
 
     return currentFilmLoader(dispatch, () => {}, api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.LOAD_CURRENT_FILM,
           payload: adaptFilmToClient(filmFromServer),
+        });
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
+          type: ActionType.UPDATE_LOADING_ERROR_STATUS,
+          payload: false,
         });
       });
   });
@@ -104,10 +108,14 @@ describe(`Api-actions should work correctly`, () => {
 
     return reviewsLoader(dispatch, () => {}, api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.LOAD_REVIEWS,
           payload: reviewsFromServer.map(adaptReviewToClient),
+        });
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
+          type: ActionType.UPDATE_LOADING_ERROR_STATUS,
+          payload: false,
         });
       });
   });

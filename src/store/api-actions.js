@@ -29,12 +29,20 @@ const fetchCurrentFilm = (id) => (dispatch, _getState, api) => (
   api.get(`${APIRoute.FILMS}/${id}`)
     .then(({data}) => adaptFilmToClient(data))
     .then((currentFilm) => dispatch(ActionCreator.loadCurrentFilm(currentFilm)))
+    .then(() => dispatch(ActionCreator.updateLoadingErrorStatus(false)))
+    .catch(() => {
+      dispatch(ActionCreator.updateLoadingErrorStatus(true));
+    })
 );
 
 const fetchReviews = (id) => (dispatch, _getState, api) => (
   api.get(`${APIRoute.REVIEWS}/${id}`)
     .then(({data}) => data.map(adaptReviewToClient))
     .then((reviews) => dispatch(ActionCreator.loadReviews(reviews)))
+    .then(() => dispatch(ActionCreator.updateLoadingErrorStatus(false)))
+    .catch(() => {
+      dispatch(ActionCreator.updateLoadingErrorStatus(true));
+    })
 );
 
 const postReview = (id, {rating, comment}) => (dispatch, _getState, api) => (

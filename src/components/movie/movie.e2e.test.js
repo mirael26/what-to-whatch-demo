@@ -27,6 +27,7 @@ describe(`Movie calls callbacks correctly`, () => {
           onPlayerButtonClick={handlePlayButtonClick}
           changeFavoriteStatus={handleFavoriteStatusChange}
           onUnauthorizedFavoriteClick={handleUnauthorizedFavoriteStatusChange}
+          loadingErrorStatus={false}
         />
     );
 
@@ -51,6 +52,7 @@ describe(`Movie calls callbacks correctly`, () => {
           onPlayerButtonClick={handlePlayButtonClick}
           changeFavoriteStatus={handleFavoriteStatusChange}
           onUnauthorizedFavoriteClick={handleUnauthorizedFavoriteStatusChange}
+          loadingErrorStatus={false}
         />
     );
 
@@ -75,6 +77,7 @@ describe(`Movie calls callbacks correctly`, () => {
           onPlayerButtonClick={handlePlayButtonClick}
           changeFavoriteStatus={handleFavoriteStatusChange}
           onUnauthorizedFavoriteClick={handleUnauthorizedFavoriteStatusChange}
+          loadingErrorStatus={false}
         />
     );
 
