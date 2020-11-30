@@ -11,11 +11,11 @@ const withValidity = (Component) => {
         isPasswordValid: true,
       };
 
-      this.changeValidLoginStatus = this.changeValidLoginStatus.bind(this);
-      this.changeValidPasswordStatus = this.changeValidPasswordStatus.bind(this);
+      this.handleValidLoginStatusChange = this.handleValidLoginStatusChange.bind(this);
+      this.handleValidPasswordStatusChange = this.handleValidPasswordStatusChange.bind(this);
     }
 
-    changeValidLoginStatus(validationStatus) {
+    handleValidLoginStatusChange(validationStatus) {
       const {isPasswordValid} = this.state;
       const formValid = validationStatus && isPasswordValid;
       this.setState({
@@ -25,7 +25,7 @@ const withValidity = (Component) => {
 
     }
 
-    changeValidPasswordStatus(validationStatus) {
+    handleValidPasswordStatusChange(validationStatus) {
       const {isLoginValid} = this.state;
       const formValid = isLoginValid && validationStatus;
       this.setState({
@@ -40,8 +40,8 @@ const withValidity = (Component) => {
           isFormValid={this.state.isFormValid}
           isLoginValid={this.state.isLoginValid}
           isPasswordValid={this.state.isPasswordValid}
-          onValidLoginChange={this.changeValidLoginStatus}
-          onValidPasswordChange={this.changeValidPasswordStatus}
+          onValidLoginChange={this.handleValidLoginStatusChange}
+          onValidPasswordChange={this.handleValidPasswordStatusChange}
         />
       );
     }
