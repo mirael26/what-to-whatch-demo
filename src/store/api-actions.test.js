@@ -180,16 +180,20 @@ describe(`Api-actions should work correctly`, () => {
 
     return loginSender(dispatch, () => {}, api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(3);
+        expect(dispatch).toHaveBeenCalledTimes(4);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.LOAD_USER_INFO,
+          payload: adaptUserInfoToClient(userInfoFromServer),
+        });
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: ActionType.UPDATE_AUTHORIZATION,
           payload: `AUTH`,
         });
-        expect(dispatch).toHaveBeenNthCalledWith(2, {
+        expect(dispatch).toHaveBeenNthCalledWith(3, {
           type: ActionType.UPDATE_ERROR_STATUS,
           payload: false,
         });
-        expect(dispatch).toHaveBeenNthCalledWith(3, {
+        expect(dispatch).toHaveBeenNthCalledWith(4, {
           type: ActionType.REDIRECT_TO_ROUTE,
           payload: `/`,
         });
