@@ -9,15 +9,13 @@ const AuthorizationStatus = {
   NO_AUTH: `NO_AUTH`,
 };
 
-const prefix = `/what-to-whatch-demo`;
-
 const AppRoute = {
-  MAIN: `${prefix}/`,
-  LOGIN: `${prefix}/login`,
-  MOVIE: `${prefix}/films`,
+  MAIN: `/`,
+  LOGIN: `/login`,
+  MOVIE: `/films`,
   REVIEW: `/review`,
-  MY_LIST: `${prefix}/mylist`,
-  PLAYER: `${prefix}/player`,
+  MY_LIST: `/mylist`,
+  PLAYER: `/player`,
 };
 
 const APIRoute = {
