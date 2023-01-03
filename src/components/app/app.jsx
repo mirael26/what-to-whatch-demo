@@ -1,5 +1,5 @@
 import React from "react";
-import {Switch, Route, Router as BrowserRouter} from "react-router-dom";
+import {Switch, Route, HashRouter} from "react-router-dom";
 import browserHistory from "../../browser-history";
 
 import {AppRoute, AuthorizationStatus, ErrorText} from "../../const";
@@ -21,7 +21,7 @@ const SignInWithValidity = withValidity(SignIn);
 const App = () => {
 
   return (
-    <BrowserRouter history={browserHistory}>
+    <HashRouter history={browserHistory}>
       <Switch>
         <Route
           exact
@@ -75,7 +75,7 @@ const App = () => {
           <ErrorPage errorText={ErrorText.PAGE_NOT_FOUND} />
         </Route>
       </Switch>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
